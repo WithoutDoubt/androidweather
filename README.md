@@ -1,3 +1,0 @@
-# androidweather
-# coolweather
-## keep coding 
