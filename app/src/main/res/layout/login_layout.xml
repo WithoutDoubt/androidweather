@@ -64,12 +64,11 @@
         android:layout_height="@dimen/item_height_normal"
         android:layout_marginLeft="@dimen/margin_large"
         android:layout_marginRight="@dimen/margin_large"
-
         >
 
         <ImageView
             android:id="@+id/img_pw"
-            android:layout_width="@dimen/dp_19"
+            android:layout_width="@dimen/dp_18"
             android:layout_height="@dimen/dp_20"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/margin_tiny"
@@ -95,14 +94,14 @@
             android:textSize="@dimen/text_size_normal"
             />
         <ImageView
-            android:id="@+id/iv_see_password"
-            android:layout_width="@dimen/image_height_litter"
-            android:layout_height="@dimen/image_height_litter"
-            android:src="@drawable/image_password_bg"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:scaleType="fitXY"
-            />
+        android:id="@+id/iv_see_password"
+        android:layout_width="@dimen/image_height_litter"
+        android:layout_height="@dimen/image_height_litter"
+        android:src="@drawable/image_password_bg"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:scaleType="fitXY"
+        />
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_height"
@@ -122,18 +121,18 @@
         android:orientation="horizontal"
         android:gravity="center"
         >
-
         <CheckBox
             android:id="@+id/checkBox_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:checked="false"
             android:padding="@dimen/dp_10"
+            android:textSize="@dimen/text_size_normal"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:text="@string/check_password"
             android:textColor="@color/top_bar_normal_bg"
-            android:textSize="@dimen/text_size_normal" />
+            android:checked="false"
+            />
         <CheckBox
             android:id="@+id/checkbox_login"
             android:layout_width="wrap_content"

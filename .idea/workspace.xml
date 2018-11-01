@@ -12,22 +12,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="575c52d2-e11a-4d08-b7e8-2ee0db22f996" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/SecondActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/second_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_orange_selector.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/login_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,11 +51,60 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+            <state relative-caret-position="50">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+              <folding>
+                <element signature="e#544#557#0" expanded="true" />
+                <element signature="e#712#739#0" expanded="true" />
+                <element signature="e#774#795#0" expanded="true" />
+                <element signature="e#831#852#0" expanded="true" />
+                <element signature="e#886#901#0" expanded="true" />
+                <element signature="e#1006#1020#0" expanded="true" />
+                <element signature="e#1055#1069#0" expanded="true" />
+                <element signature="e#1162#1182#0" expanded="true" />
+                <element signature="e#1579#1599#0" expanded="true" />
+                <element signature="e#1638#1660#0" expanded="true" />
+                <element signature="e#1781#1798#0" expanded="true" />
+                <element signature="e#1970#1995#0" expanded="true" />
+                <element signature="e#2107#2127#0" expanded="true" />
+                <element signature="e#2218#2240#0" expanded="true" />
+                <element signature="e#2469#2496#0" expanded="true" />
+                <element signature="e#2531#2552#0" expanded="true" />
+                <element signature="e#2588#2609#0" expanded="true" />
+                <element signature="e#2759#2773#0" expanded="true" />
+                <element signature="e#2808#2822#0" expanded="true" />
+                <element signature="e#2915#2935#0" expanded="true" />
+                <element signature="e#2974#2994#0" expanded="true" />
+                <element signature="e#3387#3407#0" expanded="true" />
+                <element signature="e#3446#3468#0" expanded="true" />
+                <element signature="e#3584#3602#0" expanded="true" />
+                <element signature="e#3819#3844#0" expanded="true" />
+                <element signature="e#3958#3986#0" expanded="true" />
+                <element signature="e#4021#4049#0" expanded="true" />
+                <element signature="e#4353#4373#0" expanded="true" />
+                <element signature="e#4464#4486#0" expanded="true" />
+                <element signature="e#4537#5965#0" />
+                <element signature="e#4756#4777#0" expanded="true" />
+                <element signature="e#4813#4834#0" expanded="true" />
+                <element signature="e#4868#4889#0" expanded="true" />
+                <element signature="e#4920#4941#0" expanded="true" />
+                <element signature="e#4969#4990#0" expanded="true" />
+                <element signature="e#5169#5183#0" expanded="true" />
+                <element signature="e#5213#5238#0" expanded="true" />
+                <element signature="e#5443#5467#0" expanded="true" />
+                <element signature="e#5765#5790#0" expanded="true" />
+                <element signature="e#5898#5919#0" expanded="true" />
+                <element signature="e#6219#6240#0" expanded="true" />
+                <element signature="e#6276#6297#0" expanded="true" />
+                <element signature="e#6331#6351#0" expanded="true" />
+                <element signature="e#6382#6403#0" expanded="true" />
+                <element signature="e#6431#6452#0" expanded="true" />
+                <element signature="e#6474#6489#0" expanded="true" />
+                <element signature="e#6623#6648#0" expanded="true" />
+              </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer2">
@@ -65,8 +115,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+            <state relative-caret-position="420">
+              <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
               <folding>
                 <element signature="e#521#691#0" expanded="true" />
                 <element signature="e#690#691#0" expanded="true" />
@@ -75,15 +125,117 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+      <file leaf-file-name="login_layout.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/login_layout.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="87" column="37" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
+              <folding>
+                <element signature="e#544#557#0" expanded="true" />
+                <element signature="e#622#933#0" />
+                <element signature="e#716#743#0" expanded="true" />
+                <element signature="e#774#795#0" expanded="true" />
+                <element signature="e#831#852#0" expanded="true" />
+                <element signature="e#886#901#0" expanded="true" />
+                <element signature="e#1006#1020#0" expanded="true" />
+                <element signature="e#1055#1069#0" expanded="true" />
+                <element signature="e#1162#1182#0" expanded="true" />
+                <element signature="e#1579#1599#0" expanded="true" />
+                <element signature="e#1638#1660#0" expanded="true" />
+                <element signature="e#1781#1798#0" expanded="true" />
+                <element signature="e#1970#1995#0" expanded="true" />
+                <element signature="e#2107#2127#0" expanded="true" />
+                <element signature="e#2218#2240#0" expanded="true" />
+                <element signature="e#2482#2509#0" expanded="true" />
+                <element signature="e#2532#2553#0" expanded="true" />
+                <element signature="e#2589#2610#0" expanded="true" />
+                <element signature="e#2719#2733#0" expanded="true" />
+                <element signature="e#2768#2782#0" expanded="true" />
+                <element signature="e#2875#2895#0" expanded="true" />
+                <element signature="e#2934#2954#0" expanded="true" />
+                <element signature="e#3347#3367#0" expanded="true" />
+                <element signature="e#3406#3428#0" expanded="true" />
+                <element signature="e#3535#3553#0" expanded="true" />
+                <element signature="e#3770#3795#0" expanded="true" />
+                <element signature="e#3901#3929#0" expanded="true" />
+                <element signature="e#3960#3988#0" expanded="true" />
+                <element signature="e#4271#4291#0" expanded="true" />
+                <element signature="e#4382#4404#0" expanded="true" />
+                <element signature="e#4538#4590#0" />
+                <element signature="e#4675#4696#0" expanded="true" />
+                <element signature="e#4732#4753#0" expanded="true" />
+                <element signature="e#4787#4808#0" expanded="true" />
+                <element signature="e#4846#4867#0" expanded="true" />
+                <element signature="e#4888#4909#0" expanded="true" />
+                <element signature="e#5087#5101#0" expanded="true" />
+                <element signature="e#5131#5156#0" expanded="true" />
+                <element signature="e#5361#5385#0" expanded="true" />
+                <element signature="e#5684#5709#0" expanded="true" />
+                <element signature="e#5817#5838#0" expanded="true" />
+                <element signature="e#5970#6078#0" />
+                <element signature="e#6137#6158#0" expanded="true" />
+                <element signature="e#6194#6215#0" expanded="true" />
+                <element signature="e#6249#6269#0" expanded="true" />
+                <element signature="e#6300#6321#0" expanded="true" />
+                <element signature="e#6349#6370#0" expanded="true" />
+                <element signature="e#6392#6407#0" expanded="true" />
+                <element signature="e#6541#6566#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-manifest">
+          <provider selected="true" editor-type-id="android-designer2">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="btn_orange_selector.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/btn_orange_selector.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="image_password_bg.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/image_password_bg.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="colors.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10">
+              <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dimens.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-475">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -99,16 +251,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SecondActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SecondActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/SecondActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="16" column="75" selection-start-line="16" selection-start-column="75" selection-end-line="16" selection-end-column="75" />
+            <state relative-caret-position="175">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="layoutResourceFile_vertical" />
+        <option value="valueResourceFile" />
+        <option value="resourceFile" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -2273,18 +2434,25 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/second_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/SecondActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/icon_login_account.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/image_password_bg.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/btn_orange_selector.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/login_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="134" />
-    <option name="y" value="132" />
-    <option name="width" value="1594" />
-    <option name="height" value="786" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-191" />
+    <option name="y" value="106" />
+    <option name="width" value="1533" />
+    <option name="height" value="974" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -2360,7 +2528,34 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidWeather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidWeather" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
               <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidWeather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidWeather" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="mipmap-xxhdpi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AndroidWeather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AndroidWeather" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="values" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -2375,6 +2570,7 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="D:/JavaMavenTomcat/adt-bundle-windows-x86_64-20140702/sdk" />
     <property name="device.picker.selection" value="Nexus_5X_API_28" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LoginDemo-master" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -2507,8 +2703,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="134" y="132" width="1594" height="786" extended-state="1" />
-    <editor active="true" />
+    <frame x="-35" y="93" width="1533" height="974" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Android Profiler" />
@@ -2516,8 +2711,8 @@
       <window_info id="Image Layers" />
       <window_info id="Build Variants" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.5006519" side_tool="true" visible="true" weight="0.32924962" />
-      <window_info anchor="right" id="Preview" weight="0.28878748" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.14867617" side_tool="true" visible="true" weight="0.25564805" />
+      <window_info active="true" anchor="right" id="Preview" visible="true" weight="0.5594026" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
@@ -2525,8 +2720,8 @@
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21903521" />
-      <window_info anchor="bottom" id="Build" sideWeight="0.4993481" visible="true" weight="0.32924962" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23421589" />
+      <window_info anchor="bottom" id="Build" sideWeight="0.85132384" visible="true" weight="0.25564805" />
       <window_info anchor="right" id="Gradle" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Theme Preview" />
@@ -2556,27 +2751,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-          <folding>
-            <element signature="e#521#691#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/second_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -2589,9 +2763,189 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/SecondActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="16" column="75" selection-start-line="16" selection-start-column="75" selection-end-line="16" selection-end-column="75" />
+        <state relative-caret-position="175">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-475">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/icon_login_account.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/btn_orange_selector.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/login_layout.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="87" column="37" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
+          <folding>
+            <element signature="e#544#557#0" expanded="true" />
+            <element signature="e#622#933#0" />
+            <element signature="e#716#743#0" expanded="true" />
+            <element signature="e#774#795#0" expanded="true" />
+            <element signature="e#831#852#0" expanded="true" />
+            <element signature="e#886#901#0" expanded="true" />
+            <element signature="e#1006#1020#0" expanded="true" />
+            <element signature="e#1055#1069#0" expanded="true" />
+            <element signature="e#1162#1182#0" expanded="true" />
+            <element signature="e#1579#1599#0" expanded="true" />
+            <element signature="e#1638#1660#0" expanded="true" />
+            <element signature="e#1781#1798#0" expanded="true" />
+            <element signature="e#1970#1995#0" expanded="true" />
+            <element signature="e#2107#2127#0" expanded="true" />
+            <element signature="e#2218#2240#0" expanded="true" />
+            <element signature="e#2482#2509#0" expanded="true" />
+            <element signature="e#2532#2553#0" expanded="true" />
+            <element signature="e#2589#2610#0" expanded="true" />
+            <element signature="e#2719#2733#0" expanded="true" />
+            <element signature="e#2768#2782#0" expanded="true" />
+            <element signature="e#2875#2895#0" expanded="true" />
+            <element signature="e#2934#2954#0" expanded="true" />
+            <element signature="e#3347#3367#0" expanded="true" />
+            <element signature="e#3406#3428#0" expanded="true" />
+            <element signature="e#3535#3553#0" expanded="true" />
+            <element signature="e#3770#3795#0" expanded="true" />
+            <element signature="e#3901#3929#0" expanded="true" />
+            <element signature="e#3960#3988#0" expanded="true" />
+            <element signature="e#4271#4291#0" expanded="true" />
+            <element signature="e#4382#4404#0" expanded="true" />
+            <element signature="e#4538#4590#0" />
+            <element signature="e#4675#4696#0" expanded="true" />
+            <element signature="e#4732#4753#0" expanded="true" />
+            <element signature="e#4787#4808#0" expanded="true" />
+            <element signature="e#4846#4867#0" expanded="true" />
+            <element signature="e#4888#4909#0" expanded="true" />
+            <element signature="e#5087#5101#0" expanded="true" />
+            <element signature="e#5131#5156#0" expanded="true" />
+            <element signature="e#5361#5385#0" expanded="true" />
+            <element signature="e#5684#5709#0" expanded="true" />
+            <element signature="e#5817#5838#0" expanded="true" />
+            <element signature="e#5970#6078#0" />
+            <element signature="e#6137#6158#0" expanded="true" />
+            <element signature="e#6194#6215#0" expanded="true" />
+            <element signature="e#6249#6269#0" expanded="true" />
+            <element signature="e#6300#6321#0" expanded="true" />
+            <element signature="e#6349#6370#0" expanded="true" />
+            <element signature="e#6392#6407#0" expanded="true" />
+            <element signature="e#6541#6566#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/admin/androidweather/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+          <folding>
+            <element signature="e#521#691#0" expanded="true" />
+            <element signature="e#690#691#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/image_password_bg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#544#557#0" expanded="true" />
+            <element signature="e#712#739#0" expanded="true" />
+            <element signature="e#774#795#0" expanded="true" />
+            <element signature="e#831#852#0" expanded="true" />
+            <element signature="e#886#901#0" expanded="true" />
+            <element signature="e#1006#1020#0" expanded="true" />
+            <element signature="e#1055#1069#0" expanded="true" />
+            <element signature="e#1162#1182#0" expanded="true" />
+            <element signature="e#1579#1599#0" expanded="true" />
+            <element signature="e#1638#1660#0" expanded="true" />
+            <element signature="e#1781#1798#0" expanded="true" />
+            <element signature="e#1970#1995#0" expanded="true" />
+            <element signature="e#2107#2127#0" expanded="true" />
+            <element signature="e#2218#2240#0" expanded="true" />
+            <element signature="e#2469#2496#0" expanded="true" />
+            <element signature="e#2531#2552#0" expanded="true" />
+            <element signature="e#2588#2609#0" expanded="true" />
+            <element signature="e#2759#2773#0" expanded="true" />
+            <element signature="e#2808#2822#0" expanded="true" />
+            <element signature="e#2915#2935#0" expanded="true" />
+            <element signature="e#2974#2994#0" expanded="true" />
+            <element signature="e#3387#3407#0" expanded="true" />
+            <element signature="e#3446#3468#0" expanded="true" />
+            <element signature="e#3584#3602#0" expanded="true" />
+            <element signature="e#3819#3844#0" expanded="true" />
+            <element signature="e#3958#3986#0" expanded="true" />
+            <element signature="e#4021#4049#0" expanded="true" />
+            <element signature="e#4353#4373#0" expanded="true" />
+            <element signature="e#4464#4486#0" expanded="true" />
+            <element signature="e#4537#5965#0" />
+            <element signature="e#4756#4777#0" expanded="true" />
+            <element signature="e#4813#4834#0" expanded="true" />
+            <element signature="e#4868#4889#0" expanded="true" />
+            <element signature="e#4920#4941#0" expanded="true" />
+            <element signature="e#4969#4990#0" expanded="true" />
+            <element signature="e#5169#5183#0" expanded="true" />
+            <element signature="e#5213#5238#0" expanded="true" />
+            <element signature="e#5443#5467#0" expanded="true" />
+            <element signature="e#5765#5790#0" expanded="true" />
+            <element signature="e#5898#5919#0" expanded="true" />
+            <element signature="e#6219#6240#0" expanded="true" />
+            <element signature="e#6276#6297#0" expanded="true" />
+            <element signature="e#6331#6351#0" expanded="true" />
+            <element signature="e#6382#6403#0" expanded="true" />
+            <element signature="e#6431#6452#0" expanded="true" />
+            <element signature="e#6474#6489#0" expanded="true" />
+            <element signature="e#6623#6648#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
   </component>

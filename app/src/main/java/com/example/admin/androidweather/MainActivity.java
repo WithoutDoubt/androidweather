@@ -14,14 +14,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button1 = (Button) findViewById(R.id.button_1);
+        Button button1 = (Button) findViewById(R.id.bin_login);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(MainActivity.this,"点了一下",Toast.LENGTH_SHORT).show();
-                String data = "Hello SecondActivity";
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
-                intent.putExtra("extra_data",data);  //传递数据
+//                String data = "Hello SecondActivity";
+//                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+//                intent.putExtra("extra_data",data);  //传递数据
+//                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this , SecondActivity.class);
                 startActivity(intent);
             }
         });
