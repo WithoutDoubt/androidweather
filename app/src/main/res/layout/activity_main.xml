@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="登录界面"
+        android:text="@string/nickname"
         android:gravity="center"
         android:textSize="30sp"
         />

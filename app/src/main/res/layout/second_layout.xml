@@ -10,7 +10,13 @@
         android:id="@+id/button_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="点我，我是阿狗"
+        android:text="模块自检"
+        android:textSize="14dp"
+        android:textColor="#FFF"
+        android:background="@drawable/btn_orange_selector"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_huge"
         />
 
 </LinearLayout>
