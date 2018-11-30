@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#3A3D50</color>
+    <!--<color name="colorPrimary">#008577</color>-->
+    <!--<color name="colorPrimaryDark">#00574B</color>-->
+    <color name="colorPrimaryDark">#3A3D50</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="transparent_half">#a0000000</color>
@@ -20,6 +22,8 @@
     <color name="tv_gray">@android:color/darker_gray</color>
     <color name="tv_color">#ffffff</color>
     <color name="list_glide">#50e0e0e0</color>
+    <color name="blue">#2e60bb</color>
+
 
 
     <!-- 公司主题色 -->
@@ -67,7 +71,7 @@
     <color name="teal">#00796B</color>
     <color name="te">#80FCE6C9</color>
     <color name="brown">#8D6E63</color>
-    <color name="blue">#2196F3</color>
+    <!--<color name="blue">#2196F3</color>-->
     <color name="red">#FF0000</color>
     <color name="grey">#607D8B</color>
     <color name="orange">#F57C00</color>
@@ -77,4 +81,27 @@
     <color name="search_layover_bg">#50000000</color>
     <color name="theme_primary">#2196F3</color>
 
+    <color name="theme_love_1">#3A3D50</color>
+    <color name="theme_love_2">#7D8296</color>
+
+    <!--颜色看看-->
+    <color name="lightgray">#ffeeeeee</color>
+    <color name="lightgray_shen">#ffdddddd</color>
+
+    <!--新增的颜色-->
+    <color name="bg_black">#000000</color>
+    <color name="bg_white">#FFFFFF</color>
+    <color name="bg_topbar">#FCFCFC</color>
+    <color name="bg_gray">#00F1F1F1</color>
+    <color name="transparent">#33000000</color>
+
+
+
+
+
+    <color name="text_gray">#8D7A71</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_yellow">#FFC800</color>
+    <color name="text_topbar">#694E42</color>
+    <color name="div_white">#E5E5E5</color>
 </resources>

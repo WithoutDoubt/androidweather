@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:text="实际内倒"
+        />
+    <Button
+        android:id="@+id/transfer_location_back_button"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/ic_back"/>
+</RelativeLayout>
+
+<EditText
+    android:id="@+id/transfer_location_component_code"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/dp_16"
+    android:textColor="@color/bg_black"
+    android:padding="@dimen/dp_20"
+    />
+
+<EditText
+    android:id="@+id/yard_code"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="堆场号："
+    android:textSize="@dimen/dp_16"
+    android:textColor="@color/bg_black"
+    android:padding="@dimen/dp_20"
+    />
+<EditText
+    android:id="@+id/area_code"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="区域号："
+    android:textSize="@dimen/dp_16"
+    android:textColor="@color/bg_black"
+    android:padding="@dimen/dp_20"
+    />
+<EditText
+    android:id="@+id/shelf_code"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="货架号："
+    android:textSize="@dimen/dp_16"
+    android:textColor="@color/bg_black"
+    android:padding="@dimen/dp_20"
+    />
+
+<Button
+    android:id="@+id/transfer_location_save_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/orange_light"
+    android:layout_gravity="center_horizontal"
+    android:text="保存"
+    android:textSize="20dp"
+    android:textColor="@color/white"
+
+    />
+
+
+
+
+</LinearLayout>

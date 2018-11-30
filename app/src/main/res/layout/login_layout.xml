@@ -11,6 +11,8 @@
         android:text="登录界面"
         android:gravity="center"
         android:textSize="30sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#fff"
         />
     <View
         android:layout_width="match_parent"

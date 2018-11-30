@@ -3,39 +3,116 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:text="hello"
-    >
 
+    >
     <RelativeLayout
+        android:id="@+id/ly_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="1">
+        android:layout_height="48dp"
+        android:background="@color/bg_topbar"
+        >
+
+        <TextView
+            android:id="@+id/txt_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="构件管理系统"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp_20" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="?android:attr/windowBackground"
+        android:orientation="vertical">
+
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_saomiao" />
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/ic_search"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="历史记录"
+                android:textColor="@color/bg_black"
+                android:textSize="16sp" />
 
-            <Button
+            <TextView
+                android:id="@+id/tv_post"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/ic_post"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="寄件"
+                android:textColor="@color/bg_black"
+                android:textSize="16sp"
+                android:visibility="invisible"
+                />
+
+            <!--android:id="@+id/tv_sweep"-->
+            <TextView
                 android:id="@+id/scanBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/ic_sweep"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="扫一扫"
+                android:textColor="@color/bg_black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:background="?android:attr/listDivider"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_un_check"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_empty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:text="扫描二维码"
-                android:textColor="#FFFF"
-                android:background="@color/blue"
-                android:textSize="16sp" />
+                android:layout_marginTop="30dp"
+                android:drawableTop="@mipmap/ic_searching"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="暂无新的信息"
+                android:textColor="@color/grey"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
 
-        </LinearLayout>
-    </RelativeLayout>
+
     <TextView
         android:id="@+id/result"
         android:layout_width="match_parent"

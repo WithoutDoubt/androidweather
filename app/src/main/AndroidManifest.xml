@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.admin.androidweather">
 
+    <!-- 权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,11 +20,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity"
-            android:parentActivityName=".MainActivity"
+        <activity
+            android:name=".SecondActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ThirdActicity"
+            android:parentActivityName=".SecondActivity" />
+        <activity
+            android:name=".PlanActivity"
+            android:parentActivityName=".SecondActivity" />
+        <activity
+            android:name=".TransferPlanActivity"
+            android:parentActivityName=".SecondActivity" />
+
+        <activity android:name=".PlanActivity2"
+            android:parentActivityName=".PlanActivity"
             />
-        <activity android:name=".ThirdActicity"
-            android:parentActivityName=".SecondActivity"></activity>
+        <activity android:name=".Activity.ResultActivity"
+            android:parentActivityName=".PlanActivity2"/>
+
+        <activity android:name=".Activity.TranferLocationActivity"/>
+        <activity android:name=".Activity.ScanSelfCheckActivity"/>
+        <activity android:name=".Activity.ResultSelfCheckActivity"/>
+
     </application>
 
 </manifest>

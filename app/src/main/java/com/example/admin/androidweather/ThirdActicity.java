@@ -4,13 +4,17 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.Settings;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.admin.androidweather.Activity.ResultActivity;
+import com.example.admin.androidweather.gson.ComponentGson;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
@@ -22,10 +26,16 @@ import java.util.List;
 public class ThirdActicity extends AppCompatActivity implements View.OnClickListener {
 
     //
-    private Button scanBtn;
+   // private Button scanBtn;
     private TextView result;
     private int REQUEST_CODE_SCAN = 111;
 
+    private DrawerLayout drawerLayout;
+    private TextView scanBtn;
+    private TextView tvPost;
+    private TextView tvSweep;
+    private RecyclerView rvUnCheck;
+    private TextView tvEmpty;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +105,11 @@ public class ThirdActicity extends AppCompatActivity implements View.OnClickList
         if(requestCode == REQUEST_CODE_SCAN && resultCode==RESULT_OK){
             if(data != null){
                 String content = data.getStringExtra(Constant.CODED_CONTENT);
-                result.setText("扫描结果是："+content);
+              //  result.setText("扫描结果是："+content);
+
+
+                Intent intent = new Intent( this ,ResultActivity.class );
+                startActivity(intent);
             }
         }
     }
