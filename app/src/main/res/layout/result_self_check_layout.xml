@@ -18,7 +18,7 @@
             android:text="构件自检"
             />
         <Button
-            android:id="@+id/transfer_location_back_button"
+            android:id="@+id/button_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="10dp"

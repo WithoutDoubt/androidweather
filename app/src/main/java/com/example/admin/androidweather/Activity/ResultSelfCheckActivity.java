@@ -1,8 +1,10 @@
 package com.example.admin.androidweather.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -26,6 +28,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ResultSelfCheckActivity extends AppCompatActivity {
+
     private TextView textView;
     private Button buttonback;
     private Button buttonok;
@@ -68,70 +71,24 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
     private String comment;
 
     //Okhttp
-    private String address = "http://10.0.2.2:8080/Mobile/updateComponentStatus";
+    private String address = "http://172.0.0.1:8080/Mobile/updateComponentStatus";
+    //private String address = "http://10.0.2.2:8080/Mobile/updateComponentStatus";
     private  RequestBody requestBody ;
 
     //返回值
     private  MobileGson mobileGson;
 
+    //
+    private ProgressDialog progressDialog;
 
-    @Override protected void onCreate(Bundle saveInstanceState){
+    @Override
+    protected void onCreate(Bundle saveInstanceState){
+        // TODO 自动生成的方法存根
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.selfcheck_result_layout);
+        setContentView(R.layout.result_self_check_layout);
         String content = getIntent().getStringExtra("componentId");
-        initView();
-        componentCode.setText("构件ID：" + componentCode);
-        componentCode.setEnabled(false);
-        //按钮事件
-        buttonok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    //交互地址
-                    getComment();
-                    address =address+ "?componentId="+componentId+"&status=8"+"&remakes="+comment;
-                    HttpUtil.sendOkHttpRequest(address, new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                        e.printStackTrace();
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(ResultSelfCheckActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
-                            }
-                    });
-                    }
+        Log.d("AAAA", "onClick: jjjJ");
 
-                        @Override
-                        public void onResponse(Call call, final Response response) throws IOException {
-                            final String responseText = response.body().string();
-                            final MobileGson mobileGson = Utility.handleMobileResponse(responseText);
-                            final String result = mobileGson.getResult();
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if(result == "ok")
-                                            Toast.makeText(ResultSelfCheckActivity.this,result,Toast.LENGTH_LONG).show();
-                                }
-                            });
-                    }
-                });
-            }
-        });
-
-        buttonback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ResultSelfCheckActivity.this ,ScanSelfCheckActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-        }
-
-
-
-    private void initView(){
         editText1 = (EditText)findViewById(R.id.editText1);
         editText2 = (EditText)findViewById(R.id.editText2);
         editText3 = (EditText)findViewById(R.id.editText3);
@@ -157,13 +114,83 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
 
         componentCode = (EditText)findViewById(R.id.transfer_location_component_code);
-
-      //  buttonno = (Button)findViewById(R.id.selfcheck_no);
+        componentCode.setText("构件ID：" + content);
+        componentCode.setEnabled(false);
+        //  buttonno = (Button)findViewById(R.id.selfcheck_no);
         buttonok = (Button)findViewById(R.id.selfcheck_ok);
-        buttonback =(Button)findViewById(R.id.back_button);
-    }
+        buttonback =(Button)findViewById(R.id.button_back);
 
+
+        Log.d("AAAA", "onClick: jjjinitView");
+
+
+        //按钮事件
+        buttonok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    showProgressDialog();
+                   // getComment();
+                    Log.d("AAAA", "onClick: fail");
+                    address ="http://10.0.2.2:8080/Mobile/updateComponentStatus"
+                            + "?componentId="
+                            + "11"
+                            +"&status=8"
+                            +"&remakes="
+                            +"1";
+                    HttpUtil.sendOkHttpRequest(address, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //关闭进度条
+                                closeProgressDialog();
+
+                                Toast.makeText(ResultSelfCheckActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(ResultSelfCheckActivity.this ,ScanSelfCheckActivity.class);
+                                startActivity(intent);
+                            }
+                    });
+                    }
+
+                        @Override
+                        public void onResponse(Call call, final Response response) throws IOException {
+                            final String responseText = response.body().string();
+                            final MobileGson mobileGson = Utility.handleMobileResponse(responseText);
+                            final String result = mobileGson.getResult();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        //关闭进度条
+                                        closeProgressDialog();
+                                        Log.d("AAAA", "onClick: ok");
+                                        if(result == "ok")
+                                            Toast.makeText(ResultSelfCheckActivity.this,result,Toast.LENGTH_SHORT).show();
+                                }
+                        });
+                    }
+                });
+            }
+        });
+
+        buttonback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ResultSelfCheckActivity.this ,ScanSelfCheckActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        }
+
+
+
+
+    //出错
     private void getComment(){
+        //出错
         checkBoxSet();
         editTextSet();
         comment = gson.toJson(remakes,SelfCheckRemarks.class).toString();
@@ -230,5 +257,21 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
          remakes.setCheck_21(editText16.getText().toString());
 
      }
+
+    private void showProgressDialog() {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(ResultSelfCheckActivity.this);
+            progressDialog.setMessage("正在加载...");
+            progressDialog.setCanceledOnTouchOutside(false);
+        }
+        progressDialog.show();
+    }
+
+    private void closeProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+    }
+
 }
 

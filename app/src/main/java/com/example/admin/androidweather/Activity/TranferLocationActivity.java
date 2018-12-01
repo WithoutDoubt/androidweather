@@ -92,23 +92,26 @@ public class TranferLocationActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressDialog();
                 yardCode = editTextLocationOne.getText().toString();
                 areaCode = editTextLocationTwo.getText().toString();
                 shelfCode = editTextLocationThree.getText().toString();
               //  showProgressDialog();
                 //拼接url
                 address = "http://10.0.2.2:8080/Mobile/PutTransferMap" + "?yardCode="+yardCode
-                        +"&componentCode=" + componentCode
-                        +"&areaCode="+ areaCode
-                        +"&shelfCode="+shelfCode ;
+                        + "&componentCode=" + componentCode
+                        + "&areaCode=" + areaCode
+                        + "&shelfCode=" + shelfCode ;
                 HttpUtil.sendOkHttpRequest(address, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         e.printStackTrace();
                         runOnUiThread(new Runnable() {
+
                             @Override
                             public void run() {
-                                Toast.makeText(TranferLocationActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
+                                closeProgressDialog();
+                                Toast.makeText(TranferLocationActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
                             }
                     });
                     }
@@ -119,13 +122,15 @@ public class TranferLocationActivity extends AppCompatActivity {
                         final MobileGson mobileGson = Utility.handleMobileResponse(responseText);
                         final String result = mobileGson.getResult();
                             runOnUiThread(new Runnable() {
+
                                 @Override
                                 public void run() {
+                                    closeProgressDialog();
 //                                    Intent intent = new Intent(TranferLocationActivity.this,SecondActivity.class);
 //                                    startActivity(intent);
-                                //    MobileGson mobileGson = gson.fromJson(responseText,MobileGson.class);
+                                    //    MobileGson mobileGson = gson.fromJson(responseText,MobileGson.class);
                                     Log.d("Thaaaa", result);
-                                   Toast.makeText(TranferLocationActivity.this,result,Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(TranferLocationActivity.this,result,Toast.LENGTH_SHORT).show();
                                 }
                             });
                     }

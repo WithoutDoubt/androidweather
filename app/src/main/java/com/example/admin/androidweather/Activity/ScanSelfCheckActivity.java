@@ -8,6 +8,7 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class ScanSelfCheckActivity extends AppCompatActivity {
 
-    private Button buttonScan;
+    private TextView buttonScan;
     private String content;
     private int REQUEST_CODE_SCAN = 111;
 
@@ -29,7 +30,7 @@ public class ScanSelfCheckActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan_layout);
-        buttonScan = (Button) findViewById(R.id.button_scan);
+        buttonScan = (TextView) findViewById(R.id.button_scan);
 
 
         buttonScan.setOnClickListener(new View.OnClickListener() {

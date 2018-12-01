@@ -3,12 +3,14 @@ package com.example.admin.androidweather;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.admin.androidweather.Activity.ResultActivity;
+import com.example.admin.androidweather.Activity.ResultSelfCheckActivity;
 import com.example.admin.androidweather.Activity.ScanSelfCheckActivity;
 import com.example.admin.androidweather.Activity.TranferLocationActivity;
 
@@ -19,9 +21,6 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg_content2, container, false);
-
-
-
         return view;
     }
 
@@ -31,13 +30,15 @@ public class MyFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        //钢筋登记
+        Button btn_submit0 = (Button) getActivity().findViewById(R.id.button_);
         //自检
         Button btn_submit = (Button) getActivity().findViewById(R.id.button_checkbymyself);
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity(), ScanSelfCheckActivity.class );
+                Intent intent = new Intent( getActivity(),  ScanSelfCheckActivity.class );
+                Log.d("AAAA", "onClick: jjj");
                 startActivity(intent);
             }
         });
@@ -59,16 +60,19 @@ public class MyFragment extends Fragment {
         btn_submit3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity() , ResultActivity.class );
+                Intent intent = new Intent( getActivity() , ScanSelfCheckActivity.class );
 
                 startActivity(intent);
 
             }
         });
-
+        //内倒计划
+        Button btn_submit4 = (Button) getActivity().findViewById(R.id.button_tranferplan);
+        //内倒审核
+        Button btn_submit5 = (Button) getActivity().findViewById(R.id.button_tranferplan_check);
         //实际内倒
-        Button btn_submit4 = (Button) getActivity().findViewById(R.id.button_transferMap);
-        btn_submit3.setOnClickListener(new View.OnClickListener() {
+        Button btn_submit6 = (Button) getActivity().findViewById(R.id.button_transferMap);
+        btn_submit6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( getActivity() , TranferLocationActivity.class);
@@ -77,6 +81,16 @@ public class MyFragment extends Fragment {
 
             }
         });
+
+        Button btn_submit7 = (Button) getActivity().findViewById(R.id.button_deliverPlan);
+
+        Button btn_submit8 = (Button) getActivity().findViewById(R.id.button_deliverLogin);
+
+        Button btn_submit9 = (Button) getActivity().findViewById(R.id.button_getGood);
+
+        Button btn_submit10 = (Button) getActivity().findViewById(R.id.button_drop);
+
+
 
     }
 }

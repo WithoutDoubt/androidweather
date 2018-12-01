@@ -91,6 +91,25 @@ android:layout_height="match_parent"
             android:text="模具检查[扫描]"
             />
     </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="10dp"
+
+        >
+
+        <Button
+            android:id="@+id/button_drop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange_light"
+            android:gravity="center"
+            android:text="构件报废[扫描]"
+            />
+    </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -125,7 +144,7 @@ android:layout_height="match_parent"
         >
 
         <Button
-            android:id="@+id/button_sortcheck1"
+            android:id="@+id/button_tranferplan_check"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/orange_light"
@@ -163,7 +182,7 @@ android:layout_height="match_parent"
         >
 
         <Button
-            android:id="@+id/button_sortcheck3"
+            android:id="@+id/button_deliverPlan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/orange_light"
@@ -182,7 +201,7 @@ android:layout_height="match_parent"
         >
 
         <Button
-            android:id="@+id/button_sortcheck4"
+            android:id="@+id/button_deliverLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/orange_light"
@@ -201,7 +220,7 @@ android:layout_height="match_parent"
         >
 
         <Button
-            android:id="@+id/button_sortcheck5"
+            android:id="@+id/button_getGood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/orange_light"
