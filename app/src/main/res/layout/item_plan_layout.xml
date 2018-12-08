@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_50"
+    android:orientation="horizontal"
+    >
+    <CheckBox
+        android:id="@+id/ck_chose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:button="@drawable/checkbox_style"
+        android:scaleX="0.6"
+        android:scaleY="0.6" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toRightOf="@+id/ck_chose"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/show_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="构件编码：KLY000605"
+            android:textSize="12sp"
+            android:textColor="@color/bg_black"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/show_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_3"
+                android:text="构件类型：外墙"
+                android:textSize="12sp"
+                android:textColor="@color/blue"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

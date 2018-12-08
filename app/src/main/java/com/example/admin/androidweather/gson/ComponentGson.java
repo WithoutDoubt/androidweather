@@ -9,6 +9,7 @@ public class ComponentGson {
      * 检查项目  【上传】
      * */
 
+
     /**
      * 测试数据：
      *      Uid
@@ -29,6 +30,62 @@ public class ComponentGson {
     private String componentTypeId;
     private String componentTemplateId;
 
+    private boolean isChoosed;
 
+    public boolean isChoosed() {
+        return isChoosed;
+    }
+
+    public void setChoosed(boolean choosed) {
+        isChoosed = choosed;
+    }
+
+    public String getComponentCode() {
+        return componentCode;
+    }
+
+    public void setComponentCode(String componentCode) {
+        this.componentCode = componentCode;
+    }
+
+    public String getComponentStatus() {
+        return componentStatus;
+    }
+
+    public void setComponentStatus(String componentStatus) {
+        this.componentStatus = componentStatus;
+    }
+
+    public String getComponentBenchId() {
+        return componentBenchId;
+    }
+
+    public void setComponentBenchId(String componentBenchId) {
+        this.componentBenchId = componentBenchId;
+    }
+
+    public String getComponentLineId() {
+        return componentLineId;
+    }
+
+    public void setComponentLineId(String componentLineId) {
+        this.componentLineId = componentLineId;
+    }
+
+    public String getComponentTypeId() {
+        return componentTypeId;
+    }
+
+    public void setComponentTypeId(String componentTypeId) {
+        this.componentTypeId = componentTypeId;
+    }
+
+    public String getComponentTemplateId() {
+        return componentTemplateId;
+    }
+
+    public void setComponentTemplateId(String componentTemplateId) {
+        this.componentTemplateId = componentTemplateId;
+    }
 
 }

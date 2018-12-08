@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="物料管理系统"
+        android:text="构件管理系统"
         android:background="@color/colorPrimaryDark"
         android:textColor="#fff"
         android:textSize="@dimen/dp_20" />
@@ -50,7 +50,7 @@
             android:id="@+id/rb_message"
             style="@style/tab_menu_item"
             android:drawableTop="@drawable/tab_menu_message"
-            android:text="权限功能" />
+            android:text="构件追踪" />
 
         <RadioButton
             android:id="@+id/rb_setting"

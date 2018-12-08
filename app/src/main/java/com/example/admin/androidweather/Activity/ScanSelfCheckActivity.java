@@ -1,5 +1,6 @@
 package com.example.admin.androidweather.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -23,8 +24,10 @@ import java.util.List;
 public class ScanSelfCheckActivity extends AppCompatActivity {
 
     private TextView buttonScan;
-    private String content;
+    private String product;
     private int REQUEST_CODE_SCAN = 111;
+
+    Class<?>  context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,38 @@ public class ScanSelfCheckActivity extends AppCompatActivity {
         setContentView(R.layout.scan_layout);
         buttonScan = (TextView) findViewById(R.id.button_scan);
 
+
+        //决定扫描后跳转的页面,
+        product = getIntent().getStringExtra("product");
+        switch(product){
+            case "reabr":
+                context = ResultSelfCheckActivity.class;
+                break;
+            case "selfCheck":
+                context = ResultSelfCheckActivity.class;
+                break;
+            case "randomCheck":
+                context = ResultSelfCheckActivity.class;
+                break;
+            case "templateCheck":
+                context = ResultSelfCheckActivity.class;
+                break;
+            case "transferLocation":
+                context = ResultSelfCheckActivity.class;
+                break;
+            case "deliverLogin":
+                context = ResultSelfCheckActivity.class;
+                break;
+            case "getGood":
+                context = ResultSelfCheckActivity.class;
+                break;
+            case "drop":
+                context = ResultSelfCheckActivity.class;
+                break;
+            default:
+                break;
+
+        }
 
         buttonScan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,9 +107,11 @@ public class ScanSelfCheckActivity extends AppCompatActivity {
                 if (data != null) {
                     String content = data.getStringExtra(Constant.CODED_CONTENT);
                     //  result.setText("扫描结果是："+content);
-                    Intent intent = new Intent(ScanSelfCheckActivity.this, ResultSelfCheckActivity.class);
+
+                    Intent intent = new Intent(ScanSelfCheckActivity.this, ResultScanActivity.class);
                     //传输content
                     intent.putExtra("componentId", content);
+                    intent.putExtra("product",product);
                     startActivity(intent);
                 }
             }

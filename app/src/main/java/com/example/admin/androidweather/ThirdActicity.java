@@ -9,12 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.admin.androidweather.Activity.ResultActivity;
-import com.example.admin.androidweather.gson.ComponentGson;
+import com.example.admin.androidweather.Activity.ResultSelfCheckActivity;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
@@ -108,7 +106,7 @@ public class ThirdActicity extends AppCompatActivity implements View.OnClickList
               //  result.setText("扫描结果是："+content);
 
 
-                Intent intent = new Intent( this ,ResultActivity.class );
+                Intent intent = new Intent( this ,ResultSelfCheckActivity.class );
                 startActivity(intent);
             }
         }

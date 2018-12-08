@@ -7,6 +7,7 @@ import com.example.admin.androidweather.db.Component;
 import com.example.admin.androidweather.db.Province;
 import com.example.admin.androidweather.gson.ComponentGson;
 import com.example.admin.androidweather.gson.MobileGson;
+import com.example.admin.androidweather.gson.ProductLineGson;
 import com.example.admin.androidweather.gson.TestStudent;
 import com.google.gson.Gson;
 import org.json.JSONArray;
@@ -15,6 +16,28 @@ import org.json.JSONObject;
 
 public class Utility {
 
+    /*
+    *
+    * */
+    public static ProductLineGson handleProductLineResponse(String response){
+        if (!TextUtils.isEmpty(response)) {
+            try {
+                JSONArray allProvinces = new JSONArray(response);
+                for (int i = 0; i < allProvinces.length(); i++) {
+                    JSONObject provinceObject = allProvinces.getJSONObject(i);
+                    Province province = new Province();
+                    province.setProvinceName(provinceObject.getString("name"));
+                    province.setProvinceCode(provinceObject.getInt("id"));
+                    province.save();
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
 
     public static MobileGson handleMobileResponse(String response){
         try {

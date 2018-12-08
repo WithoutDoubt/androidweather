@@ -16,6 +16,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,25 +27,19 @@
             android:name=".ThirdActicity"
             android:parentActivityName=".SecondActivity" />
         <activity
-            android:name=".PlanActivity"
+            android:name=".PlanActivity3"
             android:parentActivityName=".SecondActivity" />
         <activity
             android:name=".TransferPlanActivity"
             android:parentActivityName=".SecondActivity" />
-
-        <activity android:name=".PlanActivity2"
-            android:parentActivityName=".PlanActivity"
-            />
-        <activity android:name=".Activity.ResultActivity"
-            android:parentActivityName=".PlanActivity2"/>
-
-        <activity android:name=".Activity.ResultSelfCheckActivity"/>
-        <activity android:name=".Activity.TranferLocationActivity"/>
-
-        <activity android:name=".Activity.ScanSelfCheckActivity"/>
-
-
-
+        <activity
+            android:name=".PlanActivity2"
+            android:parentActivityName=".PlanActivity3" />
+        <activity android:name=".Activity.ResultSelfCheckActivity" />
+        <activity android:name=".Activity.TranferLocationActivity" />
+        <activity android:name=".Activity.ScanSelfCheckActivity" />
+        <activity android:name=".Activity.PlanActivity" />
+        <activity android:name=".Activity.PlanFirstActivity"></activity>
     </application>
 
 </manifest>

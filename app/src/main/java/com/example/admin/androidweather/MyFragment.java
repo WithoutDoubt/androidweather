@@ -3,16 +3,13 @@ package com.example.admin.androidweather;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.admin.androidweather.Activity.ResultActivity;
-import com.example.admin.androidweather.Activity.ResultSelfCheckActivity;
+import com.example.admin.androidweather.Activity.PlanFirstActivity;
 import com.example.admin.androidweather.Activity.ScanSelfCheckActivity;
-import com.example.admin.androidweather.Activity.TranferLocationActivity;
 
 public class MyFragment extends Fragment {
 
@@ -21,6 +18,7 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg_content2, container, false);
+
         return view;
     }
 
@@ -32,13 +30,22 @@ public class MyFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         //钢筋登记
         Button btn_submit0 = (Button) getActivity().findViewById(R.id.button_);
+        btn_submit0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getActivity(),  ScanSelfCheckActivity.class );
+                intent.putExtra("product","Rebar");
+                startActivity(intent);
+            }
+        });
+
         //自检
         Button btn_submit = (Button) getActivity().findViewById(R.id.button_checkbymyself);
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( getActivity(),  ScanSelfCheckActivity.class );
-                Log.d("AAAA", "onClick: jjj");
+                intent.putExtra("product","selfCheck");
                 startActivity(intent);
             }
         });
@@ -48,7 +55,8 @@ public class MyFragment extends Fragment {
         btn_submit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity(), ThirdActicity.class );
+                Intent intent = new Intent( getActivity(), ScanSelfCheckActivity.class );
+                intent.putExtra("product","randomCheck");
                 startActivity(intent);
 
             }
@@ -61,34 +69,90 @@ public class MyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( getActivity() , ScanSelfCheckActivity.class );
-
+                intent.putExtra("product","templateCheck");
                 startActivity(intent);
 
             }
         });
         //内倒计划
         Button btn_submit4 = (Button) getActivity().findViewById(R.id.button_tranferplan);
-        //内倒审核
-        Button btn_submit5 = (Button) getActivity().findViewById(R.id.button_tranferplan_check);
-        //实际内倒
-        Button btn_submit6 = (Button) getActivity().findViewById(R.id.button_transferMap);
-        btn_submit6.setOnClickListener(new View.OnClickListener() {
+        btn_submit4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity() , TranferLocationActivity.class);
-                intent.putExtra("componentCode","componentCode1");
+                Intent intent = new Intent( getActivity() , PlanFirstActivity.class );
+                intent.putExtra("product","transferPlan");
                 startActivity(intent);
 
             }
         });
 
+        //内倒审核
+        Button btn_submit5 = (Button) getActivity().findViewById(R.id.button_tranferplan_check);
+        btn_submit5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getActivity() , PlanFirstActivity.class );
+                intent.putExtra("product","transferCheck");
+                startActivity(intent);
+
+            }
+        });
+        //实际内倒
+        Button btn_submit6 = (Button) getActivity().findViewById(R.id.button_transferMap);
+        btn_submit6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getActivity() , ScanSelfCheckActivity.class);
+                intent.putExtra("product","transferLocation");
+                startActivity(intent);
+
+            }
+        });
+
+        //发货计划
         Button btn_submit7 = (Button) getActivity().findViewById(R.id.button_deliverPlan);
+        btn_submit7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getActivity() , PlanFirstActivity.class);
+                intent.putExtra("product","deliverPlan");
+                startActivity(intent);
 
+            }
+        });
+
+        //实际发货，发货的验收登记
         Button btn_submit8 = (Button) getActivity().findViewById(R.id.button_deliverLogin);
+        btn_submit8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getActivity() , ScanSelfCheckActivity.class);
+                intent.putExtra("product","deliverLogin");
+                startActivity(intent);
+            }
+        });
 
+        //实际收货，收货的验收登记
         Button btn_submit9 = (Button) getActivity().findViewById(R.id.button_getGood);
+        btn_submit9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getActivity() , ScanSelfCheckActivity.class);
+                intent.putExtra("product","getGood");
+                startActivity(intent);
+            }
+            });
 
+        //构件报废
         Button btn_submit10 = (Button) getActivity().findViewById(R.id.button_drop);
+        btn_submit10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getActivity() , ScanSelfCheckActivity.class);
+                intent.putExtra("product","drop");
+                startActivity(intent);
+            }
+        });
 
 
 

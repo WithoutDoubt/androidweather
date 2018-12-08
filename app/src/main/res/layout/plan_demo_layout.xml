@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="物料管理系统"
+            android:text="管理系统"
             android:background="@color/colorPrimaryDark"
             android:textColor="#fff"
             android:textSize="@dimen/dp_20" />
