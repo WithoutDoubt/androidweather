@@ -15,7 +15,7 @@
             android:layout_centerInParent="true"
             android:textColor="#fff"
             android:textSize="20sp"
-            android:text="构件自检"
+            android:text="构件抽检"
             />
         <Button
             android:id="@+id/button_back"

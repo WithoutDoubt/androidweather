@@ -7,6 +7,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/title_scan"
+            layout="@layout/title_layout"
+            />
+
         <TextView
             android:id="@+id/button_scan"
             android:layout_width="match_parent"
@@ -21,5 +27,6 @@
             android:textSize="20sp"
             android:background="@color/blue"
             />
+
     </RelativeLayout>
 </LinearLayout>

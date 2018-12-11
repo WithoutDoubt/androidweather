@@ -42,14 +42,25 @@ public class Utility {
     public static MobileGson handleMobileResponse(String response){
         try {
             JSONObject jsonObject = new JSONObject(response);
-        //    JSONArray jsonArray = jsonObject.getJSONArray();
-        //    String responseData = response.body().string();
+
            return  new Gson().fromJson(response,MobileGson.class);
         }catch (Exception e){
             e.printStackTrace();
         }
         return  null;
     }
+
+    public static ComponentGson handleScanResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+
+            return  new Gson().fromJson(response,ComponentGson.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return  null;
+    }
+
     /**
      * 解析和处理服务器返回的省级数据
      */

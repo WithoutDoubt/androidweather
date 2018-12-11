@@ -53,7 +53,9 @@ public class PlanFirstActivity extends AppCompatActivity {
     private Button buttonback;
     private TextView title;
     //
-    private String address = "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/findAllProductLine";
+    private String address =
+            //"http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/findAllProductLine";
+            "http://localhost:8080/Mobile/hfsj/product/appAjax/findAllProductLine";
 
 
 

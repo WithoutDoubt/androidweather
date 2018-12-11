@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
+import com.example.admin.androidweather.gson.ComponentGson;
 import com.example.admin.androidweather.gson.MobileGson;
 import com.example.admin.androidweather.gson.SelfCheckRemarks;
 import com.example.admin.androidweather.util.HttpUtil;
@@ -20,10 +21,13 @@ import com.example.admin.androidweather.util.Utility;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
@@ -71,7 +75,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
     private String comment;
 
     //Okhttp
-    private String address = "http://172.0.0.1:8080/Mobile/updateComponentStatus";
+    private String address = "http://localhost:8080/Mobile/updateComponentStatus";
     //private String address = "http://10.0.2.2:8080/Mobile/updateComponentStatus";
     private  RequestBody requestBody ;
 
@@ -81,14 +85,26 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
     //
     private ProgressDialog progressDialog;
 
+    private String content;
+    private String product;
+    private ComponentGson componentNews;
+    private List<String>  remakerList = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
         // TODO 自动生成的方法存根
         super.onCreate(saveInstanceState);
         setContentView(R.layout.result_self_check_layout);
-        String content = getIntent().getStringExtra("componentId");
-        Log.d("AAAA", "onClick: jjjJ");
+        componentId = getIntent().getStringExtra("componentId");
+        componentNews = new ComponentGson();
+        componentNews = Utility.handleScanResponse(componentId);
 
+
+        product = getIntent().getStringExtra("product");
+
+      //  initeView();
+        //Log.d("AAAA", "onClick: jjjJ");
+{
         editText1 = (EditText)findViewById(R.id.editText1);
         editText2 = (EditText)findViewById(R.id.editText2);
         editText3 = (EditText)findViewById(R.id.editText3);
@@ -114,11 +130,12 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
 
         componentCode = (EditText)findViewById(R.id.transfer_location_component_code);
-        componentCode.setText("构件ID：" + content);
+        componentCode.setText("构件ID:" + componentNews.getComponentCode() );
         componentCode.setEnabled(false);
         //  buttonno = (Button)findViewById(R.id.selfcheck_no);
         buttonok = (Button)findViewById(R.id.selfcheck_ok);
         buttonback =(Button)findViewById(R.id.button_back);
+ }
 
 
         Log.d("AAAA", "onClick: jjjinitView");
@@ -128,16 +145,28 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
         buttonok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    showProgressDialog();
-                   // getComment();
-                    Log.d("AAAA", "onClick: fail");
-                    address ="http://10.0.2.2:8080/Mobile/updateComponentStatus"
+                showProgressDialog();
+                getComment();
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+//                requestBody = RequestBody.create(JSON,"{compomemtId:\"085213c03d0445eea26ebad68296991d\",status= 8 ,"+"remarks="+"\""
+//                        + comment +"\"}");
+                Log.d("SSSSA", comment);
+ //               {id: "33cedef39e024ceb9e98b5046b0d78d5", selfCheckStatus: 1, selfCheckRemarks: ""}
+                //
+                    address = address
+                            //"http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
                             + "?componentId="
-                            + "11"
-                            +"&status=8"
-                            +"&remakes="
-                            +"1";
-                    HttpUtil.sendOkHttpRequest(address, new Callback() {
+//                            "085213c03d0445eea26ebad68296991d"
+                            + componentNews.getComponentId()
+                            +"&status=9"
+                            +"&remarks="
+                            + comment
+                            +"]";
+                    //配筋已经完成
+  //                  HttpUtil.sendPostRequest(address, requestBody,new Callback()
+                    HttpUtil.sendOkHttpRequest(address,new Callback()
+                    {
+                        //获取失败
                         @Override
                         public void onFailure(Call call, IOException e) {
                         e.printStackTrace();
@@ -146,7 +175,6 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
                             public void run() {
                                 //关闭进度条
                                 closeProgressDialog();
-
                                 Toast.makeText(ResultSelfCheckActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(ResultSelfCheckActivity.this ,ScanSelfCheckActivity.class);
                                 startActivity(intent);
@@ -165,8 +193,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
                                         //关闭进度条
                                         closeProgressDialog();
                                         Log.d("AAAA", "onClick: ok");
-                                        if(result == "ok")
-                                            Toast.makeText(ResultSelfCheckActivity.this,result,Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ResultSelfCheckActivity.this,result,Toast.LENGTH_SHORT).show();
                                 }
                         });
                     }
@@ -187,13 +214,67 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
 
 
+   private void getComment(){
+        if(checkBox_1.isChecked())
+        {
+            remakerList.add("1");
+        }else
+        {
+            remakerList.add("0");
+        }
 
-    //出错
-    private void getComment(){
-        //出错
-        checkBoxSet();
-        editTextSet();
-        comment = gson.toJson(remakes,SelfCheckRemarks.class).toString();
+        if(checkBox_2.isChecked())
+        {
+            remakerList.add("1");
+        }else
+        {
+            remakerList.add("0");
+        }
+
+        if(checkBox_3.isChecked())
+        {
+            remakerList.add("1");
+        }else
+        {
+            remakerList.add("0");
+        }
+        if(checkBox_4.isChecked())
+        {
+            remakerList.add("1");
+        }else
+        {
+            remakerList.add("0");
+        }
+        if(checkBox_5.isChecked())
+        {
+            remakerList.add("1");
+        }else
+        {
+            remakerList.add("0");
+        }
+
+       remakerList.add(editText1.getText().toString());
+       remakerList.add(editText2.getText().toString());
+       remakerList.add(editText3.getText().toString());
+       remakerList.add(editText4.getText().toString());
+       remakerList.add(editText5.getText().toString());
+       remakerList.add(editText6.getText().toString());
+       remakerList.add(editText7.getText().toString());
+       remakerList.add(editText8.getText().toString());
+       remakerList.add(editText9.getText().toString());
+       remakerList.add(editText10.getText().toString());
+       remakerList.add(editText11.getText().toString());
+       remakerList.add(editText12.getText().toString());
+       remakerList.add(editText13.getText().toString());
+       remakerList.add(editText14.getText().toString());
+       remakerList.add(editText15.getText().toString());
+       remakerList.add(editText16.getText().toString());
+
+      //  editTextSet();
+       comment = "[" + "remake= " + remakerList.get(0) ;
+       for (int i = 1 ; i < remakerList.size();i++){
+           comment = comment + ",remake=" + remakerList.get(i) ;
+       }
 
 
     }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
+import com.example.admin.androidweather.SecondActivity;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
@@ -27,6 +28,9 @@ public class ScanSelfCheckActivity extends AppCompatActivity {
     private String product;
     private int REQUEST_CODE_SCAN = 111;
 
+    private Button buttonBack;
+    private TextView titleView;
+
     Class<?>  context;
 
     @Override
@@ -34,34 +38,35 @@ public class ScanSelfCheckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan_layout);
         buttonScan = (TextView) findViewById(R.id.button_scan);
-
+        buttonBack = (Button) findViewById(R.id.main_button_back);
+        titleView = (TextView)findViewById(R.id.main_title_text);
 
         //决定扫描后跳转的页面,
         product = getIntent().getStringExtra("product");
         switch(product){
-            case "reabr":
-                context = ResultSelfCheckActivity.class;
+            case "rebar":
+                titleView.setText("钢筋登记");
                 break;
             case "selfCheck":
-                context = ResultSelfCheckActivity.class;
+                titleView.setText("构件自检");
                 break;
             case "randomCheck":
-                context = ResultSelfCheckActivity.class;
+                titleView.setText("构件抽检");
                 break;
             case "templateCheck":
-                context = ResultSelfCheckActivity.class;
+                titleView.setText("模具检查");
                 break;
             case "transferLocation":
-                context = ResultSelfCheckActivity.class;
+                titleView.setText("实际内倒");
                 break;
             case "deliverLogin":
-                context = ResultSelfCheckActivity.class;
+                titleView.setText("发货登记");
                 break;
             case "getGood":
-                context = ResultSelfCheckActivity.class;
+                titleView.setText("收货登记");
                 break;
             case "drop":
-                context = ResultSelfCheckActivity.class;
+                titleView.setText("构件报废");
                 break;
             default:
                 break;
@@ -97,6 +102,16 @@ public class ScanSelfCheckActivity extends AppCompatActivity {
             }
         });
 
+
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ScanSelfCheckActivity.this,SecondActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
         @Override
 
@@ -108,7 +123,7 @@ public class ScanSelfCheckActivity extends AppCompatActivity {
                     String content = data.getStringExtra(Constant.CODED_CONTENT);
                     //  result.setText("扫描结果是："+content);
 
-                    Intent intent = new Intent(ScanSelfCheckActivity.this, ResultScanActivity.class);
+                    Intent intent = new Intent(ScanSelfCheckActivity.this, ResultSelfCheckActivity.class);
                     //传输content
                     intent.putExtra("componentId", content);
                     intent.putExtra("product",product);

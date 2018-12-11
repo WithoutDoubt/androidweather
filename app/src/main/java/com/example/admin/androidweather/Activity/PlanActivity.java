@@ -62,7 +62,10 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
     private String TimeDate = new String();
 
     private String address = "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/findCheckedTransferPlanList";
-    private String address2 ="http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
+    private String address2 =
+  //          "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
+    "http://localhost:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -196,8 +199,6 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 Log.d("CCCCC", "CCCC-----"+ request);
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-//                requestBody = RequestBody.create(JSON,"[{componentCode: \"KLY000701\", estimateDate: \"2018-12-08 01:17:22\"},\n" +
-//                        "\t{componentCode: \"KLY000700\", estimateDate: \"2018-12-08 01:17:22\"}]");
                 requestBody = RequestBody.create(JSON,"[" + request + "]");
                 HttpUtil.sendPostRequest(address2, requestBody,new Callback() {
                     @Override

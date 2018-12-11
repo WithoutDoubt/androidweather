@@ -10,6 +10,14 @@ public class ComponentGson {
      * */
 
 
+    public String getComponentId() {
+        return componentId;
+    }
+
+    public void setComponentId(String componentId) {
+        this.componentId = componentId;
+    }
+
     /**
      * 测试数据：
      *      Uid
@@ -22,7 +30,7 @@ public class ComponentGson {
      *      create_by
      *      create_date
      * */
-    //private String componentId;
+    private String componentId;
     private String componentCode;
     private String componentStatus;
     private String componentBenchId;

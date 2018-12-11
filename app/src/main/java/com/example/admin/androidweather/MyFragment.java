@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.admin.androidweather.Activity.PlanFirstActivity;
+import com.example.admin.androidweather.Activity.ResultScanActivity;
+import com.example.admin.androidweather.Activity.ResultSelfCheckActivity;
 import com.example.admin.androidweather.Activity.ScanSelfCheckActivity;
 
 public class MyFragment extends Fragment {
@@ -33,8 +35,9 @@ public class MyFragment extends Fragment {
         btn_submit0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity(),  ScanSelfCheckActivity.class );
+                Intent intent = new Intent( getActivity(),  ResultScanActivity.class );
                 intent.putExtra("product","Rebar");
+                intent.putExtra("componentId","085213c03d0445eea26ebad68296991d");
                 startActivity(intent);
             }
         });
@@ -46,6 +49,7 @@ public class MyFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent( getActivity(),  ScanSelfCheckActivity.class );
                 intent.putExtra("product","selfCheck");
+           //     intent.putExtra("componentId","085213c03d0445eea26ebad68296991d");
                 startActivity(intent);
             }
         });
@@ -55,8 +59,9 @@ public class MyFragment extends Fragment {
         btn_submit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity(), ScanSelfCheckActivity.class );
+                Intent intent = new Intent( getActivity(), ResultSelfCheckActivity.class );
                 intent.putExtra("product","randomCheck");
+                intent.putExtra("componentId","KLY000701");
                 startActivity(intent);
 
             }

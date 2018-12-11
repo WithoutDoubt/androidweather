@@ -10,7 +10,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary">
         <TextView
-            android:id="@+id/title_content"
+            android:id="@+id/title_content_rebar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -19,7 +19,7 @@
             android:textSize="20sp"
             />
         <Button
-            android:id="@+id/result_scan_button_back"
+            android:id="@+id/button_back_rebar"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="10dp"
@@ -27,6 +27,26 @@
             android:layout_centerVertical="true"
             android:background="@drawable/ic_back"/>
     </RelativeLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="100">
+    <EditText
+        android:id="@+id/component_rebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp_20"
+        />
+    </LinearLayout>
+    <Button
+        android:id="@+id/button_ok_rebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_0.1"
+        android:textColor="@color/white"
+        android:text="提交"
+        android:background="@drawable/btn_orange_selector"
+        android:layout_weight="1"
+        />
 
 </LinearLayout>

@@ -23,6 +23,35 @@ public class SelfCheckRemarks {
     private String check_20;
     private String check_21;
 
+    @Override
+    public  String toString(){
+        String remakers = new String();
+        remakers = "[" + "{\"remake\":" + "\"" + check_1 + "\"}" +
+                         ",{\"remake\":" + "\"" + check_2 + "\"}" +
+                        ",{\"remake\":" + "\"" + check_3 + "\"}"  +
+                        ",{\"remake\":" + "\"" + check_4 + "\"}" +
+                        ",{\"remake\":" + "\"" + check_5 + "\"}"  +
+                        ",{\"remake\":" + "\"" + check_6 + "\"}" +
+                        ",{\"remake\":" + "\"" + check_7 + "\"}"  +
+                        ",{\"remake\":" + "\"" + check_8 + "\"}" +
+                        ",{\"remake\":" + "\"" + check_9 + "\"}"  +
+                        ",{\"remake\":" + "\"" + check_10 + "\"}" +
+                        ",{\"remake\":" + "\"" + check_11 + "\"}"  +
+                        ",{\"remake\":" + "\"" + check_12 + "\"}" +
+                        ",{\"remake\":" + "\"" + check_13 + "\"}"  +
+                        ",{\"remake\":" + "\"" + check_14 + "\"}" +
+                        ",{\"remake\":" + "\"" + check_15 + "\"}"  +
+                        ",{\"remake\":" + "\"" + check_16 + "\"}" +
+                        ",{\"remake\":" + "\"" + check_17 + "\"}"  +
+                        ",{\"remake\":" + "\"" + check_18 + "\"}" +
+                        ",{\"remake\":" + "\"" + check_19 + "\"}"  +
+                        ",{\"remake\":" + "\"" + check_20 + "\"}" +
+                        ",{\"remake\":" + "\"" + check_21 + "\"}"  +
+                        "]";
+
+        return remakers;
+    }
+
     public String getCheck_1() {
         return check_1;
     }

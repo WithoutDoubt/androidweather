@@ -4,7 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <FrameLayout
+        android:id              = "@+id/product_content"
+        android:layout_width   = "match_parent"
+        android:layout_height  = "match_parent">
+    </FrameLayout>
+    <!--<fragment-->
+        <!--android:id="@+id/rebar_fragment"-->
+        <!--android:name="com.example.admin.androidweather.YuFragment.FragmentResultRebar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--/>-->
 </LinearLayout>
