@@ -63,8 +63,8 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
 
     private String address = "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/findCheckedTransferPlanList";
     private String address2 =
-  //          "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
-    "http://localhost:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
+            "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
+  //  "http://localhost:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +113,8 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            //加载数据
+                            initView();
                             if(componentList.isEmpty())
                             {
                                 tvShowSettlement.setEnabled(false);
@@ -125,7 +127,7 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-        initView();
+   //     initView();
 
     }
 
@@ -174,7 +176,7 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 statistics();
                 break;
-            //完成选择时间
+
             //提交表单
             case R.id.tv_settlement:
                 //开始缓存
@@ -198,6 +200,7 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
                 Log.d("CCCCC", "CCCC-----"+ request);
+
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                 requestBody = RequestBody.create(JSON,"[" + request + "]");
                 HttpUtil.sendPostRequest(address2, requestBody,new Callback() {

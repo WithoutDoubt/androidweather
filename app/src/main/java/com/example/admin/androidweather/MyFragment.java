@@ -47,9 +47,10 @@ public class MyFragment extends Fragment {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //String e = "{\"componentId\" = \"202103df725947a9a735bd36db12c337\" ,\"componentCode\" = \"KLY000712\" }";
                 Intent intent = new Intent( getActivity(),  ScanSelfCheckActivity.class );
                 intent.putExtra("product","selfCheck");
-           //     intent.putExtra("componentId","085213c03d0445eea26ebad68296991d");
+               // intent.putExtra("componentId",e);
                 startActivity(intent);
             }
         });

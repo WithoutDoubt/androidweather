@@ -10,13 +10,6 @@ public class ComponentGson {
      * */
 
 
-    public String getComponentId() {
-        return componentId;
-    }
-
-    public void setComponentId(String componentId) {
-        this.componentId = componentId;
-    }
 
     /**
      * 测试数据：
@@ -40,6 +33,13 @@ public class ComponentGson {
 
     private boolean isChoosed;
 
+    public String getComponentId() {
+        return componentId;
+    }
+
+    public void setComponentId(String componentId) {
+        this.componentId = componentId;
+    }
     public boolean isChoosed() {
         return isChoosed;
     }

@@ -75,8 +75,8 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
     private String comment;
 
     //Okhttp
-    private String address = "http://localhost:8080/Mobile/updateComponentStatus";
-    //private String address = "http://10.0.2.2:8080/Mobile/updateComponentStatus";
+  //  private String address = "http://localhost:8080/Mobile/updateComponentStatus";
+    private String address = "http://10.0.2.2:8080/Mobile/updateComponentStatus";
     private  RequestBody requestBody ;
 
     //返回值
@@ -98,6 +98,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
         componentId = getIntent().getStringExtra("componentId");
         componentNews = new ComponentGson();
         componentNews = Utility.handleScanResponse(componentId);
+        Log.d("PPPPP", "onCreate: " + componentNews.getComponentId());
 
 
         product = getIntent().getStringExtra("product");
@@ -153,11 +154,11 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
                 Log.d("SSSSA", comment);
  //               {id: "33cedef39e024ceb9e98b5046b0d78d5", selfCheckStatus: 1, selfCheckRemarks: ""}
                 //
-                    address = address
-                            //"http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
+                    address =
+                            "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
                             + "?componentId="
 //                            "085213c03d0445eea26ebad68296991d"
-                            + componentNews.getComponentId()
+                           + componentNews.getComponentId()
                             +"&status=9"
                             +"&remarks="
                             + comment

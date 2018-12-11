@@ -53,9 +53,10 @@ public class PlanFirstActivity extends AppCompatActivity {
     private Button buttonback;
     private TextView title;
     //
-    private String address =
-            //"http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/findAllProductLine";
-            "http://localhost:8080/Mobile/hfsj/product/appAjax/findAllProductLine";
+    private String product;
+
+    private String address ;
+
 
 
 
@@ -64,7 +65,7 @@ public class PlanFirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plan_first_layout);
 
-
+        title = (TextView) findViewById(R.id.main_title_text);
         buttonback = (Button) findViewById(R.id.main_button_back);
         buttonback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,13 +74,27 @@ public class PlanFirstActivity extends AppCompatActivity {
             }
         });
 
+        //拿product值
+        product = getIntent().getStringExtra("product");
+        switch (product){
+            case "deliverPlan":
+                title.setText("选择供板计划");
+                //修改address
+                address = "";
+                break;
+            case "transferPlan":
+                title.setText("选择生产线");
+                address = "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/findAllProductLine";
+                break;
+            case "transferCheck":
+                title.setText("选择内倒计划");
+                //修改address
+                address = "";
+                break;
+            default:
+                break;
+        }
 
-        title = (TextView) findViewById(R.id.main_title_text);
-        title.setText("选择生产线");
-
-
-//        while (lineCodeList.isEmpty()) {
-        Log.d("AAAA", "onCreate:http ");
         showProgressDialog();
         //服务器交互拿数据
         HttpUtil.sendOkHttpRequest(address, new Callback() {
@@ -104,6 +119,7 @@ public class PlanFirstActivity extends AppCompatActivity {
                     try {
                         JSONArray allData = new JSONArray(responseText);
                         for (int i = 0; i < allData.length(); i++) {
+                            //关键代码
                             JSONObject productLineObject = allData.getJSONObject(i);
                             ProductLineGson productLine = new ProductLineGson();
                             productLine.setCode(productLineObject.getString("code"));
@@ -123,25 +139,17 @@ public class PlanFirstActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-//                        Toast.makeText(PlanFirstActivity.this,result,Toast.LENGTH_SHORT).show();
+                        //注入服务端拿来的数据，
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlanFirstActivity.this, android.R.layout.simple_list_item_1, lineCodeList);
                         Log.d("AAAA", "注入数据");
                         listView = (ListView) findViewById(R.id.list_plan_line);
                         listView.setAdapter(adapter);
-
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
-                                //后台交互，生成构件list，传递list过去跳转
-
-                                ProductLineGson line = productLineList.get(position);
-                                dateChoose(line.getId());
-//                                Intent intent = new Intent(PlanFirstActivity.this, PlanActivity.class);
-//                                //传出生产线ID
-//                                // Toast.makeText(PlanFirstActivity.this, line.getId(), Toast.LENGTH_SHORT).show();
-//                                intent.putExtra("lineId", line.getId());
-//                                startActivity(intent);
+                                    //后台交互，生成构件list，传递list过去跳转
+                                    ProductLineGson line = productLineList.get(position);
+                                    dateChoose(line.getId());
                             }
                         });
 
@@ -150,33 +158,12 @@ public class PlanFirstActivity extends AppCompatActivity {
             }
         });
 
-//        }
         closeProgressDialog();
-        //Adapter
-        /*
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlanFirstActivity.this, android.R.layout.simple_list_item_1, lineCodeList);
-            Log.d("AAAA", "注入数据");
-            listView = (ListView) findViewById(R.id.list_plan_line);
-            listView.setAdapter(adapter);
-
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
-                    //后台交互，生成构件list，传递list过去跳转
-
-                    ProductLineGson line = productLineList.get(position);
-                    Intent intent = new Intent(PlanFirstActivity.this, PlanActivity.class);
-                    //传出生产线ID
-                    // Toast.makeText(PlanFirstActivity.this, line.getId(), Toast.LENGTH_SHORT).show();
-                    intent.putExtra("lineId", line.getId());
-                    startActivity(intent);
-                }
-            });
-            */
         }
 
-
+    /**
+     * 打开进度对话框
+     */
     private void showProgressDialog() {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(this);
@@ -195,6 +182,10 @@ public class PlanFirstActivity extends AppCompatActivity {
         }
     }
 
+    /*
+    * 选择计划倒运时间
+    * 选择计划发货时间
+    * */
     private void dateChoose(final String lineId){
         TimeSelectorDialog dialog = new TimeSelectorDialog(PlanFirstActivity.this);
         //设置标题
