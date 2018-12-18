@@ -10,7 +10,7 @@
         android:id="@+id/ly_top_bar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/bg_topbar"
+        android:background="@color/app_color_theme_6"
         >
 
     <TextView
@@ -20,8 +20,8 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:text="构件管理系统"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="#fff"
+        android:background="@color/app_color_blue_2"
+        android:textColor="@color/white"
         android:textSize="@dimen/dp_20" />
 
     </RelativeLayout>

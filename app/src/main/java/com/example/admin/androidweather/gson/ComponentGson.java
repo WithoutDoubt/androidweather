@@ -33,6 +33,70 @@ public class ComponentGson {
 
     private boolean isChoosed;
 
+    private String name;
+    private String componentTypeCode;
+    private String weight;
+    private String dimension;
+    private String floor;
+    private String blockName;
+    private String spell;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getComponentTypeCode() {
+        return componentTypeCode;
+    }
+
+    public void setComponentTypeCode(String componentTypeCode) {
+        this.componentTypeCode = componentTypeCode;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
+    }
+
+    public String getFloor() {
+        return floor;
+    }
+
+    public void setFloor(String floor) {
+        this.floor = floor;
+    }
+
+    public String getBlockName() {
+        return blockName;
+    }
+
+    public void setBlockName(String blockName) {
+        this.blockName = blockName;
+    }
+
+    public String getSpell() {
+        return spell;
+    }
+
+    public void setSpell(String spell) {
+        this.spell = spell;
+    }
+
     public String getComponentId() {
         return componentId;
     }

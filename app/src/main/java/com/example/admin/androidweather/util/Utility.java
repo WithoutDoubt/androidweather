@@ -2,14 +2,12 @@ package com.example.admin.androidweather.util;
 
 import android.text.TextUtils;
 
-import com.example.admin.androidweather.db.City;
+import com.example.admin.androidweather.db.Component;
 import com.example.admin.androidweather.db.Province;
 import com.example.admin.androidweather.gson.ComponentGson;
 import com.example.admin.androidweather.gson.MobileGson;
 import com.example.admin.androidweather.gson.ProductLineGson;
-import com.example.admin.androidweather.gson.TestStudent;
 import com.example.admin.androidweather.gson.SessionGson;
-import com.example.admin.androidweather.gson.UserGson;
 import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,17 +58,18 @@ public class Utility {
             }
             return  null;
     }
-
-    public static UserGson handleNameResponse(String response){
+    public static ComponentGson handleComponentResponse(String response){
         try {
             JSONObject jsonObject = new JSONObject(response);
 
-            return  new Gson().fromJson(response,UserGson.class);
+            return  new Gson().fromJson(response,ComponentGson.class);
         }catch (Exception e){
             e.printStackTrace();
         }
         return  null;
     }
+
+
 
 
     public static ComponentGson handleScanResponse(String response){

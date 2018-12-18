@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/app_color_blue_2"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity"
     >
@@ -17,10 +17,17 @@
 
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/qmui_s_list_item_bg_with_border_bottom" />
-
+        android:background="@color/white" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/qmui_config_color_white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_height_normal"
@@ -59,7 +66,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="@dimen/margin_normal"
             android:layout_toRightOf="@+id/img_account"
-            android:background="@color/orange_light"/>
+            android:background="@color/gray_light"/>
 
     </RelativeLayout>
     <RelativeLayout
@@ -111,7 +118,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="@dimen/margin_normal"
             android:layout_toRightOf="@+id/img_pw"
-            android:background="@color/orange_light"/>
+            android:background="@color/gray_light"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -133,20 +140,10 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/check_password"
-            android:textColor="@color/top_bar_normal_bg"
+            android:textColor="@color/app_color_blue_2"
             android:checked="false"
             />
-        <CheckBox
-            android:id="@+id/checkbox_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_normal"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/check_login"
-            android:textColor="@color/top_bar_normal_bg"
-            android:checked="false"
-            />
+
     </LinearLayout>
     <Button
         android:id="@+id/bin_login"
@@ -159,8 +156,9 @@
 
         android:paddingTop="@dimen/margin_small"
         android:text="@string/login"
-        android:background="@drawable/btn_orange_selector"
+        android:background="@color/app_color_blue_2"
         android:textColor="@android:color/white"
         android:textSize="@dimen/text_size_normal"
         />
+</LinearLayout>
 </LinearLayout>

@@ -4,21 +4,26 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.admin.androidweather.gson.SessionGson;
-import com.example.admin.androidweather.gson.UserGson;
 import com.example.admin.androidweather.util.HttpUtil;
 import com.example.admin.androidweather.util.Utility;
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
+import com.qmuiteam.qmui.widget.QMUITopBar;
 
 import java.io.IOException;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -34,17 +39,25 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
    //服务端交互
-    private String address = "http://10.0.2.2:8080/a/login?";
+    private String address ;
+    private String addresslogin = "http://10.0.2.2:8080/a/login?";
     private RequestBody requestBody;
     private SessionGson user;
 
+
+    @BindView(R.id.topbar)
+    QMUITopBar mTopBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        //setContentView(R.layout.activity_main);
+        //状态栏
+        QMUIStatusBarHelper.translucent(this);
+        View root = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
+        ButterKnife.bind(this, root);
         //调整标题栏
-
+        initTopBar();
+        setContentView(root);
 
         Button button1 = (Button) findViewById(R.id.bin_login);
         editName = (EditText) findViewById(R.id.et_account);
@@ -56,17 +69,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showProgressDialog();
-                if ((editName.getText().toString()==null)||(editPsw.getText().toString()==null)) {
+                String inputName = editName.getText().toString();
+                String inputPsw = editPsw.getText().toString();
+
+                Log.d("Name111", "onClick: "+inputName + "  ----  " + inputPsw );
+
+
+                if ((inputName==null)||inputPsw==null) {
                     closeProgressDialog();
+                    clearEdit();
                     Toast.makeText(MainActivity.this, "账号或密码不能为空", Toast.LENGTH_SHORT).show();
                 }else {
                     //读取用户密码，账号
-                    address = address + "username="+editName.getText().toString()
-                            +"&password="+editPsw.getText().toString()+"&mobileLogin=true&login=1";
+                    address = addresslogin + "username="+inputName
+                            +"&password="+inputPsw+"&mobileLogin=true&login=1";
+
+                    //
+
 
                     MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
                     requestBody = RequestBody.create(JSON,"");
+
                     //交互
                     HttpUtil.sendPostRequest(address, requestBody,"", new Callback() {
                         @Override
@@ -91,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                                 public void run() {
                                     if (user.getSessionid()==null){
                                         Toast.makeText(MainActivity.this,"账号密码错误",Toast.LENGTH_SHORT).show();
+                                        clearEdit();
                                         closeProgressDialog();
                                     }else {
                                         editor = getSharedPreferences("user",MODE_PRIVATE).edit();
@@ -112,9 +137,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    private void initTopBar() {
+        mTopBar.setBackgroundColor(ContextCompat.getColor(this, R.color.app_color_blue_2));
 
+        mTopBar.setTitle("账号登录");
+    }
 
-
+private void clearEdit(){
+        editName.getText().clear();
+        editPsw.getText().clear();
+}
 
     private void showProgressDialog() {
         if (progressDialog == null) {

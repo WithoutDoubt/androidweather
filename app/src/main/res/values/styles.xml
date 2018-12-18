@@ -3,10 +3,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
 
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+
+        <item name="colorPrimary">@color/app_color_blue_2</item>
+
+        <item name="colorPrimaryDark">@color/app_color_blue</item>
+        <item name="colorAccent">@color/app_color_theme_6</item>
+
     </style>
 
     <!--？attr表示预定义样式-->
@@ -52,4 +58,8 @@
     <style name="AppTheme.Divider">
         <item name="android:background">?android:attr/listDivider</item>
     </style>
+
+
+
+
 </resources>

@@ -2,41 +2,33 @@ package com.example.admin.androidweather;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.admin.androidweather.Activity.PlanDeliverFirstActivity;
 import com.example.admin.androidweather.Activity.PlanFirstActivity;
 import com.example.admin.androidweather.Activity.ResultScanActivity;
+import com.example.admin.androidweather.Activity.ResultScanOtherActivity;
 import com.example.admin.androidweather.Activity.ResultSelfCheckActivity;
 import com.example.admin.androidweather.Activity.ScanSelfCheckActivity;
-import com.example.admin.androidweather.gson.UserGson;
-import com.example.admin.androidweather.util.HttpUtil;
-import com.example.admin.androidweather.util.Utility;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
+import static android.content.Context.MODE_PRIVATE;
 
 public class MyFragment extends Fragment {
 
     private String role;
-
+    private SharedPreferences preferences;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fg_content2, container, false);
-
-
+        View view = inflater.inflate(R.layout.fg_content3, container, false);
         return view;
     }
-
-    //    /*
+//    /*
 //    * 按钮点击事件
 //    * */
     @Override
@@ -47,51 +39,39 @@ public class MyFragment extends Fragment {
 
 
 
-        role = getActivity().getIntent().getStringExtra("role");
-        switch("role"){
-            case "":
+        //role = getActivity().getIntent().getStringExtra("role");
+        preferences = getActivity().getSharedPreferences("user",MODE_PRIVATE);
+        role = preferences.getString("roleName","");
 
-                break;
-        }
-
-
-
-
-
-        Button btn_submit0 = (Button) getActivity().findViewById(R.id.button_);
-        btn_submit0.setEnabled(false);
+        TextView btn_submit0 = (TextView) getActivity().findViewById(R.id.click_rebar);
         btn_submit0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity(),  ResultScanActivity.class );
-                intent.putExtra("product","Rebar");
-                intent.putExtra("componentId","085213c03d0445eea26ebad68296991d");
+                Intent intent = new Intent( getActivity(),  ResultScanOtherActivity.class );
+                intent.putExtra("product","rebar");
+                intent.putExtra("componentId","00b5eaf3c4424f25bccc227779dd0a6f");
                 startActivity(intent);
             }
         });
 
         //自检
-        final Button btn_submit = (Button) getActivity().findViewById(R.id.button_checkbymyself);
-        //btn_submit.setEnabled(false);
-
+        TextView btn_submit = (TextView) getActivity().findViewById(R.id.click_selfcheck);
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String e = "{\"componentId\" = \"202103df725947a9a735bd36db12c337\" ,\"componentCode\" = \"KLY000712\" }";
                 Intent intent = new Intent( getActivity(),  ScanSelfCheckActivity.class );
                 intent.putExtra("product","selfCheck");
-               // intent.putExtra("componentId",e);
                 startActivity(intent);
             }
         });
 
         //抽检
-        final Button btn_submit2 = (Button) getActivity().findViewById(R.id.button_randomcheck);
-        btn_submit2.setEnabled(false);
+        TextView btn_submit2 = (TextView) getActivity().findViewById(R.id.click_randomcheck);
+//        btn_submit2.setEnabled(false);
         btn_submit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity(), ResultSelfCheckActivity.class );
+                Intent intent = new Intent( getActivity(), ScanSelfCheckActivity.class );
                 intent.putExtra("product","randomCheck");
                 intent.putExtra("componentId","KLY000701");
                 startActivity(intent);
@@ -101,7 +81,7 @@ public class MyFragment extends Fragment {
 
 
         //模具检查
-        Button btn_submit3 = (Button) getActivity().findViewById(R.id.button_templatecheck);
+        TextView btn_submit3 = (TextView) getActivity().findViewById(R.id.click_templatecheck);
         btn_submit3.setEnabled(false);
         btn_submit3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,8 +93,8 @@ public class MyFragment extends Fragment {
             }
         });
         //内倒计划
-        Button btn_submit4 = (Button) getActivity().findViewById(R.id.button_tranferplan);
-        btn_submit4.setEnabled(false);
+        TextView btn_submit4 = (TextView) getActivity().findViewById(R.id.click_tranferplan);
+
         btn_submit4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,20 +106,20 @@ public class MyFragment extends Fragment {
         });
 
         //内倒审核
-        final Button btn_submit5 = (Button) getActivity().findViewById(R.id.button_tranferplan_check);
-        btn_submit5.setEnabled(false);
-        btn_submit5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent( getActivity() , PlanFirstActivity.class );
-                intent.putExtra("product","transferCheck");
-                startActivity(intent);
+        TextView btn_submit5 = (TextView) getActivity().findViewById(R.id.click_transfercheck);
 
-            }
-        });
+//        btn_submit5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent( getActivity() , PlanFirstActivity.class );
+//                intent.putExtra("product","transferCheck");
+//                startActivity(intent);
+//
+//            }
+//        });
         //实际内倒
-        final Button btn_submit6 = (Button) getActivity().findViewById(R.id.button_transferMap);
-        btn_submit6.setEnabled(false);
+        TextView btn_submit6 = (TextView) getActivity().findViewById(R.id.click_transferlocation);
+
         btn_submit6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,8 +131,7 @@ public class MyFragment extends Fragment {
         });
 
         //发货计划
-        final Button btn_submit7 = (Button) getActivity().findViewById(R.id.button_deliverPlan);
-       // btn_submit7.setEnabled(false);
+        TextView btn_submit7 = (TextView) getActivity().findViewById(R.id.click_deliverplan);
         btn_submit7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,7 +143,7 @@ public class MyFragment extends Fragment {
         });
 
         //实际发货，发货的验收登记
-        Button btn_submit8 = (Button) getActivity().findViewById(R.id.button_deliverLogin);
+        TextView btn_submit8 = (TextView) getActivity().findViewById(R.id.click_deliverlogin);
         btn_submit8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -175,7 +154,7 @@ public class MyFragment extends Fragment {
         });
 
         //实际收货，收货的验收登记
-        Button btn_submit9 = (Button) getActivity().findViewById(R.id.button_getGood);
+        TextView btn_submit9 = (TextView) getActivity().findViewById(R.id.click_getgoods);
         btn_submit9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -186,8 +165,8 @@ public class MyFragment extends Fragment {
             });
 
         //构件报废
-        Button btn_submit10 = (Button) getActivity().findViewById(R.id.button_drop);
-        btn_submit10.setEnabled(false);
+        TextView btn_submit10 = (TextView) getActivity().findViewById(R.id.click_badgoods);
+
         btn_submit10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -201,6 +180,9 @@ public class MyFragment extends Fragment {
         switch(role){
             case "生产管理部操作员":
                 btn_submit.setEnabled(true);
+                break;
+            default:
+                //btn_submit.setEnabled(false);
                 break;
         }
 

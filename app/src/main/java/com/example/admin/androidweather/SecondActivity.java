@@ -1,37 +1,13 @@
 package com.example.admin.androidweather;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.provider.MediaStore;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.admin.androidweather.YuFragment.FragmentShiro;
-import com.example.admin.androidweather.db.City;
-import com.example.admin.androidweather.db.Province;
-import com.example.admin.androidweather.gson.UserGson;
-import com.example.admin.androidweather.util.HttpUtil;
-import com.example.admin.androidweather.util.Utility;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
 
 public class SecondActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
@@ -39,8 +15,9 @@ public class SecondActivity extends AppCompatActivity implements RadioGroup.OnCh
     private RadioButton rb_channel;
     private String rolename;
 
-    private MyFragment fg1,fg3;
-    private FragmentShiro fg2;
+    private MyFragment fg1;
+    //private FragmentHome fg3;
+    private FragmentShiro fg2,fg3;
     private FragmentManager fManager;
     //
 
@@ -87,6 +64,13 @@ public class SecondActivity extends AppCompatActivity implements RadioGroup.OnCh
                 }
                 break;
             case R.id.rb_setting:
+//                if (fg3 == null){
+//                    fg3 = new FragmentHome();
+//                    fTransaction.add(R.id.ly_content,fg3);
+//                }
+//                else{
+//                    fTransaction.show(fg3);
+//                }
                 break;
          }
          fTransaction.commit();

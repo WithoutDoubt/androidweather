@@ -39,6 +39,7 @@
         <activity android:name=".Activity.PlanFirstActivity"></activity>
         <activity android:name=".Activity.PlanDeliverFirstActivity"/>
         <activity android:name=".Activity.PlanDeliverActivity"/>
+        <activity android:name=".Activity.ResultScanOtherActivity"/>
     </application>
 
 </manifest>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/image_big2"
+                android:adjustViewBounds="true"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_120"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingRight="@dimen/dp_8"
+                >
+
+                <TextView
+                    android:id="@+id/click_rebar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_rebar"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="钢筋登记"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/click_selfcheck"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_selfcheck"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="构件自检"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp"
+                    />
+
+                <!--android:id="@+id/tv_sweep"-->
+                <TextView
+                    android:id="@+id/click_randomcheck"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_randomcheck"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="构件抽检"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_120"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingRight="@dimen/dp_8">
+
+                <TextView
+                    android:id="@+id/click_templatecheck"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_templatecheck"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="模具检查"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/click_badgoods"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_bad"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="构件报废"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp"
+
+                    />
+
+                <!--android:id="@+id/tv_sweep"-->
+                <TextView
+                    android:id="@+id/click_tranferplan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_transferplan"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="内倒计划"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_120"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingRight="@dimen/dp_8">
+
+                <TextView
+                    android:id="@+id/click_transfercheck"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_transfercheck"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="内倒审核"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/click_transferlocation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_transferlocation"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="实际内倒"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp"
+                    />
+
+                <!--android:id="@+id/tv_sweep"-->
+                <TextView
+                    android:id="@+id/click_deliverplan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_deliverplan"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="发货计划"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_120"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingRight="@dimen/dp_8">
+
+                <TextView
+                    android:id="@+id/click_deliverlogin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_deliverlogin"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="发货登记"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/click_getgoods"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_a_getgood"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="收货登记"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp"
+                    />
+
+                <!--android:id="@+id/tv_sweep"-->
+                <TextView
+                    android:id="@+id/scanBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_sweep"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="扫一扫"
+                    android:textColor="@color/bg_black"
+                    android:textSize="16sp"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
+
