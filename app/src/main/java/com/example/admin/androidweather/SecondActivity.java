@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -21,24 +22,38 @@ import android.widget.Toolbar;
 import com.example.admin.androidweather.YuFragment.FragmentShiro;
 import com.example.admin.androidweather.db.City;
 import com.example.admin.androidweather.db.Province;
+import com.example.admin.androidweather.gson.UserGson;
+import com.example.admin.androidweather.util.HttpUtil;
+import com.example.admin.androidweather.util.Utility;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
 
 public class SecondActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup rg_tab_bar;
     private RadioButton rb_channel;
+    private String rolename;
 
     private MyFragment fg1,fg3;
     private FragmentShiro fg2;
     private FragmentManager fManager;
+    //
 
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.second_layout);
+
+        //String role = getIntent().getStringExtra("role");
+
+       // roleName = getIntent().getStringExtra("role");
+
         fManager = getFragmentManager();
         rg_tab_bar = (RadioGroup) findViewById(R.id.rg_tab_bar);
         rg_tab_bar.setOnCheckedChangeListener(this);

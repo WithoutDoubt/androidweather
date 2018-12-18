@@ -49,6 +49,7 @@ public class ScanSelfCheckActivity extends AppCompatActivity {
                 break;
             case "selfCheck":
                 titleView.setText("构件自检");
+                context = ResultSelfCheckActivity.class;
                 break;
             case "randomCheck":
                 titleView.setText("构件抽检");

@@ -27,14 +27,8 @@
             android:name=".ThirdActicity"
             android:parentActivityName=".SecondActivity" />
         <activity
-            android:name=".PlanActivity3"
-            android:parentActivityName=".SecondActivity" />
-        <activity
             android:name=".TransferPlanActivity"
             android:parentActivityName=".SecondActivity" />
-        <activity
-            android:name=".PlanActivity2"
-            android:parentActivityName=".PlanActivity3" />
         <activity android:name=".Activity.ResultSelfCheckActivity" />
         <activity android:name=".Activity.TranferLocationActivity" />
         <activity android:name=".Activity.ScanSelfCheckActivity"
@@ -43,6 +37,8 @@
         <activity android:name=".Activity.PlanActivity" />
         <activity android:name=".Activity.ResultScanActivity"/>
         <activity android:name=".Activity.PlanFirstActivity"></activity>
+        <activity android:name=".Activity.PlanDeliverFirstActivity"/>
+        <activity android:name=".Activity.PlanDeliverActivity"/>
     </application>
 
 </manifest>

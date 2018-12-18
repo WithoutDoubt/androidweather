@@ -21,6 +21,10 @@ android {
 }
 
 dependencies {
+    implementation 'com.qmuiteam:qmui:1.1.7'
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
     implementation 'com.github.yellowhai:TimeSelector:1.5'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$android_support"

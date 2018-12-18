@@ -1,41 +1,50 @@
 package com.example.admin.androidweather.util;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import com.example.admin.androidweather.MainActivity;
+
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
+import static android.content.Context.MODE_PRIVATE;
+
+
 public class HttpUtil {
     private static final MediaType CONTENT_TYPE = MediaType.parse("application/x-www-form-urlencoded");
-    public String cookie2 = "Hm_lvt_82116c626a8d504a5c0675073362ef6f=1543924860,1544065175,1544102720,1544233138;" +
-            " JSESSIONID=39D118C73A3FCCAEA1F018AA57EFA9D8; jeesite.session.id=7cc30613f86a4314b258dcce01aa3eee;" +
-            " Hm_lpvt_82116c626a8d504a5c0675073362ef6f=1544269727";
 
-    public static void sendOkHttpRequest(String address, okhttp3.Callback callback) {
-       String cookie2 = "Hm_lvt_82116c626a8d504a5c0675073362ef6f=1544419620,1544423915,1544514297,1544521118;" +
-               " jeesite.session.id=f3ff5d228bc74f34a8136d6ad147be19; " +
-               "JSESSIONID=3C938A1024273C46A0FC69AC5C213BC7; Hm_lpvt_82116c626a8d504a5c0675073362ef6f=1544522022";
 
-        String cookie = "Hm_lvt_82116c626a8d504a5c0675073362ef6f=1543924860,1544065175,1544102720,1544233138;" +
-                " JSESSIONID=39D118C73A3FCCAEA1F018AA57EFA9D8; jeesite.session.id=7cc30613f86a4314b258dcce01aa3eee;" +
-                " Hm_lpvt_82116c626a8d504a5c0675073362ef6f=1544269727";
+    private  SharedPreferences preferences;
+
+    public static void sendOkHttpRequest(String address,String sessionid, okhttp3.Callback callback) {
+
+
+        String cookie = "jeesite.session.id=" + sessionid;
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(address).
-                header("Cookie",cookie2)
+                header("Cookie",cookie)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+
+    public static void sendOkHttpRequest(String address, okhttp3.Callback callback) {
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(address)
                 .build();
         client.newCall(request).enqueue(callback);
     }
 
     //加一个头部
-    public static  void  sendPostRequest(String address , RequestBody requestBody,okhttp3.Callback callback){
-        String cookie2 = "jeesite.session.id=2ec45d04fd694f14861371755705ecd0; " +
-                "Hm_lvt_82116c626a8d504a5c0675073362ef6f=1544102720,1544233138,1544310834,1544331481; " +
-                "JSESSIONID=07758E200A4D61591630F25E448351A5; Hm_lpvt_82116c626a8d504a5c0675073362ef6f=1544331504";
-        String cookie = "Hm_lvt_82116c626a8d504a5c0675073362ef6f=1544419620,1544423915,1544514297,1544521118; " +
-                "jeesite.session.id=f3ff5d228bc74f34a8136d6ad147be19; " +
-                "JSESSIONID=3C938A1024273C46A0FC69AC5C213BC7; Hm_lpvt_82116c626a8d504a5c0675073362ef6f=1544522022";
+    public  static void  sendPostRequest(String address , RequestBody requestBody,String cookie ,okhttp3.Callback callback ){
+
+
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(address)

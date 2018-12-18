@@ -65,23 +65,16 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
     //获取信息
     private String componentId ;
-    private String stuats;
-    private String remarks;
-
-
     //GSON
     private Gson gson;
     private SelfCheckRemarks remakes;
     private String comment;
-
     //Okhttp
-  //  private String address = "http://localhost:8080/Mobile/updateComponentStatus";
     private String address = "http://10.0.2.2:8080/Mobile/updateComponentStatus";
     private  RequestBody requestBody ;
 
     //返回值
     private  MobileGson mobileGson;
-
     //
     private ProgressDialog progressDialog;
 
@@ -92,7 +85,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle saveInstanceState){
-        // TODO 自动生成的方法存根
+
         super.onCreate(saveInstanceState);
         setContentView(R.layout.result_self_check_layout);
         componentId = getIntent().getStringExtra("componentId");
@@ -103,9 +96,6 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
         product = getIntent().getStringExtra("product");
 
-      //  initeView();
-        //Log.d("AAAA", "onClick: jjjJ");
-{
         editText1 = (EditText)findViewById(R.id.editText1);
         editText2 = (EditText)findViewById(R.id.editText2);
         editText3 = (EditText)findViewById(R.id.editText3);
@@ -133,11 +123,9 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
         componentCode = (EditText)findViewById(R.id.transfer_location_component_code);
         componentCode.setText("构件ID:" + componentNews.getComponentCode() );
         componentCode.setEnabled(false);
-        //  buttonno = (Button)findViewById(R.id.selfcheck_no);
+
         buttonok = (Button)findViewById(R.id.selfcheck_ok);
         buttonback =(Button)findViewById(R.id.button_back);
- }
-
 
         Log.d("AAAA", "onClick: jjjinitView");
 
@@ -149,25 +137,20 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
                 showProgressDialog();
                 getComment();
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-//                requestBody = RequestBody.create(JSON,"{compomemtId:\"085213c03d0445eea26ebad68296991d\",status= 8 ,"+"remarks="+"\""
-//                        + comment +"\"}");
-                Log.d("SSSSA", comment);
- //               {id: "33cedef39e024ceb9e98b5046b0d78d5", selfCheckStatus: 1, selfCheckRemarks: ""}
-                //
+
+
                     address =
                             "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
                             + "?componentId="
-//                            "085213c03d0445eea26ebad68296991d"
-                           + componentNews.getComponentId()
-                            +"&status=9"
+                            + componentNews.getComponentId()
+                            +"&status=8"
                             +"&remarks="
                             + comment
                             +"]";
                     //配筋已经完成
-  //                  HttpUtil.sendPostRequest(address, requestBody,new Callback()
                     HttpUtil.sendOkHttpRequest(address,new Callback()
                     {
-                        //获取失败
+
                         @Override
                         public void onFailure(Call call, IOException e) {
                         e.printStackTrace();
@@ -279,66 +262,6 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
 
     }
-
-     private void checkBoxSet( ){
-        if(checkBox_1.isChecked())
-        {
-            remakes.setCheck_1("1");
-        }else
-        {
-            remakes.setCheck_1("0");
-        }
-
-        if(checkBox_2.isChecked())
-        {
-             remakes.setCheck_2("1");
-        }else
-            {
-             remakes.setCheck_2("0");
-         }
-
-         if(checkBox_3.isChecked())
-         {
-             remakes.setCheck_3("1");
-         }else
-         {
-             remakes.setCheck_3("0");
-         }
-         if(checkBox_4.isChecked())
-         {
-             remakes.setCheck_4("1");
-         }else
-         {
-             remakes.setCheck_4("0");
-         }
-         if(checkBox_5.isChecked())
-         {
-             remakes.setCheck_5("1");
-         }else
-         {
-             remakes.setCheck_5("0");
-         }
-
-    }
-     private void editTextSet(){
-         remakes.setCheck_6(editText1.getText().toString());
-         remakes.setCheck_7(editText2.getText().toString());
-         remakes.setCheck_8(editText3.getText().toString());
-         remakes.setCheck_9(editText4.getText().toString());
-         remakes.setCheck_10(editText5.getText().toString());
-         remakes.setCheck_11(editText6.getText().toString());
-         remakes.setCheck_12(editText7.getText().toString());
-         remakes.setCheck_13(editText8.getText().toString());
-         remakes.setCheck_14(editText9.getText().toString());
-         remakes.setCheck_15(editText10.getText().toString());
-         remakes.setCheck_16(editText11.getText().toString());
-         remakes.setCheck_17(editText12.getText().toString());
-         remakes.setCheck_18(editText13.getText().toString());
-         remakes.setCheck_19(editText14.getText().toString());
-         remakes.setCheck_20(editText15.getText().toString());
-         remakes.setCheck_21(editText16.getText().toString());
-
-     }
 
     private void showProgressDialog() {
         if (progressDialog == null) {

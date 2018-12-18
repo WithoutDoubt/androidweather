@@ -3,23 +3,35 @@ package com.example.admin.androidweather;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.admin.androidweather.Activity.PlanDeliverFirstActivity;
 import com.example.admin.androidweather.Activity.PlanFirstActivity;
 import com.example.admin.androidweather.Activity.ResultScanActivity;
 import com.example.admin.androidweather.Activity.ResultSelfCheckActivity;
 import com.example.admin.androidweather.Activity.ScanSelfCheckActivity;
+import com.example.admin.androidweather.gson.UserGson;
+import com.example.admin.androidweather.util.HttpUtil;
+import com.example.admin.androidweather.util.Utility;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
 
 public class MyFragment extends Fragment {
 
-
+    private String role;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg_content2, container, false);
+
 
         return view;
     }
@@ -31,7 +43,23 @@ public class MyFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //钢筋登记
+
+
+
+
+        role = getActivity().getIntent().getStringExtra("role");
+        switch("role"){
+            case "":
+
+                break;
+        }
+
+
+
+
+
         Button btn_submit0 = (Button) getActivity().findViewById(R.id.button_);
+        btn_submit0.setEnabled(false);
         btn_submit0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +71,9 @@ public class MyFragment extends Fragment {
         });
 
         //自检
-        Button btn_submit = (Button) getActivity().findViewById(R.id.button_checkbymyself);
+        final Button btn_submit = (Button) getActivity().findViewById(R.id.button_checkbymyself);
+        //btn_submit.setEnabled(false);
+
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +86,8 @@ public class MyFragment extends Fragment {
         });
 
         //抽检
-        Button btn_submit2 = (Button) getActivity().findViewById(R.id.button_randomcheck);
+        final Button btn_submit2 = (Button) getActivity().findViewById(R.id.button_randomcheck);
+        btn_submit2.setEnabled(false);
         btn_submit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +102,7 @@ public class MyFragment extends Fragment {
 
         //模具检查
         Button btn_submit3 = (Button) getActivity().findViewById(R.id.button_templatecheck);
+        btn_submit3.setEnabled(false);
         btn_submit3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +114,7 @@ public class MyFragment extends Fragment {
         });
         //内倒计划
         Button btn_submit4 = (Button) getActivity().findViewById(R.id.button_tranferplan);
+        btn_submit4.setEnabled(false);
         btn_submit4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,7 +126,8 @@ public class MyFragment extends Fragment {
         });
 
         //内倒审核
-        Button btn_submit5 = (Button) getActivity().findViewById(R.id.button_tranferplan_check);
+        final Button btn_submit5 = (Button) getActivity().findViewById(R.id.button_tranferplan_check);
+        btn_submit5.setEnabled(false);
         btn_submit5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +138,8 @@ public class MyFragment extends Fragment {
             }
         });
         //实际内倒
-        Button btn_submit6 = (Button) getActivity().findViewById(R.id.button_transferMap);
+        final Button btn_submit6 = (Button) getActivity().findViewById(R.id.button_transferMap);
+        btn_submit6.setEnabled(false);
         btn_submit6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,11 +151,12 @@ public class MyFragment extends Fragment {
         });
 
         //发货计划
-        Button btn_submit7 = (Button) getActivity().findViewById(R.id.button_deliverPlan);
+        final Button btn_submit7 = (Button) getActivity().findViewById(R.id.button_deliverPlan);
+       // btn_submit7.setEnabled(false);
         btn_submit7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity() , PlanFirstActivity.class);
+                Intent intent = new Intent( getActivity() , PlanDeliverFirstActivity.class);
                 intent.putExtra("product","deliverPlan");
                 startActivity(intent);
 
@@ -151,6 +187,7 @@ public class MyFragment extends Fragment {
 
         //构件报废
         Button btn_submit10 = (Button) getActivity().findViewById(R.id.button_drop);
+        btn_submit10.setEnabled(false);
         btn_submit10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -160,38 +197,15 @@ public class MyFragment extends Fragment {
             }
         });
 
-
+        //权限
+        switch(role){
+            case "生产管理部操作员":
+                btn_submit.setEnabled(true);
+                break;
+        }
 
     }
 }
-
-
-
-
-
-
-
-/*
- * 1.构件自检按钮
- * 2.构件抽检
- *
- * 3.模具检查
- *
- * 4.收货登记[GET]
- * 5.发货登记[GET]
-
- * 6.内倒计划
- * 7.内倒审核[GET]  /  工程部内倒审核[POST]
- *
- * 8.实际内倒[GET]
- *
- * 9.发货计划
- *
- * 10.构件报废[GET]
- *
- * 11.钢筋排产[GET]
- * */
-
 
 
 

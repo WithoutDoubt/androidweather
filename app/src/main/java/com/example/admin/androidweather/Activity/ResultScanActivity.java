@@ -33,11 +33,7 @@ public class ResultScanActivity extends AppCompatActivity{
                 fg_reber = new FragmentResultRebar();
                 hideAllFragment(fTransaction);
                 fTransaction.add(R.id.product_content,fg_reber);
-                //if (savedInstanceState == null){
-//                    getSupportFragmentManager().beginTransaction()
-//                            .replace(R.id.component_rebar,FragmentResultRebar.newInstance(componentId))
-//                            .commit();
-               // }
+
                 break;
 
 

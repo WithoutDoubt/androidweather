@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.admin.androidweather.PlanActivity3;
 import com.example.admin.androidweather.R;
 import com.example.admin.androidweather.gson.ProductLineGson;
 import com.example.admin.androidweather.util.HttpUtil;
@@ -206,6 +205,7 @@ public class PlanFirstActivity extends AppCompatActivity {
                 intent.putExtra("lineId", lineId);
                 intent.putExtra("date",time);
                 startActivity(intent);
+
             }
             @Override
             public void onReturnDate(String empty) {

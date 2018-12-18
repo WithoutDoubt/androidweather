@@ -1,102 +1,168 @@
 package com.example.admin.androidweather;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.example.admin.androidweather.gson.SessionGson;
+import com.example.admin.androidweather.gson.UserGson;
+import com.example.admin.androidweather.util.HttpUtil;
+import com.example.admin.androidweather.util.Utility;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.IOException;
 
-import java.util.HashMap;
-import java.util.Map;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public class MainActivity extends AppCompatActivity {
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
+    private EditText editName;
+    private EditText editPsw;
+
+    private ProgressDialog progressDialog;
+
+   //服务端交互
+    private String address = "http://10.0.2.2:8080/a/login?";
+    private RequestBody requestBody;
+    private SessionGson user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //调整标题栏
+
+
         Button button1 = (Button) findViewById(R.id.bin_login);
+        editName = (EditText) findViewById(R.id.et_account);
+        editPsw = (EditText)findViewById(R.id.et_password);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(MainActivity.this,"点了一下",Toast.LENGTH_SHORT).show();
-//                String data = "Hello SecondActivity";
-//                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
-//                intent.putExtra("extra_data",data);  //传递数据
-//                startActivity(intent);
-                Intent intent = new Intent(MainActivity.this , SecondActivity.class);
-                startActivity(intent);
+                showProgressDialog();
+                if ((editName.getText().toString()==null)||(editPsw.getText().toString()==null)) {
+                    closeProgressDialog();
+                    Toast.makeText(MainActivity.this, "账号或密码不能为空", Toast.LENGTH_SHORT).show();
+                }else {
+                    //读取用户密码，账号
+                    address = address + "username="+editName.getText().toString()
+                            +"&password="+editPsw.getText().toString()+"&mobileLogin=true&login=1";
+
+                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+                    requestBody = RequestBody.create(JSON,"");
+                    //交互
+                    HttpUtil.sendPostRequest(address, requestBody,"", new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            e.printStackTrace();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    Toast.makeText(MainActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                            final String responseText = response.body().string();
+                            user = Utility.handleUserResponse(responseText);
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (user.getSessionid()==null){
+                                        Toast.makeText(MainActivity.this,"账号密码错误",Toast.LENGTH_SHORT).show();
+                                        closeProgressDialog();
+                                    }else {
+                                        editor = getSharedPreferences("user",MODE_PRIVATE).edit();
+                                        editor.putString("loginName",user.getLoginName());
+                                        editor.putString("sessionId",user.getSessionid());
+                                        editor.putString("roleName",user.getRoleName());
+                                        editor.commit();
+                                        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                                        intent.putExtra("role",user.getRoleName());
+                                        startActivity(intent);
+                                    }
+
+                                }
+                            });
+                        }
+                    });
+
+                }
             }
         });
     }
 
 
 
-    public void LoginRequest(final String accountNumber, final String password) {
-        //请求地址
-        String url = "http://域名:端口号/MyFirstWebApp/LoginServlet";    //注①
-        String tag = "Login";    //注②
 
-        //取得请求队列
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-
-        //防止重复请求，所以先取消tag标识的请求队列
-        requestQueue.cancelAll(tag);
-
-        //创建StringRequest，定义字符串请求的请求方式为POST(省略第一个参数会默认为GET方式)
-        final StringRequest request = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");  //注③
-                            String result = jsonObject.getString("Result");  //注④
-                            if (result.equals("success")) {  //注⑤
-                                //做自己的登录成功操作，如页面跳转
-                            } else {
-                                //做自己的登录失败操作，如Toast提示
-                            }
-                        } catch (JSONException e) {
-                            //做自己的请求异常操作，如Toast提示（“无网络连接”等）
-                            Log.e("TAG", e.getMessage(), e);
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //做自己的响应错误操作，如Toast提示（“请稍后重试”等）
-                Log.e("TAG", error.getMessage(), error);
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("AccountNumber", accountNumber);  //注⑥
-                params.put("Password", password);
-                return params;
-            }
-        };
-
-        //设置Tag标签
-        request.setTag(tag);
-
-        //将请求添加到队列中
-        requestQueue.add(request);
+    private void showProgressDialog() {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("正在加载...");
+            progressDialog.setCanceledOnTouchOutside(false);
+        }
+        progressDialog.show();
     }
+
+    /**
+     * 关闭进度对话框
+     */
+    private void closeProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+    }
+
+//     HttpUtil.sendOkHttpRequest(address, user.getSessionid(), new Callback() {
+//        @Override
+//        public void onFailure(Call call, IOException e) {
+//            e.printStackTrace();
+//            runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Toast.makeText(MainActivity.this, "身份认证失败", Toast.LENGTH_SHORT).show();
+//
+//                }
+//            });
+//        }
+//
+//        @Override
+//        public void onResponse(Call call, okhttp3.Response response) throws IOException {
+//            final String responseText = response.body().string();
+//            Log.d("QWQW", "run: " + responseText);
+//            final UserGson name = Utility.handleNameResponse(responseText);
+//
+//            runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//                    intent.putExtra("role", name.getRoleNames());
+//                    Log.d("AAASAA", "run: "+ name.getRoleNames());
+//                    startActivity(intent);
+//                }
+//            });
+//        }
+//    });
 
 }

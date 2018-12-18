@@ -109,17 +109,6 @@ public class FragmentResultRebar extends Fragment {
     }
 
 
-    //传值
-//    public static  FragmentResultRebar newInstance(String text){
-//        FragmentResultRebar fragmentOne = new FragmentResultRebar();
-//        Bundle bundle = new Bundle();
-//        bundle.putString("componentId", text);
-//        //fragment保存参数，传入一个Bundle对象
-//        fragmentOne.setArguments(bundle);
-//        return fragmentOne;
-//    }
-
-
     //加载框
     private void showProgressDialog() {
         if (progressDialog == null) {

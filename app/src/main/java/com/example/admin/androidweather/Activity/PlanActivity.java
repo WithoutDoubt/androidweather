@@ -1,6 +1,7 @@
 package com.example.admin.androidweather.Activity;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -65,6 +66,7 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
     private String address2 =
             "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
   //  "http://localhost:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +104,7 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
                             component.setComponentCode(componentObject.getString("componentCode"));
                             component.setComponentTypeId(componentObject.getString("componentTypeCode"));
                             component.setChoosed(false);
-//                            Log.d("AAAA", component.getComponentCode());
+//                          Log.d("AAAA", component.getComponentCode());
                             componentList.add(component);
                         }
                     }catch (JSONException e){
@@ -203,7 +205,11 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
 
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                 requestBody = RequestBody.create(JSON,"[" + request + "]");
-                HttpUtil.sendPostRequest(address2, requestBody,new Callback() {
+                //get cookie
+                preferences = getSharedPreferences("user",MODE_PRIVATE);
+                String cookie ="jeesite.session.id="+ preferences.getString("sessionId","");
+                Log.d("AABB", "onClick: "+cookie);
+                HttpUtil.sendPostRequest(address2, requestBody,cookie,new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         e.printStackTrace();
