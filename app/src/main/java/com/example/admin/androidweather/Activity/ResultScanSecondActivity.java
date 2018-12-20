@@ -299,7 +299,7 @@ public class ResultScanSecondActivity extends AppCompatActivity {
                                          */
                                         tipDialog_2.dismiss();
                                         tipDialog_1.dismiss();
-//                                        finish();
+                                        finish();
                                     }
                                 };
                                 Timer timer = new Timer();
