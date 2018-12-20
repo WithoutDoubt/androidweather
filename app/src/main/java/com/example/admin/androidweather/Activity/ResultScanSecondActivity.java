@@ -100,7 +100,7 @@ public class ResultScanSecondActivity extends AppCompatActivity {
                 status_ok = "4";
                 break;
             case "transferLocation":
-                buttonok.setText("实际内倒");
+                buttonok.setText("实际内运");
                 status_ok = "12";
                 break;
             case "deliverLogin":

@@ -22,6 +22,7 @@ import com.example.admin.androidweather.util.Utility;
 import com.hh.timeselector.timeutil.datedialog.DateListener;
 import com.hh.timeselector.timeutil.datedialog.TimeConfig;
 import com.hh.timeselector.timeutil.datedialog.TimeSelectorDialog;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +31,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -71,6 +74,8 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plan_cart_layout);
+
+
 
         productLineId = getIntent().getStringExtra("lineId");
         estimateDate = getIntent().getStringExtra("date")+" 01:00:00";
@@ -154,7 +159,7 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
         planCartAdapter.setCheckInterface(this);
         list_plan_cart.setAdapter(planCartAdapter);
         planCartAdapter.setComponentList(componentList);
-        title.setText("内倒计划制定");
+        title.setText("内运计划制定");
     }
 
     @Override
@@ -230,7 +235,42 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
                                 @Override
                                 public void run() {
                                     closeProgressDialog();
-                                    Toast.makeText(PlanActivity.this, result,Toast.LENGTH_SHORT).show();
+
+                                    final QMUITipDialog tipDialog_1,tipDialog_2;
+
+                                    tipDialog_1 = new QMUITipDialog.Builder(PlanActivity.this)
+                                            .setIconType(QMUITipDialog.Builder.ICON_TYPE_SUCCESS)
+                                            .setTipWord("制定成功")
+                                            .create();
+                                    tipDialog_2= new QMUITipDialog.Builder(PlanActivity.this)
+                                            .setIconType(QMUITipDialog.Builder.ICON_TYPE_FAIL)
+                                            .setTipWord("制定失败")
+                                            .create();
+                                    switch (result){
+                                        case "ok":
+                                            tipDialog_1.show();
+                                            break;
+                                        case "no":
+                                            tipDialog_2.show();
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    TimerTask task = new TimerTask() {
+                                        @Override
+                                        public void run() {
+                                            /**
+                                             *要执行的操作
+                                             *
+                                             */
+                                            tipDialog_2.dismiss();
+                                            tipDialog_1.dismiss();
+                                            finish();
+                                        }
+                                    };
+                                    Timer timer = new Timer();
+                                    timer.schedule(task, 1500);//1.5秒后执行TimeTask的run方法
+                                  //  Toast.makeText(PlanActivity.this, result,Toast.LENGTH_SHORT).show();
                                 }
                             });
                     }

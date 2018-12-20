@@ -73,7 +73,7 @@ public class ScanActivity extends AppCompatActivity {
                 context = ResultSelfCheckActivity.class;
                 break;
             case "transferLocation":
-                titleView.setText("实际内倒");
+                titleView.setText("实际内运");
                 break;
             case "deliverLogin":
                 titleView.setText("发货登记");

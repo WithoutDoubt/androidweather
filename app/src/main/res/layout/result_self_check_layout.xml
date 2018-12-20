@@ -242,6 +242,7 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/linear_self_no"
             android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

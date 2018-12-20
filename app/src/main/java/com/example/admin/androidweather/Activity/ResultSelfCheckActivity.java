@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -106,6 +107,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
         topBar.setBackgroundColor(getColor(R.color.app_color_blue_2));
 
         final QMUITipDialog tipDialog, tipDialog_1,tipDialog_2 ;
+        LinearLayout linearLayout_no = (LinearLayout)findViewById(R.id.linear_self_no);
         tipDialog = new QMUITipDialog.Builder(ResultSelfCheckActivity.this)
                 .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
                 .setTipWord("正在加载")
@@ -144,7 +146,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
             case "randomCheck":
                 topBar.setTitle("构件抽检");
                 status = "9";
-                buttonno.setVisibility(View.VISIBLE);
+                linearLayout_no.setVisibility(View.VISIBLE);
                 break;
             case "templateCheck":
                 topBar.setTitle("模具检查");
@@ -199,7 +201,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
                             + "?componentId="
                             + componentId
                             +"&status="+status
-                            +"&remarks=";
+                            +"&remarks="+comment;
 //                            + comment
 //                            +"}";
                             //+"]";
@@ -285,7 +287,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
                         + "?componentId="
                         + componentId
                         +"&status=10"
-                        +"&remarks=";
+                        +"&remarks="+comment;
 //                            + comment
 //                            +"}";
                 //+"]";
@@ -428,11 +430,11 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
        remakerList.add(editText16.getText().toString());
 
       //  editTextSet();
-       comment = "{" + "remake= " + remakerList.get(0) ;
+       comment = "remake= " + remakerList.get(0) ;
        for (int i = 1 ; i < remakerList.size();i++){
            comment = comment + ",remake=" + remakerList.get(i) ;
        }
-        comment = comment+"}";
+
 
     }
 
