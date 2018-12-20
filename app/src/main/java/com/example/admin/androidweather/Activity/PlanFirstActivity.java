@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
 import com.example.admin.androidweather.gson.ProductLineGson;
+import com.example.admin.androidweather.gson.ProvidePlanGson;
 import com.example.admin.androidweather.util.HttpUtil;
 import com.hh.timeselector.timeutil.datedialog.DateListener;
 import com.hh.timeselector.timeutil.datedialog.TimeConfig;
@@ -56,8 +57,11 @@ public class PlanFirstActivity extends AppCompatActivity {
 
     private String address ;
 
+    private List<String>provideList = new ArrayList<>();
 
+    private List<ProvidePlanGson> providePlanList = new ArrayList<ProvidePlanGson>();
 
+    Class<?>  context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,16 +80,151 @@ public class PlanFirstActivity extends AppCompatActivity {
         //拿product值
         product = getIntent().getStringExtra("product");
         switch (product){
-            case "deliverPlan":
+            case "deliverPlan": //发货计划
                 title.setText("选择供板计划");
+                context = PlanDeliverActivity.class;
                 //修改address
-                address = "";
+                address = "http://210.45.212.96:8080/Mobile/hfsj/deliver/deliverAppInterface/getProvidePlanList";
+                //显示转圈圈
+                showProgressDialog();
+                //服务器交互拿数据
+                HttpUtil.sendOkHttpRequest(address, new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                Toast.makeText(PlanFirstActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        final String responseText = response.body().string();
+                        //拿数据
+                        if (!TextUtils.isEmpty(responseText)) {
+                            try {
+                                JSONArray allData = new JSONArray(responseText);
+                                for (int i = 0; i < allData.length(); i++) {
+                                    //关键代码
+                                    JSONObject productLineObject = allData.getJSONObject(i);
+                                    ProvidePlanGson providePlan = new ProvidePlanGson();
+                                    providePlan.setCode(productLineObject.getString("providePlanCode"));
+                                    providePlan.setId(productLineObject.getString("providePlanCode"));
+
+                                    provideList.add(providePlan.getCode());
+
+                                    providePlanList.add(providePlan);
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //注入服务端拿来的数据，
+                                ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlanFirstActivity.this, android.R.layout.simple_list_item_1, provideList);
+                                Log.d("AAAA", "注入数据");
+                                listView = (ListView) findViewById(R.id.list_plan_line);
+                                listView.setAdapter(adapter);
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                        //后台交互，生成构件list，传递list过去跳转
+                                        ProvidePlanGson providePlan = providePlanList.get(position);
+                                        dateChoose(providePlan.getId());
+                                    }
+                                });
+
+                            }
+                        });
+                    }
+                });
+
+                closeProgressDialog();
                 break;
-            case "transferPlan":
+            case "transferPlan": //内倒计划
                 title.setText("选择生产线");
-                address = "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/findAllProductLine";
+                address = "http://210.45.212.96:8080/Mobile/hfsj/product/appAjax/findAllProductLine";
+                context = PlanActivity.class;
+                //显示转圈圈
+                showProgressDialog();
+                //服务器交互拿数据
+                HttpUtil.sendOkHttpRequest(address, new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                Toast.makeText(PlanFirstActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        final String responseText = response.body().string();
+                        //拿数据
+                        if (!TextUtils.isEmpty(responseText)) {
+                            try {
+                                JSONArray allData = new JSONArray(responseText);
+
+
+                                for (int i = 0; i < allData.length(); i++) {
+                                    //关键代码
+                                    JSONObject productLineObject = allData.getJSONObject(i);
+                                    ProductLineGson productLine = new ProductLineGson();
+                                    productLine.setCode(productLineObject.getString("code"));
+                                    productLine.setId(productLineObject.getString("id"));
+                                    lineCodeList.add(productLine.getCode());
+                                    productLineList.add(productLine);
+                                }
+
+
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //注入服务端拿来的数据，
+                                ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlanFirstActivity.this, android.R.layout.simple_list_item_1, lineCodeList);
+                                Log.d("AAAA", "注入数据");
+                                listView = (ListView) findViewById(R.id.list_plan_line);
+                                listView.setAdapter(adapter);
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                        //后台交互，生成构件list，传递list过去跳转
+                                        ProductLineGson line = productLineList.get(position);
+                                        dateChoose(line.getId());
+                                    }
+                                });
+
+                            }
+                        });
+                    }
+                });
+                //关闭圈圈
+                closeProgressDialog();
                 break;
-            case "transferCheck":
+            case "transferCheck": //内倒审核
                 title.setText("选择内倒计划");
                 //修改address
                 address = "";
@@ -93,72 +232,9 @@ public class PlanFirstActivity extends AppCompatActivity {
             default:
                 break;
         }
-
-        showProgressDialog();
-        //服务器交互拿数据
-        HttpUtil.sendOkHttpRequest(address, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        Toast.makeText(PlanFirstActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                final String responseText = response.body().string();
-                //拿数据
-                if (!TextUtils.isEmpty(responseText)) {
-                    try {
-                        JSONArray allData = new JSONArray(responseText);
-                        for (int i = 0; i < allData.length(); i++) {
-                            //关键代码
-                            JSONObject productLineObject = allData.getJSONObject(i);
-                            ProductLineGson productLine = new ProductLineGson();
-                            productLine.setCode(productLineObject.getString("code"));
-                            productLine.setId(productLineObject.getString("id"));
-
-                            lineCodeList.add(productLine.getCode());
-
-                            productLineList.add(productLine);
-
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
+}
 
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //注入服务端拿来的数据，
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlanFirstActivity.this, android.R.layout.simple_list_item_1, lineCodeList);
-                        Log.d("AAAA", "注入数据");
-                        listView = (ListView) findViewById(R.id.list_plan_line);
-                        listView.setAdapter(adapter);
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                    //后台交互，生成构件list，传递list过去跳转
-                                    ProductLineGson line = productLineList.get(position);
-                                    dateChoose(line.getId());
-                            }
-                        });
-
-                    }
-                });
-            }
-        });
-
-        closeProgressDialog();
-        }
 
     /**
      * 打开进度对话框
@@ -188,11 +264,11 @@ public class PlanFirstActivity extends AppCompatActivity {
     private void dateChoose(final String lineId){
         TimeSelectorDialog dialog = new TimeSelectorDialog(PlanFirstActivity.this);
         //设置标题
-        dialog.setTimeTitle("选择计划倒运日期:");
+        dialog.setTimeTitle("选择计划日期:");
         //显示类型
         dialog.setIsShowtype(TimeConfig.YEAR_MONTH_DAY);
         //默认时间
-        dialog.setCurrentDate("2017-01-11");
+        dialog.setCurrentDate("2018-01-01");
         //隐藏清除按钮
         dialog.setEmptyIsShow(false);
         //设置起始时间
@@ -201,7 +277,8 @@ public class PlanFirstActivity extends AppCompatActivity {
             @Override
             public void onReturnDate(String time,int year, int month, int day, int hour, int minute, int isShowType) {
                 Log.d("AAAA", time);
-                Intent intent = new Intent(PlanFirstActivity.this, PlanActivity.class);
+                Intent intent = new Intent(PlanFirstActivity.this, context);
+
                 intent.putExtra("lineId", lineId);
                 intent.putExtra("date",time);
                 startActivity(intent);
@@ -209,7 +286,7 @@ public class PlanFirstActivity extends AppCompatActivity {
             }
             @Override
             public void onReturnDate(String empty) {
-                Toast.makeText(PlanFirstActivity.this,"请选择计划倒运日期",Toast.LENGTH_LONG).show();
+                Toast.makeText(PlanFirstActivity.this,"请选择计划日期",Toast.LENGTH_LONG).show();
             }
         });
         dialog.show();

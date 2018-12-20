@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/project_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp_16"
+        android:textColor="@color/bg_black"
+        android:padding="@dimen/dp_20"
+        android:hint="项目名称"/>
+    <EditText
+        android:id="@+id/company"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp_16"
+        android:textColor="@color/bg_black"
+        android:padding="@dimen/dp_20"
+        android:hint="承运单位"/>
+    <EditText
+        android:id="@+id/contanctName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp_16"
+        android:textColor="@color/bg_black"
+        android:padding="@dimen/dp_20"
+        android:hint="联系人"/>
+
+    <EditText
+        android:id="@+id/carryPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="承运电话"
+        android:padding="@dimen/dp_20"
+        android:textColor="@color/bg_black"
+        android:textSize="@dimen/dp_16" />
+
+    <EditText
+        android:id="@+id/contanctPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp_16"
+        android:textColor="@color/bg_black"
+        android:padding="@dimen/dp_20"
+        android:hint="联系电话"/>
+    <EditText
+        android:id="@+id/carrier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp_16"
+        android:textColor="@color/bg_black"
+        android:padding="@dimen/dp_20"
+        android:hint="承运人"/>
+
+    <EditText
+        android:id="@+id/license"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp_16"
+        android:textColor="@color/bg_black"
+        android:padding="@dimen/dp_20"
+        android:hint="车牌"/>
+    <EditText
+        android:id="@+id/workTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp_16"
+        android:textColor="@color/bg_black"
+        android:padding="@dimen/dp_20"
+        android:hint="承运班组"/>
+    <EditText
+        android:id="@+id/receiveAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dp_16"
+        android:textColor="@color/bg_black"
+        android:padding="@dimen/dp_20"
+        android:hint="收货地址"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存"
+        />
+
+</LinearLayout>

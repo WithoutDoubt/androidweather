@@ -31,7 +31,7 @@
             android:parentActivityName=".SecondActivity" />
         <activity android:name=".Activity.ResultSelfCheckActivity" />
         <activity android:name=".Activity.TranferLocationActivity" />
-        <activity android:name=".Activity.ScanSelfCheckActivity"
+        <activity android:name=".Activity.ScanActivity"
             android:parentActivityName=".SecondActivity"
             />
         <activity android:name=".Activity.PlanActivity" />
@@ -39,7 +39,9 @@
         <activity android:name=".Activity.PlanFirstActivity"></activity>
         <activity android:name=".Activity.PlanDeliverFirstActivity"/>
         <activity android:name=".Activity.PlanDeliverActivity"/>
+
         <activity android:name=".Activity.ResultScanOtherActivity"/>
+        <activity android:name=".Activity.PlanDeliver"/>
     </application>
 
 </manifest>

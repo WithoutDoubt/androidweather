@@ -12,8 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.admin.androidweather.Activity.ResultSelfCheckActivity;
-import com.example.admin.androidweather.Activity.ScanSelfCheckActivity;
+import com.example.admin.androidweather.Activity.ScanActivity;
 import com.example.admin.androidweather.R;
 import com.example.admin.androidweather.gson.MobileGson;
 import com.example.admin.androidweather.util.HttpUtil;
@@ -69,7 +68,7 @@ public class FragmentResultRebar extends Fragment {
                                 //关闭进度条
                                 closeProgressDialog();
                                 Toast.makeText(getActivity(), "获取信息失败", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getActivity() ,ScanSelfCheckActivity.class);
+                                Intent intent = new Intent(getActivity() ,ScanActivity.class);
                                 startActivity(intent);
                             }
                         });

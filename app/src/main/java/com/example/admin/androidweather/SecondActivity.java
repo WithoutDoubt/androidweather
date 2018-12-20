@@ -8,6 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.admin.androidweather.YuFragment.FragmentShiro;
+import com.example.admin.androidweather.YuFragment.MyFragment;
 
 public class SecondActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 

@@ -58,6 +58,8 @@ public class Utility {
             }
             return  null;
     }
+
+
     public static ComponentGson handleComponentResponse(String response){
         try {
             JSONObject jsonObject = new JSONObject(response);
@@ -68,22 +70,6 @@ public class Utility {
         }
         return  null;
     }
-
-
-
-
-    public static ComponentGson handleScanResponse(String response){
-        try {
-            JSONObject jsonObject = new JSONObject(response);
-
-            return  new Gson().fromJson(response,ComponentGson.class);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return  null;
-    }
-
-
 
 }
 

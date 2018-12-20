@@ -19,6 +19,7 @@ import com.example.admin.androidweather.util.HttpUtil;
 import com.example.admin.androidweather.util.Utility;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 
 import java.io.IOException;
 
@@ -30,6 +31,10 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 public class MainActivity extends AppCompatActivity {
+//    public static String address_localhost = "http://10.0.2.2:8080";
+//    public static String address_210 = "http://210.45.212.96:8080";
+
+
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
 
@@ -40,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
    //服务端交互
     private String address ;
-    private String addresslogin = "http://10.0.2.2:8080/a/login?";
+    //private String addresslogin = address_210 + " /a/login?";
+    private String addresslogin =  " http://210.45.212.96:8080/a/login?";
+
     private RequestBody requestBody;
     private SessionGson user;
 
@@ -50,7 +57,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+
+        //加载
+        final QMUITipDialog tipDialog;
+        tipDialog = new QMUITipDialog.Builder(MainActivity.this)
+                .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
+                .setTipWord("正在加载")
+                .create();
+
+
         //状态栏
         QMUIStatusBarHelper.translucent(this);
         View root = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
@@ -68,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressDialog();
+                tipDialog.show();
+
                 String inputName = editName.getText().toString();
                 String inputPsw = editPsw.getText().toString();
 
@@ -76,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if ((inputName==null)||inputPsw==null) {
-                    closeProgressDialog();
+                    tipDialog.dismiss();
+
                     clearEdit();
                     Toast.makeText(MainActivity.this, "账号或密码不能为空", Toast.LENGTH_SHORT).show();
                 }else {
@@ -99,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-
+                                    tipDialog.dismiss();
                                     Toast.makeText(MainActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -113,10 +130,13 @@ public class MainActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    tipDialog.dismiss();
+
                                     if (user.getSessionid()==null){
                                         Toast.makeText(MainActivity.this,"账号密码错误",Toast.LENGTH_SHORT).show();
                                         clearEdit();
-                                        closeProgressDialog();
+
+
                                     }else {
                                         editor = getSharedPreferences("user",MODE_PRIVATE).edit();
                                         editor.putString("loginName",user.getLoginName());
@@ -143,58 +163,10 @@ public class MainActivity extends AppCompatActivity {
         mTopBar.setTitle("账号登录");
     }
 
-private void clearEdit(){
+    private void clearEdit(){
         editName.getText().clear();
         editPsw.getText().clear();
-}
-
-    private void showProgressDialog() {
-        if (progressDialog == null) {
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("正在加载...");
-            progressDialog.setCanceledOnTouchOutside(false);
-        }
-        progressDialog.show();
     }
 
-    /**
-     * 关闭进度对话框
-     */
-    private void closeProgressDialog() {
-        if (progressDialog != null) {
-            progressDialog.dismiss();
-        }
-    }
-
-//     HttpUtil.sendOkHttpRequest(address, user.getSessionid(), new Callback() {
-//        @Override
-//        public void onFailure(Call call, IOException e) {
-//            e.printStackTrace();
-//            runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Toast.makeText(MainActivity.this, "身份认证失败", Toast.LENGTH_SHORT).show();
-//
-//                }
-//            });
-//        }
-//
-//        @Override
-//        public void onResponse(Call call, okhttp3.Response response) throws IOException {
-//            final String responseText = response.body().string();
-//            Log.d("QWQW", "run: " + responseText);
-//            final UserGson name = Utility.handleNameResponse(responseText);
-//
-//            runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-//                    intent.putExtra("role", name.getRoleNames());
-//                    Log.d("AAASAA", "run: "+ name.getRoleNames());
-//                    startActivity(intent);
-//                }
-//            });
-//        }
-//    });
 
 }

@@ -2,7 +2,7 @@ package com.example.admin.androidweather.Activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -58,12 +58,11 @@ public class PlanDeliverActivity extends Activity implements View.OnClickListene
 
     private ProgressDialog progressDialog;
     private String TimeDate = new String();
-    private SharedPreferences preferences;
+
     //未制定发货计划的构件
-    private String address = "http://10.0.2.2:8080/Mobile/hfsj/deliver/deliverAppInterface/findUnPlanComponentList";
+    private String address = "http://210.45.212.96:8080/Mobile/hfsj/deliver/deliverAppInterface/findUnPlanComponentList";
     //发货计划单的登记
-    private String address2 =
-            "http://10.0.2.2:8080/Mobile/hfsj/deliver/deliverAppInterface/savePlanDeliver";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,28 +104,28 @@ public class PlanDeliverActivity extends Activity implements View.OnClickListene
                             componentList.add(component);
                         }
                     }catch (JSONException e){
-                            e.printStackTrace();
+                        e.printStackTrace();
                     }
                 }
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //加载数据
-                            initView();
-                            if(componentList.isEmpty())
-                            {
-                                tvShowSettlement.setEnabled(false);
-                                Toast.makeText(PlanDeliverActivity.this,"目前没有未制定发货计划的构件",Toast.LENGTH_LONG).show();
-                            }
-//                        Toast.makeText(PlanFirstActivity.this,result,Toast.LENGTH_SHORT).show();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //加载数据
+                        initView();
+                        if(componentList.isEmpty())
+                        {
+                            tvShowSettlement.setEnabled(false);
+                            Toast.makeText(PlanDeliverActivity.this,"目前没有未制定发货计划的构件",Toast.LENGTH_LONG).show();
                         }
-                    });
+//                        Toast.makeText(PlanFirstActivity.this,result,Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
 
-   //     initView();
+        //     initView();
 
     }
 
@@ -178,6 +177,7 @@ public class PlanDeliverActivity extends Activity implements View.OnClickListene
 
             //提交表单
             case R.id.tv_settlement:
+
                 //开始缓存
                 showProgressDialog();
 //                if (isAllCheckNo()){
@@ -200,38 +200,10 @@ public class PlanDeliverActivity extends Activity implements View.OnClickListene
                 }
                 Log.d("CCCCC", "CCCC-----"+ request);
 
-                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-                requestBody = RequestBody.create(JSON,"[" + request + "]");
-                Log.d("DDDDDDD", "DDDD-----"+ requestBody);
-                preferences = getSharedPreferences("user",MODE_PRIVATE);
-                String cookie ="jeesite.session.id="+ preferences.getString("sessionId","");
-                HttpUtil.sendPostRequest(address2, requestBody,cookie,new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        e.printStackTrace();
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                closeProgressDialog();
-                                Toast.makeText(PlanDeliverActivity.this, "制定表单失败", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        final String responseText = response.body().string();
-                        final MobileGson mobileGson = Utility.handleMobileResponse(responseText);
-                        final String result = mobileGson.getResult();
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    closeProgressDialog();
-                                    Toast.makeText(PlanDeliverActivity.this, result,Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                    }
-                });
+                Intent intent=new Intent(PlanDeliverActivity.this,PlanDeliver.class);
+                intent.putExtra("requestData",request);
+                intent.putExtra("estimateDate",estimateDate);
+                startActivity(intent);
 
                 break;
             case R.id.main_button_back:

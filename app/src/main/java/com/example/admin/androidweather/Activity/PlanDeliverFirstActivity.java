@@ -82,7 +82,7 @@ public class PlanDeliverFirstActivity extends Activity {
             case "deliverPlan":
                 title.setText("选择供板计划");
                 //修改address
-                address = "http://10.0.2.2:8080/Mobile/hfsj/deliver/deliverAppInterface/getProvidePlanList";
+                address = "http://210.45.212.96:8080/Mobile/hfsj/deliver/deliverAppInterface/getProvidePlanList";
                 break;
             default:
                 break;

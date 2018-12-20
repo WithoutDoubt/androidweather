@@ -62,9 +62,8 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressDialog progressDialog;
     private String TimeDate = new String();
 
-    private String address = "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/findCheckedTransferPlanList";
-    private String address2 =
-            "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
+    private String address = "http://210.45.212.96:8080/Mobile/hfsj/product/appAjax/findCheckedTransferPlanList";
+    private String address2 = "http://210.45.212.96:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
   //  "http://localhost:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
     private SharedPreferences preferences;
 

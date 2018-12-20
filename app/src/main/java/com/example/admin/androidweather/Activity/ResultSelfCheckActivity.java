@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.admin.androidweather.MainActivity;
 import com.example.admin.androidweather.R;
 import com.example.admin.androidweather.gson.ComponentGson;
 import com.example.admin.androidweather.gson.MobileGson;
@@ -19,6 +20,7 @@ import com.example.admin.androidweather.gson.SelfCheckRemarks;
 import com.example.admin.androidweather.util.HttpUtil;
 import com.example.admin.androidweather.util.Utility;
 import com.google.gson.Gson;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +28,6 @@ import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -65,6 +66,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
     //获取信息
     private String componentId ;
+    private String componentName;
     //GSON
     private Gson gson;
     private SelfCheckRemarks remakes;
@@ -88,9 +90,20 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
         super.onCreate(saveInstanceState);
         setContentView(R.layout.result_self_check_layout);
+
+        final QMUITipDialog tipDialog;
+        tipDialog = new QMUITipDialog.Builder(ResultSelfCheckActivity.this)
+                .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
+                .setTipWord("正在加载")
+                .create();
+
+
         componentId = getIntent().getStringExtra("componentId");
-        componentNews = new ComponentGson();
-        componentNews = Utility.handleScanResponse(componentId);
+        componentName = getIntent().getStringExtra("componentCode");
+
+
+//        componentNews = new ComponentGson();
+//        componentNews = Utility.handleComponentResponse(componentId);
         Log.d("PPPPP", "onCreate: " + componentNews.getComponentId());
 
 
@@ -121,7 +134,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
 
         componentCode = (EditText)findViewById(R.id.transfer_location_component_code);
-        componentCode.setText("构件ID:" + componentNews.getComponentCode() );
+        componentCode.setText("构件ID:" + componentCode );
         componentCode.setEnabled(false);
 
         buttonok = (Button)findViewById(R.id.selfcheck_ok);
@@ -134,15 +147,17 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
         buttonok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showProgressDialog();
+                tipDialog.show();
+
                 getComment();
+
+
                 MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 
-                    address =
-                            "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
+                    address = "http://210.45.212.96:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
                             + "?componentId="
-                            + componentNews.getComponentId()
+                            + componentId
                             +"&status=8"
                             +"&remarks="
                             + comment
@@ -158,9 +173,11 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 //关闭进度条
-                                closeProgressDialog();
+                                tipDialog.dismiss();
+
+
                                 Toast.makeText(ResultSelfCheckActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(ResultSelfCheckActivity.this ,ScanSelfCheckActivity.class);
+                                Intent intent = new Intent(ResultSelfCheckActivity.this ,ScanActivity.class);
                                 startActivity(intent);
                             }
                     });
@@ -175,7 +192,9 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         //关闭进度条
-                                        closeProgressDialog();
+                                        tipDialog.dismiss();
+
+
                                         Log.d("AAAA", "onClick: ok");
                                         Toast.makeText(ResultSelfCheckActivity.this,result,Toast.LENGTH_SHORT).show();
                                 }
@@ -188,7 +207,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
         buttonback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ResultSelfCheckActivity.this ,ScanSelfCheckActivity.class);
+                Intent intent = new Intent(ResultSelfCheckActivity.this ,ScanActivity.class);
                 startActivity(intent);
             }
         });
