@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.admin.androidweather.MainActivity;
 import com.example.admin.androidweather.R;
 import com.example.admin.androidweather.SecondActivity;
 import com.example.admin.androidweather.gson.ComponentGson;
@@ -59,6 +58,7 @@ public class ScanActivity extends AppCompatActivity {
         switch(product){
             case "rebar":
                 titleView.setText("钢筋登记");
+                context = ResultScanSecondActivity.class;
                 break;
             case "selfCheck":
                 titleView.setText("构件自检");
@@ -66,21 +66,26 @@ public class ScanActivity extends AppCompatActivity {
                 break;
             case "randomCheck":
                 titleView.setText("构件抽检");
+                context = ResultSelfCheckActivity.class;
                 break;
             case "templateCheck":
                 titleView.setText("模具检查");
+                context = ResultSelfCheckActivity.class;
                 break;
             case "transferLocation":
                 titleView.setText("实际内倒");
                 break;
             case "deliverLogin":
                 titleView.setText("发货登记");
+                context = ResultScanSecondActivity.class;
                 break;
             case "getGood":
                 titleView.setText("收货登记");
+                context = ResultScanSecondActivity.class;
                 break;
             case "drop":
                 titleView.setText("构件报废");
+                context = ResultScanSecondActivity.class;
                 break;
             default:
                 break;
@@ -184,7 +189,7 @@ public class ScanActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                    // Toast.makeText(ScanActivity.this, componentGson.getName(), Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(ScanActivity.this,ResultScanOtherActivity.class);
+                                    Intent intent = new Intent(ScanActivity.this,context);
 
                                     intent.putExtra("name",componentGson.getName());
                                     intent.putExtra("componentCode",componentGson.getComponentCode());

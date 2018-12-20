@@ -40,7 +40,7 @@
         <activity android:name=".Activity.PlanDeliverFirstActivity"/>
         <activity android:name=".Activity.PlanDeliverActivity"/>
 
-        <activity android:name=".Activity.ResultScanOtherActivity"/>
+        <activity android:name=".Activity.ResultScanSecondActivity"/>
         <activity android:name=".Activity.PlanDeliver"/>
     </application>
 

@@ -9,10 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.admin.androidweather.Activity.PlanDeliver;
 import com.example.admin.androidweather.Activity.PlanDeliverFirstActivity;
 import com.example.admin.androidweather.Activity.PlanFirstActivity;
-import com.example.admin.androidweather.Activity.ResultScanOtherActivity;
+import com.example.admin.androidweather.Activity.ResultSelfCheckActivity;
 import com.example.admin.androidweather.Activity.ScanActivity;
 import com.example.admin.androidweather.R;
 
@@ -69,7 +68,18 @@ public class MyFragment extends Fragment {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( getActivity(),  ScanActivity.class );
+                Intent intent = new Intent( getActivity(), ScanActivity.class );
+                //                intent.putExtra("product","rebar");
+//                intent.putExtra("componentId","0395c752fc624ce59fd4b9b810bacb65");
+//                intent.putExtra("name"," ");
+//                intent.putExtra("componentCode"," ");
+//                intent.putExtra("componentTypeCode"," ");
+//                intent.putExtra("weight"," ");
+//                intent.putExtra("dimension"," ");
+//                intent.putExtra("floor"," ");
+//                intent.putExtra("blockName"," ");
+//                intent.putExtra("spell"," ");
+
                 intent.putExtra("product","selfCheck");
                 startActivity(intent);
             }
@@ -83,7 +93,7 @@ public class MyFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent( getActivity(), ScanActivity.class );
                 intent.putExtra("product","randomCheck");
-                intent.putExtra("componentId","KLY000701");
+                //intent.putExtra("componentId","KLY000701");
                 startActivity(intent);
 
             }

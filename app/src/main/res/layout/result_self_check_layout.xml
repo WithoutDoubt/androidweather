@@ -5,27 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/result_selfcheck_topbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:text="构件抽检"
-            />
-        <Button
-            android:id="@+id/button_back"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_back"/>
-    </RelativeLayout>
+        android:layout_height="?attr/qmui_topbar_height" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -246,6 +230,38 @@
                 android:layout_weight="2"
                 android:clickable="true"
                 android:text="确认合格"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textSize="?attr/qmui_common_list_item_title_h_text_size"
+                app:qmui_isRadiusAdjustBounds="true" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/qmui_config_color_white"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/selfcheck_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:clickable="true"
+                android:text="确认不合格"
                 android:gravity="center"
                 android:padding="10dp"
                 android:textSize="?attr/qmui_common_list_item_title_h_text_size"

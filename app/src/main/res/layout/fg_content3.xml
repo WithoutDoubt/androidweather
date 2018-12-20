@@ -116,7 +116,7 @@
                     android:drawableTop="@mipmap/ic_a_transferplan"
                     android:drawablePadding="10dp"
                     android:gravity="center"
-                    android:text="内倒计划"
+                    android:text="内运计划"
                     android:textColor="@color/bg_black"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -138,7 +138,7 @@
                     android:drawableTop="@mipmap/ic_a_transfercheck"
                     android:drawablePadding="10dp"
                     android:gravity="center"
-                    android:text="内倒审核"
+                    android:text="内运审核"
                     android:textColor="@color/bg_black"
                     android:textSize="16sp" />
 
@@ -150,7 +150,7 @@
                     android:drawableTop="@mipmap/ic_a_transferlocation"
                     android:drawablePadding="10dp"
                     android:gravity="center"
-                    android:text="实际内倒"
+                    android:text="实际内运"
                     android:textColor="@color/bg_black"
                     android:textSize="16sp"
                     />
