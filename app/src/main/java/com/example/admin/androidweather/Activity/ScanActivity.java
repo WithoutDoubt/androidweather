@@ -74,6 +74,7 @@ public class ScanActivity extends AppCompatActivity {
                 break;
             case "transferLocation":
                 titleView.setText("实际内运");
+                context = TransferLocationActivity.class;
                 break;
             case "deliverLogin":
                 titleView.setText("发货登记");
@@ -191,16 +192,28 @@ public class ScanActivity extends AppCompatActivity {
                                    // Toast.makeText(ScanActivity.this, componentGson.getName(), Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(ScanActivity.this,context);
 
-                                    intent.putExtra("name",componentGson.getName());
-                                    intent.putExtra("componentCode",componentGson.getComponentCode());
-                                    intent.putExtra("componentTypeCode",componentGson.getComponentTypeCode());
-                                    intent.putExtra("weight",componentGson.getWeight());
-                                    intent.putExtra("dimension",componentGson.getDimension());
-                                    intent.putExtra("floor",componentGson.getFloor());
-                                    intent.putExtra("blockName",componentGson.getBlockName());
-                                    intent.putExtra("spell",componentGson.getSpell());
-                                    intent.putExtra("componentId",content);
+//                                    intent.putExtra("name",componentGson.getName());
+//                                    intent.putExtra("componentCode",componentGson.getComponentCode());
+//                                    intent.putExtra("componentTypeCode",componentGson.getComponentTypeCode());
+//                                    intent.putExtra("weight",componentGson.getWeight());
+//                                    intent.putExtra("dimension",componentGson.getDimension());
+//                                    intent.putExtra("floor",componentGson.getFloor());
+//                                    intent.putExtra("blockName",componentGson.getBlockName());
+//                                    intent.putExtra("spell",componentGson.getSpell());
+//                                    intent.putExtra("componentId",content);
                                     intent.putExtra("product",product);
+
+
+                                    //                intent.putExtra("product","rebar");
+                                    intent.putExtra("componentId","0395c752fc624ce59fd4b9b810bacb65");
+                                    intent.putExtra("name","康利园");
+                                    intent.putExtra("componentCode"," KLY000076");
+                                    intent.putExtra("componentTypeCode","KLY-C30-YWQ4-2");
+                                    intent.putExtra("weight","4.31");
+                                    intent.putExtra("dimension","3.00");
+                                    intent.putExtra("floor","6");
+                                    intent.putExtra("blockName","1");
+                                    intent.putExtra("spell","KLY");
 
                                     startActivity(intent);
 

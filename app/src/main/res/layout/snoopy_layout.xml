@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/qmuiblue"
+    android:fitsSystemWindows="true"
+    tools:context=".Activity.ResultScanActivity"
+    android:theme="@style/QMUI.Compat"
+
+    >
+    <include
+        android:id="@+id/title_snoopy"
+        layout="@layout/title_layout"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/qmui_config_color_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview_validateinfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+                android:paddingLeft="?attr/qmui_content_padding_horizontal"
+                android:paddingRight="?attr/qmui_content_padding_horizontal"
+                android:paddingTop="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+                android:text="构件图纸\\实物"
+                android:textColor="?attr/qmui_config_color_gray_3"
+                android:textSize="@dimen/qmui_group_list_section_header_footer_text_size" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/qmui_s_list_item_bg_with_border_bottom" />
+
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/qmui_config_color_white"
+                android:columnCount="3"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+                <!--账号-->
+                <!--手机号-->
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:adjustViewBounds="true"
+                    android:paddingLeft="?attr/qmui_content_padding_horizontal"
+                    android:paddingTop="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+                    android:paddingRight="?attr/qmui_content_padding_horizontal"
+                    android:paddingBottom="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+                    android:src="@mipmap/ic_snoopy_1" />
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="match_parent"
+                    android:layout_row="1"
+                    android:layout_column="2"
+                    android:adjustViewBounds="true"
+                    android:paddingLeft="?attr/qmui_content_padding_horizontal"
+                    android:paddingTop="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+                    android:paddingRight="?attr/qmui_content_padding_horizontal"
+                    android:paddingBottom="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+                    android:src="@mipmap/ic_snoopy_5" />
+
+            </GridLayout>
+            <!--说明-->
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/qmui_s_list_item_bg_with_border_bottom" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+                android:paddingLeft="?attr/qmui_content_padding_horizontal"
+                android:paddingRight="?attr/qmui_content_padding_horizontal"
+                android:paddingTop="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+                android:text="构件信息"
+                android:textColor="?attr/qmui_config_color_gray_3"
+                android:textSize="@dimen/qmui_group_list_section_header_footer_text_size" />
+
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/qmui_config_color_white"
+                android:columnCount="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qmui_list_item_height"
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@drawable/qmui_s_list_item_bg_with_border_bottom"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="项目名称：康利园"
+                    android:textColor="?attr/qmui_config_color_gray_1"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
+                <!--放一排的样子-->
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qmui_list_item_height"
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@drawable/qmui_s_list_item_bg_with_border_bottom"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="楼栋|楼层：1 | 5"
+                    android:textColor="?attr/qmui_config_color_gray_1"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
+
+
+
+
+                <!--密码输入框-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qmui_list_item_height"
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@drawable/qmui_s_list_item_bg_with_border_bottom"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="构件编号：KLY000031"
+                    android:textColor="?attr/qmui_config_color_gray_1"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qmui_list_item_height"
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@drawable/qmui_s_list_item_bg_with_border_bottom"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="构件型号：KLY-C80-YWQ"
+                    android:textColor="?attr/qmui_config_color_gray_1"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
+                <!--密码输入框-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qmui_list_item_height"
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@drawable/qmui_s_list_item_bg_with_border_bottom"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="重量( t )：1.0"
+                    android:textColor="?attr/qmui_config_color_gray_1"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qmui_list_item_height"
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@drawable/qmui_s_list_item_bg_with_border_bottom"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="构件方量( m³ )：1.7"
+                    android:textColor="?attr/qmui_config_color_gray_1"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
+                <!--密码输入框-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qmui_list_item_height"
+                    android:layout_gravity="fill_horizontal"
+                    android:background="@drawable/qmui_s_list_item_bg_with_border_bottom"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="生产日期：2018年10月18日"
+                    android:textColor="?attr/qmui_config_color_gray_1"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
+            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/qmui_s_list_item_bg_with_border_bottom" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+                android:paddingLeft="?attr/qmui_content_padding_horizontal"
+                android:paddingRight="?attr/qmui_content_padding_horizontal"
+                android:paddingTop="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+                android:text="生产流程"
+                android:textColor="?attr/qmui_config_color_gray_3"
+                android:textSize="@dimen/qmui_group_list_section_header_footer_text_size" />
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@color/qmui_config_color_white"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rlTimeline1"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tvTopLine1"
+                        android:layout_width="0.5dp"
+                        android:layout_height="12dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+
+                    <TextView
+                        android:id="@+id/tvDot1"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_below="@id/tvTopLine1"
+                        android:layout_centerHorizontal="true"
+                        android:background="@mipmap/ic_point_gray" />
+
+                    <TextView
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/tvDot1"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlCenter1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="6dp">
+
+                    <TextView
+                        android:id="@+id/tvAcceptTime1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2018/10/21 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvAcceptStation1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAcceptTime1"
+                        android:layout_marginTop="5dp"
+                        android:text="构件已验收 , 验收人 ：秦明 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@color/qmui_config_color_white"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rlTimeline2"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tvTopLine2"
+                        android:layout_width="0.5dp"
+                        android:layout_height="12dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+
+                    <TextView
+                        android:id="@+id/tvDot2"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_below="@id/tvTopLine2"
+                        android:layout_centerHorizontal="true"
+                        android:background="@mipmap/ic_point_gray" />
+
+                    <TextView
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/tvDot2"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlCenter2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="6dp">
+
+                    <TextView
+                        android:id="@+id/tvAcceptTime2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2018/10/18 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvAcceptStation2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAcceptTime2"
+                        android:layout_marginTop="5dp"
+                        android:text="构件已发货 , 发货人 ：徐新 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@color/qmui_config_color_white"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rlTimeline3"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tvTopLine3"
+                        android:layout_width="0.5dp"
+                        android:layout_height="12dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+
+                    <TextView
+                        android:id="@+id/tvDot3"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_below="@id/tvTopLine3"
+                        android:layout_centerHorizontal="true"
+                        android:background="@mipmap/ic_point_gray" />
+
+                    <TextView
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/tvDot3"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlCenter3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="6dp">
+
+                    <TextView
+                        android:id="@+id/tvAcceptTime3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2018/10/18 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvAcceptStation3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAcceptTime3"
+                        android:layout_marginTop="5dp"
+                        android:text="构件已抽检 , 抽检人 ：李亮 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@color/qmui_config_color_white"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rlTimeline4"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tvTopLine4"
+                        android:layout_width="0.5dp"
+                        android:layout_height="12dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+
+                    <TextView
+                        android:id="@+id/tvDot4"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_below="@id/tvTopLine4"
+                        android:layout_centerHorizontal="true"
+                        android:background="@mipmap/ic_point_gray" />
+
+                    <TextView
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/tvDot4"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlCenter4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="6dp">
+
+                    <TextView
+                        android:id="@+id/tvAcceptTime4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2018/10/18 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvAcceptStation4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAcceptTime4"
+                        android:layout_marginTop="5dp"
+                        android:text="构件已自检 , 自检人 ：刘丹 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@color/qmui_config_color_white"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rlTimeline5"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tvTopLine5"
+                        android:layout_width="0.5dp"
+                        android:layout_height="12dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+
+                    <TextView
+                        android:id="@+id/tvDot5"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_below="@id/tvTopLine5"
+                        android:layout_centerHorizontal="true"
+                        android:background="@mipmap/ic_point_gray" />
+
+                    <TextView
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/tvDot5"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlCenter5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="6dp">
+
+                    <TextView
+                        android:id="@+id/tvAcceptTime5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2018/10/18"
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvAcceptStation5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAcceptTime5"
+                        android:layout_marginTop="5dp"
+                        android:text="构件已生产 , 生产人 ：褚志超 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@color/qmui_config_color_white"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/rlTimeline"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tvTopLine"
+                        android:layout_width="0.5dp"
+                        android:layout_height="12dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+
+                    <TextView
+                        android:id="@+id/tvDot"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_below="@id/tvTopLine"
+                        android:layout_centerHorizontal="true"
+                        android:background="@mipmap/ic_point_gray" />
+
+                    <TextView
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/tvDot"
+                        android:layout_centerHorizontal="true"
+                        android:background="#999" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlCenter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="6dp">
+
+                    <TextView
+                        android:id="@+id/tvAcceptTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2018/10/1 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvAcceptStation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAcceptTime"
+                        android:layout_marginTop="5dp"
+                        android:text="构件已设计 , 设计人 ：王志 "
+                        android:textColor="#999"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+                <!--<View-->
+                <!--android:id="@+id/view_top_line"-->
+                <!--android:layout_width="2dp"-->
+                <!--android:layout_height="15dp"-->
+                <!--android:background="@color/lightgray"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_marginTop="-1dp"-->
+                <!--/>-->
+
+                <!--&lt;!&ndash; 圆点 &ndash;&gt;-->
+                <!--<ImageView-->
+                <!--android:id="@+id/iv_expres_spot"-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:background="@mipmap/ic_point_gray"-->
+                <!--android:layout_marginBottom="2dp"-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--/>-->
+
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:paddingBottom="@dimen/qmui_group_list_section_header_footer_padding_vertical"-->
+                    <!--android:paddingLeft="?attr/qmui_content_padding_horizontal"-->
+                    <!--android:paddingRight="?attr/qmui_content_padding_horizontal"-->
+                    <!--android:paddingTop="@dimen/qmui_group_list_section_header_footer_padding_vertical"-->
+                    <!--&gt;-->
+                    <!--&lt;!&ndash; 上面的竖线 &ndash;&gt;-->
+                    <!--<View-->
+                        <!--android:id="@+id/view_top_line"-->
+                        <!--android:layout_width="2dp"-->
+                        <!--android:layout_height="15dp"-->
+                        <!--android:background="@color/lightgray"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--android:layout_marginTop="-1dp"-->
+                        <!--/>-->
+
+                    <!--&lt;!&ndash; 圆点 &ndash;&gt;-->
+                    <!--<ImageView-->
+                        <!--android:id="@+id/iv_expres_spot"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:background="@mipmap/ic_point_gray"-->
+                        <!--android:layout_marginBottom="2dp"-->
+                        <!--android:layout_marginTop="2dp"-->
+                        <!--/>-->
+
+                    <!--&lt;!&ndash; 竖线 &ndash;&gt;-->
+                    <!--<View-->
+                        <!--android:layout_width="2dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="@color/lightgray"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--/>-->
+
+                <!--</LinearLayout>-->
+
+                <!-- 右边 -->
+                <!--<LinearLayout-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:paddingBottom="@dimen/qmui_group_list_section_header_footer_padding_vertical"-->
+                    <!--android:paddingLeft="?attr/qmui_content_padding_horizontal"-->
+                    <!--android:paddingRight="?attr/qmui_content_padding_horizontal"-->
+                    <!--android:paddingTop="@dimen/qmui_group_list_section_header_footer_padding_vertical"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_marginTop="17dp"-->
+
+                    <!--&gt;-->
+                    <!---->
+                    <!--&lt;!&ndash; 底部分割线 &ndash;&gt;-->
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:background="@color/lightgray"-->
+                        <!--android:layout_height="0.5dp"-->
+                        <!--/>-->
+                <!--</LinearLayout>-->
+
+
+
+
+
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/qmui_config_color_white"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:padding="5dp">-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical"-->
+            <!--android:paddingBottom="@dimen/qmui_group_list_section_header_footer_padding_vertical"-->
+            <!--android:paddingLeft="?attr/qmui_content_padding_horizontal"-->
+            <!--android:paddingRight="?attr/qmui_content_padding_horizontal"-->
+            <!--android:paddingTop="@dimen/qmui_group_list_section_header_footer_padding_vertical"-->
+            <!--&gt;-->
+            <!--&lt;!&ndash; 上面的竖线 &ndash;&gt;-->
+            <!--<View-->
+            <!--android:id="@+id/view_top_line"-->
+            <!--android:layout_width="2dp"-->
+            <!--android:layout_height="15dp"-->
+            <!--android:background="@color/lightgray"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_marginTop="-1dp"-->
+            <!--/>-->
+
+            <!--&lt;!&ndash; 圆点 &ndash;&gt;-->
+            <!--<ImageView-->
+            <!--android:id="@+id/iv_expres_spot"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:background="@mipmap/ic_point_gray"-->
+            <!--android:layout_marginBottom="2dp"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--/>-->
+
+            <!--&lt;!&ndash; 竖线 &ndash;&gt;-->
+            <!--<View-->
+            <!--android:layout_width="2dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/lightgray"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--/>-->
+
+            <!--</LinearLayout>-->
+            <!---->
+            <!---->
+        <!--</LinearLayout>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--按钮-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/qmui_config_color_white"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/button_snoopy_ok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:clickable="true"
+                    android:text="确认"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size"
+                    app:qmui_isRadiusAdjustBounds="true" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

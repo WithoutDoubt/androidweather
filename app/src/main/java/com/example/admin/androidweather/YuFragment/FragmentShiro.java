@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.admin.androidweather.Activity.ResultSelfCheckActivity;
-import com.example.admin.androidweather.Activity.TranferLocationActivity;
+import com.example.admin.androidweather.Activity.SnoopyActivity;
+import com.example.admin.androidweather.Activity.TransferLocationActivity;
 import com.example.admin.androidweather.R;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
@@ -79,7 +79,7 @@ public class FragmentShiro extends Fragment {
                 //  result.setText("扫描结果是："+content);
 
                 //实际内倒登记
-                Intent intent = new Intent( getActivity() ,TranferLocationActivity.class );
+                Intent intent = new Intent( getActivity() ,SnoopyActivity.class );
 
 
                 //传输content

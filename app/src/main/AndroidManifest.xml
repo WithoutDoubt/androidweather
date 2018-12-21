@@ -30,7 +30,7 @@
             android:name=".TransferPlanActivity"
             android:parentActivityName=".SecondActivity" />
         <activity android:name=".Activity.ResultSelfCheckActivity" />
-        <activity android:name=".Activity.TranferLocationActivity" />
+        <activity android:name=".Activity.TransferLocationActivity" />
         <activity android:name=".Activity.ScanActivity"
             android:parentActivityName=".SecondActivity"
             />
@@ -42,6 +42,7 @@
 
         <activity android:name=".Activity.ResultScanSecondActivity"/>
         <activity android:name=".Activity.PlanDeliver"/>
+        <activity android:name=".Activity.SnoopyActivity"/>
     </application>
 
 </manifest>

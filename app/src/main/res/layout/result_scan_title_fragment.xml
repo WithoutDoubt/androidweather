@@ -3,230 +3,66 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rlTimeline"
+            android:layout_width="32dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTopLine"
+                android:layout_width="0.5dp"
+                android:layout_height="12dp"
+                android:layout_centerHorizontal="true"
+                android:background="#999" />
+
+            <TextView
+                android:id="@+id/tvDot"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_below="@id/tvTopLine"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/ic_point_gray" />
+
+            <TextView
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tvDot"
+                android:layout_centerHorizontal="true"
+                android:background="#999" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlCenter"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:paddingBottom="6dp"
+            android:paddingRight="10dp"
+            android:paddingTop="6dp">
 
-
-
-                <TextView
-                    android:id="@+id/button_"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_light"
-                    android:gravity="center"
-                    android:text="钢筋登记[扫描]"
-                    />
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvAcceptTime"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/gray"
-                android:padding="10dp"
+                android:text="2014/06/24 20:55:28"
+                android:textColor="#999"
+                android:textSize="12sp" />
 
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src = "@mipmap/ic_product"
-                    />
-                <TextView
-                    android:id="@+id/button_checkbymyself"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:layout_marginLeft="@dimen/dp_20"
-                    android:text="构件自检[扫描]"
-                    />
-            </LinearLayout>
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvAcceptStation"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="10dp"
-
-
-                >
-
-                <Button
-                    android:id="@+id/button_randomcheck"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_light"
-                    android:gravity="center"
-                    android:text="构件抽检[扫描]"
-                    />
-            </LinearLayout>
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="10dp"
-
-                >
-
-                <Button
-                    android:id="@+id/button_templatecheck"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_light"
-                    android:gravity="center"
-                    android:text="模具检查[扫描]"
-                    />
-            </LinearLayout>
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="10dp"
-
-                >
-
-                <Button
-                    android:id="@+id/button_drop"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_light"
-                    android:gravity="center"
-                    android:text="构件报废[扫描]"
-                    />
-            </LinearLayout>
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="10dp"
-
-                >
-
-                <Button
-                    android:id="@+id/button_tranferplan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_light"
-                    android:gravity="center"
-                    android:text="内倒计划"
-                    />
-
-            </LinearLayout>
-
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="10dp"
-
-                >
-
-                <Button
-                    android:id="@+id/button_tranferplan_check"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_light"
-                    android:gravity="center"
-                    android:text="内倒审核[表单]"
-                    />
-            </LinearLayout>
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="10dp"
-
-                >
-
-                <Button
-                    android:id="@+id/button_transferMap"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_light"
-                    android:gravity="center"
-                    android:text="实际内倒[扫描]"
-                    />
-            </LinearLayout>
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="10dp"
-
-                >
-
-                <Button
-                    android:id="@+id/button_deliverPlan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_light"
-                    android:gravity="center"
-                    android:text="发货计划"
-                    />
-            </LinearLayout>
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="10dp"
-
-                >
-
-                <Button
-                    android:id="@+id/button_deliverLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_light"
-                    android:gravity="center"
-                    android:text="发货登记"
-                    />
-            </LinearLayout>
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:padding="10dp"
-
-                >
-
-                <Button
-                    android:id="@+id/button_getGood"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_light"
-                    android:gravity="center"
-                    android:text="收货登记"
-                    />
-            </LinearLayout>
-
-
-
-
-        </LinearLayout>
-    </ScrollView>
+                android:layout_below="@id/tvAcceptTime"
+                android:layout_marginTop="5dp"
+                android:text="快件在 深圳 ,准备送往下一站 深圳集散中心 [深圳市]"
+                android:textColor="#999"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
 
