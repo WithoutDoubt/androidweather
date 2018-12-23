@@ -15,13 +15,11 @@ import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
 import com.example.admin.androidweather.YuAdapter.PlanCartAdapter;
+import com.example.admin.androidweather.gson.AddressUse;
 import com.example.admin.androidweather.gson.ComponentGson;
 import com.example.admin.androidweather.gson.MobileGson;
 import com.example.admin.androidweather.util.HttpUtil;
 import com.example.admin.androidweather.util.Utility;
-import com.hh.timeselector.timeutil.datedialog.DateListener;
-import com.hh.timeselector.timeutil.datedialog.TimeConfig;
-import com.hh.timeselector.timeutil.datedialog.TimeSelectorDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 
 import org.json.JSONArray;
@@ -36,7 +34,6 @@ import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -65,8 +62,8 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressDialog progressDialog;
     private String TimeDate = new String();
 
-    private String address = "http://210.45.212.96:8080/Mobile/hfsj/product/appAjax/findCheckedTransferPlanList";
-    private String address2 = "http://210.45.212.96:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
+    private String address_head = AddressUse.ADDRESS_HEAD + "Mobile/hfsj/product/appAjax/findCheckedTransferPlanList";
+    private String address_save = AddressUse.ADDRESS_HEAD + "Mobile/hfsj/product/appAjax/saveNewTransfer";
   //  "http://localhost:8080/Mobile/hfsj/product/appAjax/saveNewTransfer";
     private SharedPreferences preferences;
 
@@ -81,7 +78,7 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
         estimateDate = getIntent().getStringExtra("date")+" 01:00:00";
         Log.d("HHHH", estimateDate);
 
-        address = address + "?productLineId=" + productLineId;
+        String address = address_head + "?productLineId=" + productLineId;
         //服务端交互获取构件
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
@@ -213,7 +210,8 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
                 preferences = getSharedPreferences("user",MODE_PRIVATE);
                 String cookie ="jeesite.session.id="+ preferences.getString("sessionId","");
                 Log.d("AABB", "onClick: "+cookie);
-                HttpUtil.sendPostRequest(address2, requestBody,cookie,new Callback() {
+
+                HttpUtil.sendPostRequest(address_save, requestBody,cookie,new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         e.printStackTrace();

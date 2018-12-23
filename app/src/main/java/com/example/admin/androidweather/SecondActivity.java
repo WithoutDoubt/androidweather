@@ -8,6 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.admin.androidweather.YuFragment.FragmentShiro;
+import com.example.admin.androidweather.YuFragment.FragmentUser;
 import com.example.admin.androidweather.YuFragment.MyFragment;
 
 public class SecondActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
@@ -17,8 +18,8 @@ public class SecondActivity extends AppCompatActivity implements RadioGroup.OnCh
     private String rolename;
 
     private MyFragment fg1;
-    //private FragmentHome fg3;
-    private FragmentShiro fg2,fg3;
+    private FragmentUser fg3;
+    private FragmentShiro fg2;
     private FragmentManager fManager;
     //
 
@@ -65,13 +66,13 @@ public class SecondActivity extends AppCompatActivity implements RadioGroup.OnCh
                 }
                 break;
             case R.id.rb_setting:
-//                if (fg3 == null){
-//                    fg3 = new FragmentHome();
-//                    fTransaction.add(R.id.ly_content,fg3);
-//                }
-//                else{
-//                    fTransaction.show(fg3);
-//                }
+                if (fg3 == null){
+                    fg3 = new FragmentUser();
+                    fTransaction.add(R.id.ly_content,fg3);
+                }
+                else{
+                    fTransaction.show(fg3);
+                }
                 break;
          }
          fTransaction.commit();

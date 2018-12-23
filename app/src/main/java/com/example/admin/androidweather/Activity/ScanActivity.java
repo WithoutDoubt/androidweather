@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
 import com.example.admin.androidweather.SecondActivity;
+import com.example.admin.androidweather.gson.AddressUse;
 import com.example.admin.androidweather.gson.ComponentGson;
 import com.example.admin.androidweather.util.HttpUtil;
 import com.yanzhenjie.permission.Action;
@@ -41,10 +42,12 @@ public class ScanActivity extends AppCompatActivity {
 
     private Button buttonBack;
     private TextView titleView;
+    private String address_head;
+    private Boolean tag = true;
 
     Class<?>  context;
 
-    ComponentGson componentGson;
+    ComponentGson componentGson =new ComponentGson();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,9 @@ public class ScanActivity extends AppCompatActivity {
        // titleView.setBackgroundColor(R.color.app_color_blue_2);
         //决定扫描后跳转的页面,
         product = getIntent().getStringExtra("product");
+        address_head = AddressUse.ADDRESS_HEAD + "Mobile/hfsj/transferplan/transferplanAppInterface/selectComponents?componentId=";
+
+
         switch(product){
             case "rebar":
                 titleView.setText("钢筋登记");
@@ -69,7 +75,10 @@ public class ScanActivity extends AppCompatActivity {
                 context = ResultSelfCheckActivity.class;
                 break;
             case "templateCheck":
+                tag = false;
                 titleView.setText("模具检查");
+                address_head = AddressUse.ADDRESS_HEAD + "Mobile/hfsj/product/appAjax/selectTemplate?templateId=";
+
                 context = ResultSelfCheckActivity.class;
                 break;
             case "transferLocation":
@@ -142,8 +151,7 @@ public class ScanActivity extends AppCompatActivity {
                     final String content = data.getStringExtra(Constant.CODED_CONTENT);
                     //  result.setText("扫描结果是："+content);
 
-                    String  address = "http://210.45.212.96:8080/Mobile/hfsj/transferplan/transferplanAppInterface/" +
-                            "selectComponents?componentId=" + content;
+                    String  address = address_head  + content;
 //                    String  address = "http://10.0.2.2:8080/Mobile/hfsj/transferplan/transferplanAppInterface/" +
 //                            "selectComponents?componentId=" + content;
 
@@ -180,6 +188,13 @@ public class ScanActivity extends AppCompatActivity {
                                         componentGson.setFloor(productLineObject.getString("floor"));
                                         componentGson.setBlockName(productLineObject.getString("blockName"));
                                         componentGson.setSpell(productLineObject.getString("spell"));
+
+                                        componentGson.setName(productLineObject.getString("name"));
+                                        componentGson.setMakeDate(productLineObject.getString("makeDate"));
+                                        componentGson.setProjectName(productLineObject.getString("projectName"));
+                                        componentGson.setTypeName(productLineObject.getString("typeName"));
+                                        componentGson.setCode(productLineObject.getString("code"));
+
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -189,20 +204,35 @@ public class ScanActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                    // Toast.makeText(ScanActivity.this, componentGson.getName(), Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(ScanActivity.this,context);
+                                    if((componentGson.getComponentId()!=null)) {
+                                        Intent intent = new Intent(ScanActivity.this, context);
+                                        try {
+                                            intent.putExtra("componentId", content);
+                                            intent.putExtra("componentCode", componentGson.getComponentCode());
+                                            intent.putExtra("componentTypeCode", componentGson.getComponentTypeCode());
+                                            intent.putExtra("product", product);
 
-                                    intent.putExtra("name",componentGson.getName());
-                                    intent.putExtra("componentCode",componentGson.getComponentCode());
-                                    intent.putExtra("componentTypeCode",componentGson.getComponentTypeCode());
-                                    intent.putExtra("weight",componentGson.getWeight());
-                                    intent.putExtra("dimension",componentGson.getDimension());
-                                    intent.putExtra("floor",componentGson.getFloor());
-                                    intent.putExtra("blockName",componentGson.getBlockName());
-                                    intent.putExtra("spell",componentGson.getSpell());
-                                    intent.putExtra("componentId",content);
-                                    intent.putExtra("product",product);
-
-                                    startActivity(intent);
+                                            if (tag) {
+                                                intent.putExtra("name", componentGson.getName());
+                                                intent.putExtra("weight", componentGson.getWeight());
+                                                intent.putExtra("dimension", componentGson.getDimension());
+                                                intent.putExtra("floor", componentGson.getFloor());
+                                                intent.putExtra("blockName", componentGson.getBlockName());
+                                                intent.putExtra("spell", componentGson.getSpell());
+                                            } else {
+                                                intent.putExtra("Projectname", componentGson.getProjectName());
+                                                intent.putExtra("makeData", componentGson.getMakeDate());
+                                                intent.putExtra("projectName", componentGson.getProjectName());
+                                                intent.putExtra("typeName", componentGson.getType());
+                                                intent.putExtra("code", componentGson.getCode());
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                        startActivity(intent);
+                                    }else {
+                                        Toast.makeText(ScanActivity.this,"请扫描正确的二维码",Toast.LENGTH_SHORT).show();
+                                    }
 
                                 }
                             });

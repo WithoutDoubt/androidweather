@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
+import com.example.admin.androidweather.gson.AddressUse;
 import com.example.admin.androidweather.gson.ProductLineGson;
 import com.example.admin.androidweather.gson.ProvidePlanGson;
 import com.example.admin.androidweather.util.HttpUtil;
@@ -84,7 +85,7 @@ public class PlanFirstActivity extends AppCompatActivity {
                 title.setText("选择供板计划");
                 context = PlanDeliverActivity.class;
                 //修改address
-                address = "http://210.45.212.96:8080/Mobile/hfsj/deliver/deliverAppInterface/getProvidePlanList";
+                address = AddressUse.ADDRESS_HEAD + "Mobile/hfsj/deliver/deliverAppInterface/getProvidePlanList";
                 //显示转圈圈
                 showProgressDialog();
                 //服务器交互拿数据

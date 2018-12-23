@@ -14,17 +14,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.admin.androidweather.gson.AddressUse;
 import com.example.admin.androidweather.gson.SessionGson;
+import com.example.admin.androidweather.gson.UserMenu;
 import com.example.admin.androidweather.util.HttpUtil;
 import com.example.admin.androidweather.util.Utility;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Address;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -41,13 +49,16 @@ public class MainActivity extends AppCompatActivity {
     private EditText editName;
     private EditText editPsw;
 
+    private List<UserMenu> list_menu ;
+   // private AddressUse addressUse;
+
     private ProgressDialog progressDialog;
 
    //服务端交互
     private String address ;
     //private String addresslogin = address_210 + " /a/login?";
-    private String addresslogin =  " http://210.45.212.96:8080/a/login?";
-
+    //private String addresslogin =  " http://210.45.212.96:8080/a/login?";
+    private String addresslogin = AddressUse.ADDRESS_HEAD +"a/login?";
     private RequestBody requestBody;
     private SessionGson user;
 
@@ -79,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         editPsw = (EditText)findViewById(R.id.et_password);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = getSharedPreferences("user",MODE_PRIVATE).edit();
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +138,32 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(Call call, okhttp3.Response response) throws IOException {
                             final String responseText = response.body().string();
                             user = Utility.handleUserResponse(responseText);
+                            list_menu  = new ArrayList<UserMenu>();
 
+                            /*测试*/
+                            try {
+                                JSONObject jsonObject = new JSONObject(responseText);
+                                JSONArray jsonArray = jsonObject.getJSONArray("menuList");
+                                //获取完menulist
+
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject menuObject = jsonArray.getJSONObject(i);
+                                    UserMenu userMenu = new UserMenu();
+
+                                   // if (menuObject.getString("target") == "mobile") {
+                                        userMenu.setName(menuObject.getString("name"));
+                                        list_menu.add(userMenu);
+                                    // }
+                                }
+                                //return list;
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                //return null;
+                            }
+
+                            /*测试*/
+
+                          //  list_menu  = Utility.handleUserMenuResponse(responseText);
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -138,10 +175,74 @@ public class MainActivity extends AppCompatActivity {
 
 
                                     }else {
+                                        //测试
+                                        //String a = list_menu.get(0).getName();
+
+
                                         editor = getSharedPreferences("user",MODE_PRIVATE).edit();
                                         editor.putString("loginName",user.getLoginName());
                                         editor.putString("sessionId",user.getSessionid());
                                         editor.putString("roleName",user.getRoleName());
+                                        editor.putString("name",user.getName());
+                                        editor.putString("email",user.getEmail());
+                                        editor.putString("phone",user.getPhone());
+                                        editor.putString("mobile",user.getMobile());
+                                        editor.putString("no",user.getNo());
+
+
+                                        editor.putString("mobile_1","");
+                                        editor.putString("mobile_2","");
+                                        editor.putString("mobile_3","");
+                                        editor.putString("mobile_4","");
+                                        editor.putString("mobile_5","");
+                                        editor.putString("mobile_6","");
+                                        editor.putString("mobile_7","");
+                                        editor.putString("mobile_8","");
+                                        editor.putString("mobile_9","");
+                                        editor.putString("mobile_10","");
+                                        editor.putString("mobile_11","");
+
+                                        if(!list_menu.isEmpty()) {
+                                            for (UserMenu item : list_menu) {
+                                                switch (item.getName()) {
+                                                    case "钢筋登记":
+                                                        editor.putString("mobile_1", item.getName());
+                                                        break;
+                                                    case "构件自检":
+                                                        editor.putString("mobile_2", item.getName());
+                                                        break;
+                                                    case "构件抽检":
+                                                        editor.putString("mobile_3", item.getName());
+                                                        break;
+                                                    case "模具抽检":
+                                                        editor.putString("mobile_4", item.getName());
+                                                        break;
+                                                    case "内运计划":
+                                                        editor.putString("mobile_5", item.getName());
+                                                        break;
+                                                    case "内运审核":
+                                                        editor.putString("mobile_6", item.getName());
+                                                        break;
+                                                    case "实际内运":
+                                                        editor.putString("mobile_7", item.getName());
+                                                        break;
+                                                    case "发货计划":
+                                                        editor.putString("mobile_8", item.getName());
+                                                        break;
+                                                    case "构件报废":
+                                                        editor.putString("mobile_9", item.getName());
+                                                        break;
+                                                    case "发货登记":
+                                                        editor.putString("mobile_10", item.getName());
+                                                        break;
+                                                    case "收货登记":
+                                                        editor.putString("mobile_10", item.getName());
+                                                        break;
+
+                                                }
+                                            }
+                                        }
+
                                         editor.commit();
                                         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                                         intent.putExtra("role",user.getRoleName());

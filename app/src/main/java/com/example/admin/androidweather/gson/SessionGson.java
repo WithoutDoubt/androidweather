@@ -1,8 +1,12 @@
 package com.example.admin.androidweather.gson;
 
+import java.util.List;
+
 public class SessionGson {
 
 
+
+    private String name;
 
     private String loginName;
     private String no;
@@ -13,6 +17,30 @@ public class SessionGson {
     private String sessionid;
     private String phone;
     private String roleName;
+
+    //用户列表
+    private List<UserMenu> userMenu;
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    //列表
+    public List<UserMenu> getUserMenu() {
+        return userMenu;
+    }
+
+    public void setUserMenu(List<UserMenu> userMenu) {
+        this.userMenu = userMenu;
+    }
+    //
+
+
     public String getLoginName() {
         return loginName;
     }

@@ -3,18 +3,22 @@ package com.example.admin.androidweather.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
+import com.example.admin.androidweather.gson.AddressUse;
 import com.example.admin.androidweather.gson.ComponentGson;
 import com.example.admin.androidweather.gson.MobileGson;
 import com.example.admin.androidweather.util.HttpUtil;
 import com.example.admin.androidweather.util.Utility;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 
@@ -41,7 +45,9 @@ public class ResultScanSecondActivity extends AppCompatActivity {
     private ComponentGson componentGson;
     private String status_ok;
     private String status_no;
-
+    private String address_inter;
+    private int mCurrentDialogStyle = com.qmuiteam.qmui.R.style.QMUI_Dialog;
+    private String remarks;
     //
    // EditText editText_0 = (EditText)findViewById(R.id.edittext_name);
     @Override
@@ -93,10 +99,12 @@ public class ResultScanSecondActivity extends AppCompatActivity {
         });
         topBar.setBackgroundColor(getColor(R.color.app_color_blue_2));
 
+
         switch(product){
             case "rebar":
                 topBar.setTitle("钢筋登记");
                 buttonok.setText("确认登记");
+                address_inter = "Mobile/hfsj/product/appAjax/updateComponentStatus";
                 status_ok = "4";
                 break;
             case "transferLocation":
@@ -104,6 +112,7 @@ public class ResultScanSecondActivity extends AppCompatActivity {
                 status_ok = "12";
                 break;
             case "deliverLogin":
+                address_inter ="Mobile/hfsj/deliver/deliverAppInterface/saveDeliver";
                 topBar.setTitle("发货登记");
                 buttonok.setText("确认发货");
                 status_ok = "13";
@@ -145,7 +154,7 @@ public class ResultScanSecondActivity extends AppCompatActivity {
 //                        + componentId
 //                        +"&status="
 //                        +status_ok;
-                address = "http://210.45.212.96:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
+                address = AddressUse.ADDRESS_HEAD + address_inter
                         + "?componentId="
                         + componentId
                         + "&status="
@@ -230,7 +239,7 @@ public class ResultScanSecondActivity extends AppCompatActivity {
         buttonno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tipDialog.show();
+                showEditTextDialog();
 
 //                address = "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
 //                        + "?componentId="
@@ -354,5 +363,32 @@ public class ResultScanSecondActivity extends AppCompatActivity {
     editText_7.setText(dimension);
     editText_7.setEnabled(false);
 }
+    private void showEditTextDialog() {
+        final QMUIDialog.EditTextDialogBuilder builder = new QMUIDialog.EditTextDialogBuilder(ResultScanSecondActivity.this);
+        builder.setTitle("标题")
+                .setPlaceholder("在此输入退货原因")
+                .setInputType(InputType.TYPE_CLASS_TEXT)
+                .addAction("取消", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        dialog.dismiss();
+                    }
+                })
+                .addAction("确定", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        CharSequence text = builder.getEditText().getText();
+                        if (text != null && text.length() > 0) {
+                            //Toast.makeText(ResultScanSecondActivity.this, "您的昵称: " + text, Toast.LENGTH_SHORT).show();
+                            remarks = new String();
+                            remarks = text.toString();
+                            dialog.dismiss();
+                        } else {
+                            Toast.makeText(ResultScanSecondActivity.this, "请填入退货原因", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .create(mCurrentDialogStyle).show();
+    }
 
 }

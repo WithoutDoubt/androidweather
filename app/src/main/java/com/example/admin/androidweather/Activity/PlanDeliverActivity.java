@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
 import com.example.admin.androidweather.YuAdapter.PlanCartAdapter;
+import com.example.admin.androidweather.gson.AddressUse;
 import com.example.admin.androidweather.gson.ComponentGson;
 import com.example.admin.androidweather.gson.MobileGson;
 import com.example.admin.androidweather.util.HttpUtil;
@@ -60,7 +61,7 @@ public class PlanDeliverActivity extends Activity implements View.OnClickListene
     private String TimeDate = new String();
 
     //未制定发货计划的构件
-    private String address = "http://210.45.212.96:8080/Mobile/hfsj/deliver/deliverAppInterface/findUnPlanComponentList";
+    private String address = AddressUse.ADDRESS_HEAD + "Mobile/hfsj/deliver/deliverAppInterface/findUnPlanComponentList";
     //发货计划单的登记
 
 

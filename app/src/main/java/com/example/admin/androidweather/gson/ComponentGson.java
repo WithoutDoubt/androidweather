@@ -23,6 +23,62 @@ public class ComponentGson {
      *      create_by
      *      create_date
      * */
+
+    private String code;
+    private String type;
+    private String makeDate;
+    private String projectName;
+    private String typeName;
+    private String printTimes;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getMakeDate() {
+        return makeDate;
+    }
+
+    public void setMakeDate(String makeDate) {
+        this.makeDate = makeDate;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public String getPrintTimes() {
+        return printTimes;
+    }
+
+    public void setPrintTimes(String printTimes) {
+        this.printTimes = printTimes;
+    }
+
     private String componentId;
     private String componentCode;
     private String componentStatus;

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
+import com.example.admin.androidweather.gson.AddressUse;
 import com.example.admin.androidweather.gson.ComponentGson;
 import com.example.admin.androidweather.gson.MobileGson;
 import com.example.admin.androidweather.gson.SelfCheckRemarks;
@@ -73,8 +74,10 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
     //GSON
 
     private String comment;
+    private String TemplateName;
     //Okhttp
-    private String address = "http://210.45.212.96:8080/Mobile/updateComponentStatus";
+    private String address ;
+    private String address_head = AddressUse.ADDRESS_HEAD + "Mobile/hfsj/product/appAjax/updateComponentStatus?componentId=" ;
     private  RequestBody requestBody ;
 
     //返回值
@@ -127,6 +130,7 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
         componentId = getIntent().getStringExtra("componentId");
         componentName = getIntent().getStringExtra("componentCode");
         product = getIntent().getStringExtra("product");
+        TemplateName = getIntent().getStringExtra("code");
 
         final QMUIRoundButton buttonok = (QMUIRoundButton)findViewById(R.id.selfcheck_ok);
         final QMUIRoundButton buttonno = (QMUIRoundButton)findViewById(R.id.selfcheck_no);
@@ -138,18 +142,27 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
             }
         });
+
+        editText0 = (EditText)findViewById(R.id.transfer_location_component_code);
+
         switch (product){
             case "selfCheck":
                 topBar.setTitle("构件自检");
+                editText0.setText("构件编号:" + componentName);
                 status = "8";
                 break;
             case "randomCheck":
                 topBar.setTitle("构件抽检");
+                editText0.setText("构件编号:" + componentName);
                 status = "9";
                 linearLayout_no.setVisibility(View.VISIBLE);
                 break;
             case "templateCheck":
                 topBar.setTitle("模具检查");
+                editText0.setText("模具编号:" + TemplateName);
+                status = "1";
+                address_head = AddressUse.ADDRESS_HEAD + "Mobile/hfsj/product/appAjax/productTemplateStatus?template=";
+                //address_head = "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/productTemplateStatus?template=";
                 break;
         }
 
@@ -177,8 +190,8 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
         checkBox_5 = (CheckBox)findViewById(R.id.checkbox_5);
 
 //
-        editText0 = (EditText)findViewById(R.id.transfer_location_component_code);
-        editText0.setText("构件编号:" + componentName);
+       // editText0 = (EditText)findViewById(R.id.transfer_location_component_code);
+      //  editText0.setText("构件编号:" + componentName);
         editText0.setEnabled(false);
 
 
@@ -197,11 +210,11 @@ public class ResultSelfCheckActivity extends AppCompatActivity {
 
                 //MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                     //210版本可以，
-                    address = "http://210.45.212.96:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
-                            + "?componentId="
+                    address = address_head
                             + componentId
                             +"&status="+status
-                            +"&remarks="+comment;
+                            +"&remarks="
+                            +comment;
 //                            + comment
 //                            +"}";
                             //+"]";
