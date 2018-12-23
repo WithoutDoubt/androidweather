@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.androidweather.R;
@@ -16,8 +17,12 @@ import com.example.admin.androidweather.gson.MobileGson;
 import com.example.admin.androidweather.gson.ProvidePlanGson;
 import com.example.admin.androidweather.util.HttpUtil;
 import com.example.admin.androidweather.util.Utility;
+import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -48,12 +53,27 @@ public class PlanDeliver extends AppCompatActivity {
 
     private String planDeliverInfoJSON=null;
     private SharedPreferences preferences;
+
+    //标题
+    private TextView title;
+    private Button buttonback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_deliver);
         request=getIntent().getStringExtra("requestData");
         Log.d("11111", request);
+
+        //########标题
+        title = (TextView)findViewById(R.id.main_title_text);
+        buttonback = (Button)findViewById(R.id.main_button_back);
+        title.setText("发货信息");
+
+
+//        QMUITopBar topBar = findViewById(R.id.deliver_topbar);
+//        topBar.setTitle("发货信息");
+//        topBar.setBackgroundColor(getColor(R.color.app_color_blue_2));
+        //
 
         final ProvidePlanGson providePlanGson=new ProvidePlanGson();
         projectName=(EditText)findViewById(R.id.project_name);
@@ -78,6 +98,12 @@ public class PlanDeliver extends AppCompatActivity {
         providePlanGson.setReceiveAddress(receiveAddress.getText().toString());
         providePlanGson.setPlanDeliverDate(getIntent().getStringExtra("estimateDate"));
 
+        buttonback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         btnSave=(Button)findViewById(R.id.btn_save);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +176,44 @@ public class PlanDeliver extends AppCompatActivity {
                             @Override
                             public void run() {
                                 closeProgressDialog();
-                                Toast.makeText(PlanDeliver.this, result,Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(PlanDeliver.this, result,Toast.LENGTH_SHORT).show();
+                                final QMUITipDialog tipDialog_1,tipDialog_2;
+
+                                tipDialog_1 = new QMUITipDialog.Builder(PlanDeliver.this)
+                                        .setIconType(QMUITipDialog.Builder.ICON_TYPE_SUCCESS)
+                                        .setTipWord("制定成功")
+                                        .create();
+                                tipDialog_2= new QMUITipDialog.Builder(PlanDeliver.this)
+                                        .setIconType(QMUITipDialog.Builder.ICON_TYPE_FAIL)
+                                        .setTipWord("制定失败")
+                                        .create();
+                                switch (result){
+                                    case "ok":
+                                        tipDialog_1.show();
+                                        break;
+                                    case "no":
+                                        tipDialog_2.show();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                TimerTask task = new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        /**
+                                         *要执行的操作
+                                         *
+                                         */
+                                        tipDialog_2.dismiss();
+                                        tipDialog_1.dismiss();
+                                      //  finish();
+                                    }
+                                };
+                                Timer timer = new Timer();
+                                timer.schedule(task, 1500);//1.5秒后执行TimeTask的run方法
+                                //  Toast.makeText(PlanActivity.this, result,Toast.LENGTH_SHORT).show();
+
+
                             }
                         });
                     }

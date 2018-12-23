@@ -263,7 +263,7 @@ public class PlanActivity extends AppCompatActivity implements View.OnClickListe
                                              */
                                             tipDialog_2.dismiss();
                                             tipDialog_1.dismiss();
-                                            finish();
+                                            //finish();
                                         }
                                     };
                                     Timer timer = new Timer();

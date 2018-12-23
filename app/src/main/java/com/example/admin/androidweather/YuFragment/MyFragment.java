@@ -17,6 +17,9 @@ import com.example.admin.androidweather.Activity.ScanActivity;
 import com.example.admin.androidweather.R;
 import com.example.admin.androidweather.gson.SelfCheckRemarks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class MyFragment extends Fragment {
@@ -70,17 +73,60 @@ public class MyFragment extends Fragment {
         TextView btn_submit8 = (TextView) getActivity().findViewById(R.id.click_deliverlogin);
         TextView btn_submit9 = (TextView) getActivity().findViewById(R.id.click_getgoods);
         TextView btn_submit10 = (TextView) getActivity().findViewById(R.id.click_badgoods);
+
+        List<TextView> textViewList = new ArrayList<>();
+        textViewList.add(btn_submit0);
+        textViewList.add(btn_submit);
+        textViewList.add(btn_submit2);
+        textViewList.add(btn_submit3);
+        textViewList.add(btn_submit4);
+        textViewList.add(btn_submit5);
+        textViewList.add(btn_submit6);
+        textViewList.add(btn_submit7);
+        textViewList.add(btn_submit8);
+        textViewList.add(btn_submit9);
+        textViewList.add(btn_submit10);
         //#######################################
 
 
         //判断#####################################
 
+        List<String> product_list = new ArrayList<String>();
+        product_list.add(preferences.getString("mobile_1",""));
+        product_list.add(preferences.getString("mobile_2",""));
+        product_list.add(preferences.getString("mobile_3",""));
+        product_list.add(preferences.getString("mobile_4",""));
+        product_list.add(preferences.getString("mobile_5",""));
+        product_list.add(preferences.getString("mobile_6",""));
+        product_list.add(preferences.getString("mobile_7",""));
+        product_list.add(preferences.getString("mobile_8",""));
+        product_list.add(preferences.getString("mobile_9",""));
+        product_list.add(preferences.getString("mobile_10",""));
+        product_list.add(preferences.getString("mobile_11",""));
+
+        List<String> product_name = new ArrayList<String>();
+        product_name.add("");
+        product_name.add("");
+        product_name.add("");
+        product_name.add("");
+        product_name.add("");
+        product_name.add("");
+        product_name.add("");
+        product_name.add("");
+        product_name.add("");
+        product_name.add("");
 
 
+/*
 
+        for (int i=0;i<11;i++){
+            if (product_list.get(i)!="") {
+                textViewList.get(0).setText(product_list.get(i));
+                textViewList.remove(0);
+            }
+        }
 
-
-
+*/
 
         //##########################################
 

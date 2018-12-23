@@ -58,7 +58,7 @@ public class ResultScanSecondActivity extends AppCompatActivity {
         LinearLayout linearLayout_no = (LinearLayout)findViewById(R.id.scan_linear_no);
 
         QMUIStatusBarHelper.translucent(this);
-        final QMUITipDialog tipDialog,tipDialog_1,tipDialog_2;
+        final QMUITipDialog tipDialog,tipDialog_1,tipDialog_2,tipDialog_3;
         tipDialog = new QMUITipDialog.Builder(ResultScanSecondActivity.this)
                 .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
                 .setTipWord("正在加载")
@@ -72,6 +72,10 @@ public class ResultScanSecondActivity extends AppCompatActivity {
         tipDialog_2= new QMUITipDialog.Builder(ResultScanSecondActivity.this)
                 .setIconType(QMUITipDialog.Builder.ICON_TYPE_FAIL)
                 .setTipWord("发送失败")
+                .create();
+        tipDialog_3= new QMUITipDialog.Builder(ResultScanSecondActivity.this)
+                .setIconType(QMUITipDialog.Builder.ICON_TYPE_SUCCESS)
+                .setTipWord("构件发送成功，请继续执行单据构件")
                 .create();
 
         product = getIntent().getStringExtra("product");
@@ -120,8 +124,7 @@ public class ResultScanSecondActivity extends AppCompatActivity {
             case "getGood":
                 topBar.setTitle("收货登记");
                 buttonok.setText("确认收货");
-              //  buttonok.setBackgroundColor(ContextCompat.getColor(this, R.color.app_color_blue_2));
-
+                address_inter ="Mobile/hfsj/deliver/deliverAppInterface/checkDeliver";
                 linearLayout_no.setVisibility(View.VISIBLE);
                 buttonno.setText("构件退货");
                 status_ok = "15";
@@ -158,7 +161,8 @@ public class ResultScanSecondActivity extends AppCompatActivity {
                         + "?componentId="
                         + componentId
                         + "&status="
-                        + status_ok;
+                        + status_ok
+                        +"&returnReason=";
 //                        +"&remarks="
 //                        +"["
 //  //                      + comment
@@ -239,89 +243,194 @@ public class ResultScanSecondActivity extends AppCompatActivity {
         buttonno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                address = "http://210.45.212.96:8080/Mobile/hfsj/deliver/deliverAppInterface/checkDeliver"
+                        + "?componentId="
+                        +  componentId
+                        + "&status="
+                        + status_no
+                        + "&returnreason=1";
+                final QMUIDialog.EditTextDialogBuilder builder = new QMUIDialog.EditTextDialogBuilder(ResultScanSecondActivity.this);
+                builder.setTitle("标题")
+                        .setPlaceholder("在此输入退货原因")
+                        .setInputType(InputType.TYPE_CLASS_TEXT)
+                        .addAction("取消", new QMUIDialogAction.ActionListener() {
+                            @Override
+                            public void onClick(QMUIDialog dialog, int index) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .addAction("确定", new QMUIDialogAction.ActionListener() {
+                            @Override
+                            public void onClick(QMUIDialog dialog, int index) {
+                                CharSequence text = builder.getEditText().getText();
+                                if (text != null && text.length() > 0) {
+                                    //Toast.makeText(ResultScanSecondActivity.this, "您的昵称: " + text, Toast.LENGTH_SHORT).show();
+                                    remarks = new String();
+                                    remarks = text.toString();
+                                    dialog.dismiss();
+                                    HttpUtil.sendOkHttpRequest(address,new Callback()
+                                    {
+
+                                        @Override
+                                        public void onFailure(Call call, IOException e) {
+                                            e.printStackTrace();
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    //关闭进度条
+                                                    tipDialog.dismiss();
+
+
+                                                    Toast.makeText(ResultScanSecondActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(ResultScanSecondActivity.this ,ScanActivity.class);
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                        }
+
+                                        @Override
+                                        public void onResponse(Call call, final Response response) throws IOException {
+                                            final String responseText = response.body().string();
+                                            final MobileGson mobileGson = Utility.handleMobileResponse(responseText);
+                                            final String result = mobileGson.getResult();
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    //关闭进度条
+                                                    tipDialog.dismiss();
+
+                                                    switch (result){
+                                                        case "ok":
+                                                            tipDialog_1.show();
+                                                            buttonok.setClickable(false);
+                                                            buttonno.setClickable(false);
+                                                            break;
+                                                        case "no":
+                                                            tipDialog_3.show();
+                                                            break;
+                                                        default:
+                                                            break;
+                                                    }
+                                                    TimerTask task = new TimerTask() {
+                                                        @Override
+                                                        public void run() {
+                                                            /**
+                                                             *要执行的操作
+                                                             *
+                                                             */
+                                                            tipDialog_3.dismiss();
+                                                            tipDialog_1.dismiss();
+                                                           // finish();
+                                                        }
+                                                    };
+                                                    Timer timer = new Timer();
+                                                    timer.schedule(task, 1500);//1.5秒后执行TimeTask的run方法
+
+
+
+//                                Log.d("AAAA", "onClick: ok");
+//                                Toast.makeText(ResultScanSecondActivity.this,result,Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }
+                                    });
+
+                                } else {
+                                    Toast.makeText(ResultScanSecondActivity.this, "请填入退货原因", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        .create(mCurrentDialogStyle).show();
+
+
                 showEditTextDialog();
+
+
 
 //                address = "http://10.0.2.2:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
 //                        + "?componentId="
 //                        + componentId
 //                        +"&status="
 //                        +status_no;
-                address = "http://210.45.212.96:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
-                        + "?componentId="
-                        +  componentId
-                        + "&status="
-                        + status_no;
+//                address = "http://210.45.212.96:8080/Mobile/hfsj/product/appAjax/updateComponentStatus"
+//                        + "?componentId="
+//                        +  componentId
+//                        + "&status="
+//                        + status_no
+//                        + "&returnreason=1";
 //                        +"&remarks="
 //                        +"["
 //                        //                      + comment
 //                        +"]";
                 //退货
-                HttpUtil.sendOkHttpRequest(address,new Callback()
-                {
-
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        e.printStackTrace();
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                //关闭进度条
-                                tipDialog.dismiss();
-
-
-                                Toast.makeText(ResultScanSecondActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(ResultScanSecondActivity.this ,ScanActivity.class);
-                                startActivity(intent);
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onResponse(Call call, final Response response) throws IOException {
-                        final String responseText = response.body().string();
-                        final MobileGson mobileGson = Utility.handleMobileResponse(responseText);
-                        final String result = mobileGson.getResult();
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                //关闭进度条
-                                tipDialog.dismiss();
-
-                                switch (result){
-                                    case "ok":
-                                        tipDialog_1.show();
-                                        buttonok.setClickable(false);
-                                        buttonno.setClickable(false);
-                                        break;
-                                    case "no":
-                                        tipDialog_2.show();
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                TimerTask task = new TimerTask() {
-                                    @Override
-                                    public void run() {
-                                        /**
-                                         *要执行的操作
-                                         *
-                                         */
-                                        tipDialog_2.dismiss();
-                                        tipDialog_1.dismiss();
-                                        finish();
-                                    }
-                                };
-                                Timer timer = new Timer();
-                                timer.schedule(task, 1500);//1.5秒后执行TimeTask的run方法
-
-
-
-//                                Log.d("AAAA", "onClick: ok");
-//                                Toast.makeText(ResultScanSecondActivity.this,result,Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                });
+//                HttpUtil.sendOkHttpRequest(address,new Callback()
+//                {
+//
+//                    @Override
+//                    public void onFailure(Call call, IOException e) {
+//                        e.printStackTrace();
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                //关闭进度条
+//                                tipDialog.dismiss();
+//
+//
+//                                Toast.makeText(ResultScanSecondActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
+//                                Intent intent = new Intent(ResultScanSecondActivity.this ,ScanActivity.class);
+//                                startActivity(intent);
+//                            }
+//                        });
+//                    }
+//
+//                    @Override
+//                    public void onResponse(Call call, final Response response) throws IOException {
+//                        final String responseText = response.body().string();
+//                        final MobileGson mobileGson = Utility.handleMobileResponse(responseText);
+//                        final String result = mobileGson.getResult();
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                //关闭进度条
+//                                tipDialog.dismiss();
+//
+//                                switch (result){
+//                                    case "ok":
+//                                        tipDialog_1.show();
+//                                        buttonok.setClickable(false);
+//                                        buttonno.setClickable(false);
+//                                        break;
+//                                    case "no":
+//                                        tipDialog_2.show();
+//                                        break;
+//                                    default:
+//                                        break;
+//                                }
+//                                TimerTask task = new TimerTask() {
+//                                    @Override
+//                                    public void run() {
+//                                        /**
+//                                         *要执行的操作
+//                                         *
+//                                         */
+//                                        tipDialog_2.dismiss();
+//                                        tipDialog_1.dismiss();
+//                                        finish();
+//                                    }
+//                                };
+//                                Timer timer = new Timer();
+//                                timer.schedule(task, 1500);//1.5秒后执行TimeTask的run方法
+//
+//
+//
+////                                Log.d("AAAA", "onClick: ok");
+////                                Toast.makeText(ResultScanSecondActivity.this,result,Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//                    }
+//                });
             }
         });
 
@@ -383,6 +492,8 @@ public class ResultScanSecondActivity extends AppCompatActivity {
                             remarks = new String();
                             remarks = text.toString();
                             dialog.dismiss();
+
+
                         } else {
                             Toast.makeText(ResultScanSecondActivity.this, "请填入退货原因", Toast.LENGTH_SHORT).show();
                         }

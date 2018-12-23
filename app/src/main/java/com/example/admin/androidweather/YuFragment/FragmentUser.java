@@ -87,6 +87,7 @@ public class FragmentUser extends Fragment {
 
         QMUICommonListItemView qmuiCommonListItemView_1 = (QMUICommonListItemView) getActivity().findViewById(R.id.user_no);
         qmuiCommonListItemView_1.setText(no);
+        //qmuiCommonListItemView_1.setDetailText("hello");
 
         QMUICommonListItemView qmuiCommonListItemView_2 = (QMUICommonListItemView) getActivity().findViewById(R.id.user_name);
         qmuiCommonListItemView_2.setText(name);

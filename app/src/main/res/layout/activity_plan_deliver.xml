@@ -17,17 +17,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="填写发货信息"
-                android:textSize="20sp"
-                android:textColor="?attr/qmui_config_color_gray_3"
-                android:paddingBottom="@dimen/qmui_group_list_section_header_footer_padding_vertical"
-                android:paddingLeft="?attr/qmui_content_padding_horizontal"
-                android:paddingRight="?attr/qmui_content_padding_horizontal"
-                android:paddingTop="@dimen/qmui_group_list_section_header_footer_padding_vertical"
+            <include
+                android:id="@+id/deliver_title"
+                layout="@layout/title_layout"
                 />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

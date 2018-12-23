@@ -204,7 +204,7 @@ public class ScanActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                    // Toast.makeText(ScanActivity.this, componentGson.getName(), Toast.LENGTH_SHORT).show();
-                                    if((componentGson.getComponentId()!=null)) {
+                                    if((componentGson.getComponentCode()!=null)) {
                                         Intent intent = new Intent(ScanActivity.this, context);
                                         try {
                                             intent.putExtra("componentId", content);

@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
                                                         editor.putString("mobile_10", item.getName());
                                                         break;
                                                     case "收货登记":
-                                                        editor.putString("mobile_10", item.getName());
+                                                        editor.putString("mobile_11", item.getName());
                                                         break;
 
                                                 }

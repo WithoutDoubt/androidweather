@@ -185,7 +185,7 @@ public class PlanDeliverActivity extends Activity implements View.OnClickListene
 //                    Toast.makeText(PlanActivity.this,"请选择构件",Toast.LENGTH_SHORT).show();
 //                    break;
 //                }
-
+                request = null;
                 for (ComponentGson e : componentList){
 
                     if (e.isChoosed()) {
@@ -200,12 +200,16 @@ public class PlanDeliverActivity extends Activity implements View.OnClickListene
 
                 }
                 Log.d("CCCCC", "CCCC-----"+ request);
-
-                Intent intent=new Intent(PlanDeliverActivity.this,PlanDeliver.class);
-                intent.putExtra("requestData",request);
-                intent.putExtra("estimateDate",estimateDate);
-                startActivity(intent);
-
+                if (request==null || estimateDate ==null){
+                    closeProgressDialog();
+                    Toast.makeText(PlanDeliverActivity.this,"请选择构件",Toast.LENGTH_SHORT).show();
+                }else {
+                    closeProgressDialog();
+                    Intent intent = new Intent(PlanDeliverActivity.this, PlanDeliver.class);
+                    intent.putExtra("requestData", request);
+                    intent.putExtra("estimateDate", estimateDate);
+                    startActivity(intent);
+                }
                 break;
             case R.id.main_button_back:
                 finish();
